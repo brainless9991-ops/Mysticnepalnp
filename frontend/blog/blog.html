@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../logo/pic.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog – Horizon Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel ="stylesheet" href="blog.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-info">
+      <span>📍 New York, USA</span>
+      <span>📞 +1 (800) 345 678</span>
+      <span>✉️ info@horizontravel.com</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <span class="logo-icon"> <img src="/frontend/logo/pic.png"></span>
+      <span class="logo-text">Horizon<span>Travel</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/frontend/index/index.html">Home</a></li>
+      <li><a href="/frontend/about/about.html">About</a></li>
+      <li><a href="#" class="active">Blog</a></li>
+      <li><a href="/frontend/destinations/destinations.html">Destinations</a></li>
+      <li><a href="/frontend/pack/pack.html">Packages</a></li>
+      <li><a href="/frontend/contact/contact.html">Contact</a></li>
+      <li><a href="#" class="nav-cta">Book Now</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Destinations</a>
+    <a href="#">Packages</a>
+    <a href="#" style="color:var(--gold);font-weight:700;">Blog</a>
+    <a href="#">Contact</a>
+    <a href="#" style="color:var(--accent-red);font-weight:700;">Book Now →</a>
+  </div>
+</nav>
+
+<!-- BLOG HERO -->
+<section class="blog-hero">
+  <div class="blog-hero-overlay">
+    <h1>Blog</h1>
+    <div class="breadcrumb">
+      <a href="#">Home</a>
+      <span>|</span>
+      <span>Blog</span>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG SECTION -->
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-layout">
+
+      <!-- POSTS GRID -->
+      <div>
+        <div class="posts-grid">
+
+          <!-- Card 1 -->
+          <div class="post-card">
+            <img class="post-img" src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80" alt="Santorini">
+            <div class="post-body">
+              <div class="post-tag">Tour</div>
+              <div class="post-title">Best Journey to Peaceful Places</div>
+              <p class="post-excerpt">Laboris hac erat dolor, posuere volutpat fringilla gravida metus nonummy, blandit mi...</p>
+              <div class="post-meta">
+                <span><i class="fas fa-user"></i> Ante Quis</span>
+                <span class="divider">|</span>
+                <span><i class="fas fa-comment"></i> 3</span>
+                <span class="divider">|</span>
+                <span><i class="fas fa-calendar-alt"></i> 28 July, 2021</span>
+              </div>
+              <a href="#" class="btn-read">Read More</a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="post-card">
+            <img class="post-img" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80" alt="Mountain Lake">
+            <div class="post-body">
+              <div class="post-tag">Travel</div>
+              <div class="post-title">Santorini Island's Weekend Vacation</div>
+              <p class="post-excerpt">Laboris hac erat dolor, posuere volutpat fringilla gravida metus nonummy, blandit mi...</p>
+              <div class="post-meta">
+                <span><i class="fas fa-user"></i> Amet Porta</span>
+                <span class="divider">|</span>
+                <span><i class="fas fa-comment"></i> 4</span>
+                <span class="divider">|</span>
+                <span><i class="fas fa-calendar-alt"></i> 29 July, 2021</span>
+              </div>
+              <a href="#" class="btn-read">Read More</a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="post-card">
+            <img class="post-img" src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80" alt="City Bridge">
+            <div class="post-body">
+              <div class="post-tag">Tour</div>
+              <div class="post-title">Best Journey to Peaceful Places</div>
+              <p class="post-excerpt">Laboris hac erat dolor, posuere volutpat fringilla gravida metus nonummy, blandit mi...</p>
+              <div class="post-meta">
+                <span><i class="fas fa-user"></i> Ante Quis</span>
+                <span class="divider">|</span>
+                <span><i class="fas fa-comment"></i> 3</span>
+                <span class="divider">|</span>
+                <span><i class="fas fa-calendar-alt"></i> 28 July, 2021</span>
+              </div>
+              <a href="#" class="btn-read">Read More</a>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="post-card">
+            <img class="post-img" src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80" alt="Louvre Paris">
+            <div class="post-body">
+              <div class="post-tag">Travel</div>
+              <div class="post-title">Santorini Island's Weekend Vacation</div>
+              <p class="post-excerpt">Laboris hac erat dolor, posuere volutpat fringilla gravida metus nonummy, blandit mi...</p>
+              <div class="post-meta">
+                <span><i class="fas fa-user"></i> Amet Porta</span>
+                <span class="divider">|</span>
+                <span><i class="fas fa-comment"></i> 4</span>
+                <span class="divider">|</span>
+                <span><i class="fas fa-calendar-alt"></i> 29 July, 2021</span>
+              </div>
+              <a href="#" class="btn-read">Read More</a>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="post-card">
+            <img class="post-img" src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=600&q=80" alt="Turkey">
+            <div class="post-body">
+              <div class="post-tag">Tour</div>
+              <div class="post-title">Best Journey to Peaceful Places</div>
+              <p class="post-excerpt">Laboris hac erat dolor, posuere volutpat fringilla gravida metus nonummy, blandit mi...</p>
+              <div class="post-meta">
+                <span><i class="fas fa-user"></i> Ante Quis</span>
+                <span class="divider">|</span>
+                <span><i class="fas fa-comment"></i> 3</span>
+                <span class="divider">|</span>
+                <span><i class="fas fa-calendar-alt"></i> 28 July, 2021</span>
+              </div>
+              <a href="#" class="btn-read">Read More</a>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="post-card">
+            <img class="post-img" src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?w=600&q=80" alt="Egypt Pyramids">
+            <div class="post-body">
+              <div class="post-tag">Travel</div>
+              <div class="post-title">Santorini Island's Weekend Vacation</div>
+              <p class="post-excerpt">Laboris hac erat dolor, posuere volutpat fringilla gravida metus nonummy, blandit mi...</p>
+              <div class="post-meta">
+                <span><i class="fas fa-user"></i> Amet Porta</span>
+                <span class="divider">|</span>
+                <span><i class="fas fa-comment"></i> 4</span>
+                <span class="divider">|</span>
+                <span><i class="fas fa-calendar-alt"></i> 29 July, 2021</span>
+              </div>
+              <a href="#" class="btn-read">Read More</a>
+            </div>
+          </div>
+
+        </div><!-- /posts-grid -->
+
+        <!-- PAGINATION -->
+        <div class="pagination">
+          <a href="#"><i class="fas fa-chevron-left"></i></a>
+          <a href="#" class="active">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">4</a>
+          <a href="#">5</a>
+          <a href="#">6</a>
+          <a href="#"><i class="fas fa-chevron-right"></i></a>
+        </div>
+      </div><!-- /posts col -->
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+
+        <!-- About Author -->
+        <div class="widget author-widget">
+          <div class="widget-title">About Author</div>
+          <div class="author-avatar-placeholder">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="author-name">Dolor Porta</div>
+          <p class="author-bio">Accumsan? Aliquet nobis doloremque, aliqua? Inceptos voluptatem, duis tempore optio quae animi viverra distinctio cumque vivamus, earum congue, anim velit</p>
+          <div class="author-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <!-- Recent Post -->
+        <div class="widget">
+          <div class="widget-title">Recent Post</div>
+          <div class="recent-post-item">
+            <img class="recent-thumb" src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=200&q=80" alt="Post">
+            <div class="recent-post-info">
+              <a href="#">Best Journey to Peaceful Places</a>
+              <div class="recent-post-meta">
+                <span><i class="fas fa-calendar-alt"></i> 27 July, 2021</span>
+                <span><i class="fas fa-comment"></i> 3 Comments</span>
+              </div>
+            </div>
+          </div>
+          <div class="recent-post-item">
+            <img class="recent-thumb" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=200&q=80" alt="Post">
+            <div class="recent-post-info">
+              <a href="#">Travel with Friends is Best</a>
+              <div class="recent-post-meta">
+                <span><i class="fas fa-calendar-alt"></i> 28 July, 2021</span>
+                <span><i class="fas fa-comment"></i> 3 Comments</span>
+              </div>
+            </div>
+          </div>
+          <div class="recent-post-item">
+            <img class="recent-thumb" src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?w=200&q=80" alt="Post">
+            <div class="recent-post-info">
+              <a href="#">Santorini Island's Weekend</a>
+              <div class="recent-post-meta">
+                <span><i class="fas fa-calendar-alt"></i> 29 July, 2021</span>
+                <span><i class="fas fa-comment"></i> 3 Comments</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="widget">
+          <div class="widget-title">Categories</div>
+          <ul class="category-list">
+            <li><a href="#">Culture</a><span class="cat-count">(09)</span></li>
+            <li><a href="#">Design</a><span class="cat-count">(12)</span></li>
+            <li><a href="#">Popular</a><span class="cat-count">(19)</span></li>
+            <li><a href="#">Slider</a><span class="cat-count">(14)</span></li>
+            <li><a href="#">Tech</a><span class="cat-count">(04)</span></li>
+          </ul>
+        </div>
+
+        <!-- Tags -->
+        <div class="widget">
+          <div class="widget-title">Tags</div>
+          <div class="tags-cloud">
+            <a href="#">Lorem</a>
+            <a href="#">Semper</a>
+            <a href="#">Porta</a>
+            <a href="#">Eget</a>
+            <a href="#">Nulla</a>
+            <a href="#">Ipsum</a>
+            <a href="#">Quis</a>
+            <a href="#">Dolor</a>
+            <a href="#">Amet</a>
+          </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="widget newsletter-widget">
+          <div class="widget-title">Newsletter</div>
+          <p>Sign Up for Our Newsletter!</p>
+          <input type="email" placeholder="Subscribe">
+          <button type="button">Subscribe</button>
+        </div>
+
+      </aside>
+
+    </div><!-- /blog-layout -->
+  </div><!-- /container -->
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo" style="margin-bottom:14px;">
+        <span style="font-size:1.4rem;">✈️</span>
+        <span class="logo-text">Horizon<span style="color:var(--gold);">Travel</span></span>
+      </div>
+      <p>We are a passionate team of travel designers dedicated to crafting beautiful, meaningful journeys that connect people with the world's most extraordinary places.</p>
+      <div class="footer-address">
+        <span>Address</span>
+        <p>1420 Park Ave Road, Flatbush, Bronx, New York 10457, USA</p>
+        <span>Phone</span>
+        <a href="tel:+18003456789">+1 (800) 345 678 89</a>
+        <span>Email</span>
+        <a href="mailto:info@horizontravel.com">info@horizontravel.com</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Tour Packages</a></li>
+        <li><a href="#">Destinations</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Recent News</h4>
+      <div class="footer-news-item">
+        <div class="footer-news-img">✈</div>
+        <div class="footer-news-text">
+          <a href="#">Best Journey to Peaceful Places</a>
+          <div class="footer-news-date">June 1, 2025</div>
+        </div>
+      </div>
+      <div class="footer-news-item">
+        <div class="footer-news-img">🏔</div>
+        <div class="footer-news-text">
+          <a href="#">Travel with Friends is Best</a>
+          <div class="footer-news-date">June 8, 2025</div>
+        </div>
+      </div>
+      <div class="footer-news-item">
+        <div class="footer-news-img">🌅</div>
+        <div class="footer-news-text">
+          <a href="#">Santorini Island's Weekend Escape</a>
+          <div class="footer-news-date">June 16, 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Our Newsletter</h4>
+      <p style="font-size:0.82rem;line-height:1.6;color:rgba(255,255,255,0.6);margin-bottom:16px;">Get in your inbox the latest News and Offers from Horizon Travel.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <input type="email" placeholder="Email address" style="padding:10px 12px;border:1px solid rgba(255,255,255,0.15);border-radius:4px;background:rgba(255,255,255,0.05);color:white;font-size:0.82rem;font-family:'Inter',sans-serif;outline:none;">
+        <button class="btn-subscribe" style="border-radius:4px;">Subscribe →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 Horizon Travel. All Rights Reserved. Design by HorizonInteractive</span>
+    <div style="display:flex;gap:16px;">
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">Follow Us:</a>
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">fb</a>
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">tw</a>
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">ig</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

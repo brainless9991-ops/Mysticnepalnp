@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Package Detail – Global Tour</title>
+<link rel="icon" href="/frontend/logo/pic.png">
+<link rel ="stylesheet" href="booking.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Oswald:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-info">
+      <span>📍 Kathmandu, Nepal</span>
+      <span>📞 +977 (800) 345 678</span>
+      <span>✉️ info@handwal.com</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#">fb</a><a href="#">tw</a><a href="#">ig</a><a href="#">yt</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <span class="logo-icon"> <img src="/frontend/logo/pic.png"></span>
+      <span class="logo-text">Horizon<span>Travel</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/frontend/index/index.html">Home</a></li>
+      <li><a href="/frontend/about/about.html">About</a></li>
+      <li><a href="/frontend/destinations/destinations.html">Destinations</a></li>
+      <li><a href="/frontend/pack/pack.html">Packages</a></li>
+      <li><a href="/frontend/contact/contact.html">Contact</a></li>
+      <li><a href="/frontend/pack/pack.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+    <a href="/frontend/about/about.html">About</a>
+    <a href="frontend/destinations/destinations.html">Destinations</a>
+    <a href="/frontend/pack/pack.html">Packages</a>
+    <a href="/frontend/contact/contact.html">Contact</a>
+    <a href="/frontend/pack/pack.html" style="color:var(--accent-red);font-weight:700;">Book Now →</a>
+  </div>
+</nav>
+<!-- HERO BANNER -->
+<div class="hero">
+  <h1>PACKAGE DETAIL</h1>
+  <div class="breadcrumb">HOME / <span>PACKAGE DETAIL</span></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+  <div class="main-grid">
+
+    <!-- LEFT CONTENT -->
+    <div class="left">
+
+      <!-- Gallery -->
+      <div class="gallery">
+        <span class="badge-overlay">BEST SELLER</span>
+        <img id="mainImg" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80" alt="Santorini Greece">
+      </div>
+      <div class="gallery-thumbs">
+        <img class="active" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&q=60" onclick="switchImg(this,'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80')" alt="">
+        <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=200&q=60" onclick="switchImg(this,'https://images.unsplash.com/photo-1555993539-1732b0258235?w=900&q=80')" alt="">
+        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=200&q=60" onclick="switchImg(this,'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=900&q=80')" alt="">
+        <img src="https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=200&q=60" onclick="switchImg(this,'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=900&q=80')" alt="">
+      </div>
+
+      <!-- Meta Bar -->
+      <div class="meta-bar" style="margin-top:20px;">
+        <div class="item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <div><strong>Santorini, Greece</strong>Destination</div>
+        </div>
+        <div class="item">
+          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+          <div><strong>7 Days / 6 Nights</strong>Duration</div>
+        </div>
+        <div class="item">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          <div><strong>2 – 15 People</strong>Group Size</div>
+        </div>
+        <div class="item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          <div><strong>English / Greek</strong>Language</div>
+        </div>
+        <div class="item">
+          <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+          <div><strong>From $1,299</strong>Per Person</div>
+        </div>
+      </div>
+
+      <!-- Overview -->
+      <div class="content-block">
+        <h2>Package Overview</h2>
+        <p>Discover the enchanting beauty of Santorini, Greece — where whitewashed villages cling to volcanic cliffs above the Aegean Sea. This carefully curated 7-day journey takes you through the island's most iconic landscapes, from the legendary sunset views of Oia to the black-sand beaches of Perissa.</p>
+        <p>Our expert local guides reveal hidden gems beyond the tourist trail, while premium transfers and hand-picked boutique hotels ensure every moment is comfortable, authentic, and unforgettable.</p>
+
+        <div class="highlight-box">
+          "A journey through Santorini is not merely a vacation — it is a passage into living myth, where every terrace, every caldera view, and every glass of local wine becomes a memory that stays with you forever."
+        </div>
+
+        <p>Whether you're honeymooning, celebrating a milestone, or simply seeking the extraordinary, this package offers the perfect blend of cultural immersion, relaxation, and Greek island adventure.</p>
+      </div>
+
+      <!-- Things to Know -->
+      <div class="content-block">
+        <h2>What's Included</h2>
+        <table class="inc-table">
+          <tr><td><span class="tick">✔</span></td><td>Return flights from selected departure cities</td></tr>
+          <tr><td><span class="tick">✔</span></td><td>6 nights accommodation in boutique cave-style hotel</td></tr>
+          <tr><td><span class="tick">✔</span></td><td>Daily breakfast + 3 traditional Greek dinners</td></tr>
+          <tr><td><span class="tick">✔</span></td><td>Private airport & ferry transfers</td></tr>
+          <tr><td><span class="tick">✔</span></td><td>Expert local English-speaking guide</td></tr>
+          <tr><td><span class="tick">✔</span></td><td>Santorini sunset cruise with dinner</td></tr>
+          <tr><td><span class="tick">✔</span></td><td>Wine tasting tour at Santo Winery</td></tr>
+          <tr><td><span class="cross">✘</span></td><td>International travel insurance (recommended)</td></tr>
+          <tr><td><span class="cross">✘</span></td><td>Personal shopping & optional excursions</td></tr>
+          <tr><td><span class="cross">✘</span></td><td>Visa fees (if applicable)</td></tr>
+        </table>
+      </div>
+
+      <!-- Itinerary -->
+      <div class="content-block">
+        <h2>Day-by-Day Itinerary</h2>
+
+        <div class="itinerary-day">
+          <span class="day-badge">DAY 1</span>
+          <h4>Arrival in Santorini — Welcome to Paradise</h4>
+          <p>Fly into Santorini Airport (JTR). Private transfer to your hotel in Imerovigli. Evening orientation walk and welcome dinner at a caldera-view restaurant.</p>
+        </div>
+        <div class="itinerary-day">
+          <span class="day-badge">DAY 2</span>
+          <h4>Oia & the Northern Villages</h4>
+          <p>Morning visit to the iconic village of Oia. Explore the castle ruins and cobblestone alleyways. Afternoon at leisure before the world-famous Oia sunset.</p>
+        </div>
+        <div class="itinerary-day">
+          <span class="day-badge">DAY 3</span>
+          <h4>Volcano & Hot Springs Cruise</h4>
+          <p>Full-day sailing excursion to the Nea Kameni volcano. Hike the volcanic crater, swim in therapeutic hot springs, and snorkel at Thirassia island.</p>
+        </div>
+        <div class="itinerary-day">
+          <span class="day-badge">DAY 4</span>
+          <h4>Fira & Ancient Akrotiri</h4>
+          <p>Guided tour of the prehistoric settlement at Akrotiri — the "Minoan Pompeii." Afternoon cable car ride to Fira, the island's vibrant capital.</p>
+        </div>
+        <div class="itinerary-day">
+          <span class="day-badge">DAY 5</span>
+          <h4>Beach Day — Perissa & Red Beach</h4>
+          <p>Free day to explore Santorini's unique beaches. Visit the dramatic Red Beach carved into crimson cliffs, then relax on the volcanic black sands of Perissa.</p>
+        </div>
+        <div class="itinerary-day">
+          <span class="day-badge">DAY 6</span>
+          <h4>Wine Tasting & Sunset Dinner Cruise</h4>
+          <p>Morning tour of Santorini's acclaimed wineries, tasting Assyrtiko and Vinsanto wines. Evening romantic sunset cruise around the caldera with gourmet dinner.</p>
+        </div>
+        <div class="itinerary-day">
+          <span class="day-badge">DAY 7</span>
+          <h4>Departure — Until We Meet Again</h4>
+          <p>Leisurely morning breakfast with caldera views. Transfer to Santorini Airport for your return flight home, carrying memories to last a lifetime.</p>
+        </div>
+      </div>
+
+      <!-- Things to Know -->
+      <div class="content-block">
+        <h2>Things You Should Know</h2>
+        <ul class="checklist">
+          <li>Minimum age for the volcano hike is 8 years</li>
+          <li>All transfers and activities are operated by licensed local partners</li>
+          <li>Hotel check-in is available from 3:00 PM on arrival day</li>
+          <li>The package can be extended by up to 3 nights on request</li>
+          <li>Travel insurance is strongly recommended for all participants</li>
+          <li>Group bookings of 6+ persons receive a 10% discount</li>
+        </ul>
+      </div>
+
+      <!-- Tags -->
+      <div class="content-block">
+        <strong>Tags:</strong>
+        <div class="tag-row">
+          <span class="tag">Santorini</span>
+          <span class="tag">Greece</span>
+          <span class="tag">Island Hopping</span>
+          <span class="tag">Luxury Travel</span>
+          <span class="tag">Honeymoon</span>
+          <span class="tag">Beaches</span>
+          <span class="tag">Culture</span>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div style="display:flex;justify-content:space-between;padding:18px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);font-size:14px;">
+        <a href="#" style="color:var(--red);">‹ PREVIOUS<br><strong style="color:var(--navy);">Rome & Amalfi Coast</strong></a>
+        <a href="#" style="color:var(--red);text-align:right;">NEXT ›<br><strong style="color:var(--navy);">Maldives Water Villas</strong></a>
+      </div>
+
+    </div><!-- /left -->
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- Price Card -->
+      <div class="sidebar-card price-card" id="book">
+        <div class="card-head">Book This Package</div>
+        <div class="card-body">
+          <div class="price-display">
+            <div class="old">$1,699</div>
+            <div class="amount">$1,299</div>
+            <div class="per">per person</div>
+            <div class="discount">SAVE 24% – LIMITED OFFER</div>
+          </div>
+          <div style="margin-top:16px;">
+            <div class="form-group">
+              <label>Departure Date</label>
+              <input type="date">
+            </div>
+            <div class="form-group">
+              <label>Number of Adults</label>
+              <select><option>1 Adult</option><option>2 Adults</option><option>3 Adults</option><option>4+ Adults</option></select>
+            </div>
+            <div class="form-group">
+              <label>Number of Children</label>
+              <select><option>No Children</option><option>1 Child</option><option>2 Children</option></select>
+            </div>
+            <div class="form-group">
+              <label>Room Type</label>
+              <select><option>Deluxe Caldera View</option><option>Superior Cave Suite</option><option>Honeymoon Suite</option></select>
+            </div>
+          </div>
+          <a href="#" class="btn-full btn-primary">CHECK AVAILABILITY</a>
+          <a href="#" class="btn-full btn-secondary">ENQUIRE NOW</a>
+        </div>
+      </div>
+
+      <!-- Review Score -->
+      <div class="sidebar-card">
+        <div class="card-head">Guest Reviews</div>
+        <div class="card-body">
+          <div style="display:flex;align-items:center;gap:18px;margin-bottom:14px;">
+            <div class="review-score">4.8</div>
+            <div>
+              <div class="stars">★★★★★</div>
+              <div style="font-size:13px;color:var(--muted);">Based on 214 reviews</div>
+            </div>
+          </div>
+          <div style="font-size:13px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span>Accommodation</span><span class="stars" style="font-size:13px;">★★★★★</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span>Guide Quality</span><span class="stars" style="font-size:13px;">★★★★★</span></div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span>Value for Money</span><span class="stars" style="font-size:13px;">★★★★☆</span></div>
+            <div style="display:flex;justify-content:space-between;"><span>Transportation</span><span class="stars" style="font-size:13px;">★★★★★</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Packages -->
+      <div class="sidebar-card">
+        <div class="card-head">Related Packages</div>
+        <div class="card-body">
+          <div class="related-pkg">
+            <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=200&q=60" alt="Amalfi">
+            <div>
+              <h5>Rome & Amalfi Coast Explorer</h5>
+              <span>28 July, 2025 &nbsp;·&nbsp; 10 Days</span><br>
+              <span class="price-sm">From $1,499</span>
+            </div>
+          </div>
+          <div class="related-pkg">
+            <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=200&q=60" alt="Maldives">
+            <div>
+              <h5>Maldives Overwater Villa Escape</h5>
+              <span>15 Aug, 2025 &nbsp;·&nbsp; 5 Days</span><br>
+              <span class="price-sm">From $2,199</span>
+            </div>
+          </div>
+          <div class="related-pkg">
+            <img src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=200&q=60" alt="Paris">
+            <div>
+              <h5>Paris & French Riviera Classic</h5>
+              <span>5 Sep, 2025 &nbsp;·&nbsp; 8 Days</span><br>
+              <span class="price-sm">From $1,899</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class="sidebar-card">
+        <div class="card-head">Categories</div>
+        <div class="card-body">
+          <ul class="cat-list">
+            <li><span><span class="cat-dot"></span>Culture</span> <span>09</span></li>
+            <li><span><span class="cat-dot"></span>Adventure</span> <span>12</span></li>
+            <li><span><span class="cat-dot"></span>Luxury</span> <span>18</span></li>
+            <li><span><span class="cat-dot"></span>Beach</span> <span>14</span></li>
+            <li><span><span class="cat-dot"></span>Honeymoon</span> <span>07</span></li>
+            <li><span><span class="cat-dot"></span>Family</span> <span>11</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Newsletter -->
+      <!div class="sidebar-card">
+        <div class="card-head">Newsletter</div>
+        <div class="card-body newsletter">
+          <p style="font-size:13px;margin-bottom:12px;">Sign up to receive exclusive travel deals & inspiration!</p>
+          <input type="email" placeholder="Your email address">
+          <a href="#" class="btn-full" style="background:var(--blue);color:#fff;font-size:14px;padding:10px;display:block;text-align:center;border-radius:4px;font-weight:700;">SUBSCRIBE</a>
+        </div>
+      </div>
+
+    </div><!-- /sidebar -->
+  </div><!-- /main-grid -->
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo" style="margin-bottom:14px;">
+        <span style="font-size:1.4rem;">✈️</span>
+        <span class="logo-text">Horizon<span style="color:var(--gold);">Travel</span></span>
+      </div>
+      <p>We are a passionate team of travel designers dedicated to crafting beautiful, meaningful journeys that connect people with the world's most extraordinary places.</p>
+      <div class="footer-address">
+        <span>Address</span>
+        <p>1420 Park Ave Road, Flatbush, Bronx, New York 10457, USA</p>
+        <span>Phone</span>
+        <a href="tel:+18003456789">+1 (800) 345 678 89</a>
+        <span>Email</span>
+        <a href="mailto:info@horizontravel.com">info@horizontravel.com</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Tour Packages</a></li>
+        <li><a href="#">Destinations</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Recent News</h4>
+      <div class="footer-news-item">
+        <div class="footer-news-img">✈</div>
+        <div class="footer-news-text">
+          <a href="#">Creating charm and feeling what I know now</a>
+          <div class="footer-news-date">June 1, 2025</div>
+        </div>
+      </div>
+      <div class="footer-news-item">
+        <div class="footer-news-img">🏔</div>
+        <div class="footer-news-text">
+          <a href="#">Enjoy maximum comfort of a mountain retreat</a>
+          <div class="footer-news-date">June 8, 2025</div>
+        </div>
+      </div>
+      <div class="footer-news-item">
+        <div class="footer-news-img">🌅</div>
+        <div class="footer-news-text">
+          <a href="#">Wandering exterior design is growing</a>
+          <div class="footer-news-date">June 16, 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Our Newsletter</h4>
+      <p style="font-size:0.82rem;line-height:1.6;color:rgba(255,255,255,0.6);margin-bottom:16px;">Get in your inbox the latest News and Offers from Horizon Travel.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <input type="email" placeholder="Email address" style="padding:10px 12px;border:1px solid rgba(255,255,255,0.15);border-radius:4px;background:rgba(255,255,255,0.05);color:white;font-size:0.82rem;font-family:'Inter',sans-serif;outline:none;">
+        <button class="btn-subscribe" style="border-radius:4px;">Subscribe →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 Horizon Travel. All Rights Reserved. Design by HorizonInteractive</span>
+    <div style="display:flex;gap:16px;">
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">Follow Us:</a>
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">fb</a>
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">tw</a>
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">ig</a>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

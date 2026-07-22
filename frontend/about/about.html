@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horizon Travel – Fly Beyond Borders</title>
+<link rel="icon" href="/frontend/logo/pic.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Oswald:wght@300;500&display=swap" rel="stylesheet">
+<link rel ="stylesheet" href="about.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-info">
+      <span>📍 New York, USA</span>
+      <span>📞 +1 (800) 345 678</span>
+      <span>✉️ info@horizontravel.com</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#">fb</a><a href="#">tw</a><a href="#">ig</a><a href="#">yt</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+       <span class="logo-icon"> <img src="/frontend/logo/pic.png"></span>
+      <span class="logo-text">Horizon<span>Travel</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/frontend/index/index.html">Home</a></li>
+      <li><a href="#" class ="active">About</a></li>
+      <li><a href="/frontend/blog/blog.html">Blog</a></li>
+      <li><a href="/frontend/destinations/destinations.html">Destinations</a></li>
+      <li><a href="/frontend/pack/pack.html">Packages</a></li>
+      <li><a href="/frontend/contact/contact.html">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Book Now</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+<!-- ABOUT HERO -->
+<section class="about-hero">
+  <div class="about-hero-content">
+    <h1>ABOUT US</h1>
+    <p class="breadcrumb"><a href="#">HOME</a><span>|</span>ABOUT US</p>
+  </div>
+</section>
+
+<!-- ABOUT INTRO -->
+<section class="about-intro">
+  <div class="container">
+    <div class="about-intro-grid">
+      <div class="about-img-wrap">
+        <img
+          class="about-img-main-real"
+          src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80"
+          alt="Travel scenery"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="about-img-main" style="display:none; align-items:center; justify-content:center; color:rgba(255,255,255,0.3); font-size:4rem;">🏔️</div>
+        <div class="about-badge">WE ARE BEST FOR<br>TOURS & TRAVEL<br>SINCE 1982 !</div>
+      </div>
+      <div class="about-right">
+        <p class="section-tag">WHO WE ARE</p>
+        <h2>HOW WE ARE BEST FOR TRAVEL!</h2>
+        <p>Dictumst voluptas qui placeat omnis repellendus, est assumenda dolores facilisis, nostra, inceptos. Ullam laudantium deserunt duis platea. Fermentum diam, perspiciatis cupidatat justo quam voluptate, feugiat, quaerat.</p>
+        <p>Delectus aute scelerisque blanditiis venenatis molestias aperiam rem. Tempore porttitor orci eligendi velit vel scelerisque minus scelerisque? Dis! Aenean? Deleniti esse aperiam adipiscing, sapiente?</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon"><i class="fas fa-plane"></i></div>
+            <div>
+              <h4>Affordable Tours</h4>
+              <p>Iure doloremque saepe? Ultrices mi aliquam dis tempore incididunt sint, cumque dis temp!</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon"><i class="fas fa-user-tie"></i></div>
+            <div>
+              <h4>Best Tour Guides</h4>
+              <p>Iure doloremque saepe? Ultrices mi aliquam dis tempore incididunt sint, cumque dis temp!</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon"><i class="fas fa-sync-alt"></i></div>
+            <div>
+              <h4>Flexible Packages</h4>
+              <p>Iure doloremque saepe? Ultrices mi aliquam dis tempore incididunt sint, cumque dis temp!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORE VALUES -->
+<section class="why-us" style="background:var(--cloud);">
+  <div class="container">
+    <div class="why-us-grid">
+      <div>
+        <p class="section-eyebrow">OUR PHILOSOPHY</p>
+        <h2>Our Core Values</h2>
+        <p class="intro">How all this mistaken idea denouncing pleasure praising pain was born and will give you a complete account of the system. Explores the pursuits of human happiness.</p>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="vc-icon"><i class="fas fa-thumbs-up"></i></div>
+            <h4>Positive & Optimistic</h4>
+            <p>How all this mistaken idea denouncing seds pleasureprasing pain was born and will give you a complete account of the system.</p>
+          </div>
+          <div class="value-card">
+            <div class="vc-icon"><i class="fas fa-star"></i></div>
+            <h4>Wow Customer Service</h4>
+            <p>Some great pleasure take trivial example, whichof ever undertakes laborious physical except to obtain some advantage.</p>
+          </div>
+          <div class="value-card">
+            <div class="vc-icon"><i class="fas fa-heart"></i></div>
+            <h4>Love Customer</h4>
+            <p>The master-builder of human happiness no one rejects, dislikes, avoids pleasure itself, because it is pleasure extremely.</p>
+          </div>
+          <div class="value-card">
+            <div class="vc-icon"><i class="fas fa-balance-scale"></i></div>
+            <h4>Have Integrity</h4>
+            <p>Chooses to enjoy a pleasure that annoying consequences, avoids a pain that no resultant pleasure works.</p>
+          </div>
+        </div>
+      </div>
+      <div class="why-img-stack">
+        <img
+          class="wi-main-real"
+          src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80"
+          alt="City destination"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="wi-main" style="display:none; align-items:center; justify-content:center; color:rgba(255,255,255,0.3); font-size:3rem;">🏙️</div>
+        <img
+          class="wi-accent-real"
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
+          alt="Travel experience"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="wi-accent" style="display:none; align-items:center; justify-content:center; color:rgba(255,255,255,0.5); font-size:2.5rem;">🌅</div>
+        <div class="wi-stat">
+          <strong>40+</strong>
+          <span>Years of<br>Experience</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div class="partners-bar">
+  <div class="container">
+    <div class="partners-inner">
+      <span class="partners-label">Trusted By:</span>
+      <span class="partner-logo">Lorem Porta</span>
+      <span class="partner-logo">Ipsum Semper</span>
+      <span class="partner-logo">Dolor Travels</span>
+      <span class="partner-logo">Amet Tours</span>
+      <span class="partner-logo">Vokalia Co.</span>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="play-btn"><i class="fas fa-play"></i></div>
+    <h2>ARE YOU READY TO TRAVEL?<br>REMEMBER US!!</h2>
+    <p>Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia tenetur, aptent.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-primary">VIEW PACKAGES</a>
+      <a href="#" class="btn-outline">LEARN MORE</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">CLIENT'S REVIEWS</p>
+      <h2>TRAVELLER'S TESTIMONIAL</h2>
+      <p>Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia tenetur, aptent.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★☆</div>
+        <p class="testi-text">"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">E</div>
+          <div>
+            <div class="testi-name">Eget Nulla</div>
+            <div class="testi-role">Travellers</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★½</div>
+        <p class="testi-text">"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--gold);">L</div>
+          <div>
+            <div class="testi-name">Lorem Porta</div>
+            <div class="testi-role">Travellers</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--accent-red);">D</div>
+          <div>
+            <div class="testi-name">Dolor Amet</div>
+            <div class="testi-role">Travellers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo" style="margin-bottom:14px;">
+        <span style="font-size:1.4rem;">✈️</span>
+        <span class="logo-text">Horizon<span style="color:var(--gold);">Travel</span></span>
+      </div>
+      <p>We are a passionate team of travel designers dedicated to crafting beautiful, meaningful journeys that connect people with the world's most extraordinary places.</p>
+      <div class="footer-address">
+        <span>Address</span>
+        <p>1420 Park Ave Road, Flatbush, Bronx, New York 10457, USA</p>
+        <span>Phone</span>
+        <a href="tel:+18003456789">+1 (800) 345 678 89</a>
+        <span>Email</span>
+        <a href="mailto:info@horizontravel.com">info@horizontravel.com</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Concept Design</a></li>
+        <li><a href="#">Project Designs</a></li>
+        <li><a href="#">Make Overs</a></li>
+        <li><a href="#">About Company</a></li>
+        <li><a href="#">Space Planning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Recent News</h4>
+      <div class="footer-news-item">
+        <div class="footer-news-img">✈</div>
+        <div class="footer-news-text">
+          <a href="#">Creating charm and feeling what I know now</a>
+          <div class="footer-news-date">June 1, 2025</div>
+        </div>
+      </div>
+      <div class="footer-news-item">
+        <div class="footer-news-img">🏔</div>
+        <div class="footer-news-text">
+          <a href="#">Enjoy maximum comfort on every journey</a>
+          <div class="footer-news-date">June 8, 2025</div>
+        </div>
+      </div>
+      <div class="footer-news-item">
+        <div class="footer-news-img">🌅</div>
+        <div class="footer-news-text">
+          <a href="#">Wandering exterior design is growing</a>
+          <div class="footer-news-date">June 16, 2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Our Newsletter</h4>
+      <p style="font-size:0.82rem;line-height:1.6;color:rgba(255,255,255,0.6);margin-bottom:16px;">Get in your inbox the latest News and Offers from Horizon Travel.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <input type="email" placeholder="Email address" style="padding:10px 12px;border:1px solid rgba(255,255,255,0.15);border-radius:4px;background:rgba(255,255,255,0.05);color:white;font-size:0.82rem;font-family:'Inter',sans-serif;outline:none;">
+        <button class="btn-subscribe" style="border-radius:4px;">Subscribe →</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Horizon Travel. All Rights Reserved. Design by HorizonInteractive</span>
+    <div style="display:flex;gap:16px;">
+      <a href="#">Follow Us:</a>
+      <a href="#">fb</a>
+      <a href="#">tw</a>
+      <a href="#">ig</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+const ABOUT_API = "http://localhost:3000/api/about/1";
+// Small helper: set text only if both the element and the value exist,
+// so a missing field never wipes out the placeholder copy already in the HTML.
+function setText(selector, value){
+  if(value === undefined || value === null || value === "") return;
+  const el = document.querySelector(selector);
+  if(el) el.innerHTML = value;
+}
+function setAttr(selector, attr, value){
+  if(!value) return;
+  const el = document.querySelector(selector);
+  if(el) el.setAttribute(attr, value);
+}
+
+function renderFeatures(features){
+  if(!Array.isArray(features) || !features.length) return;
+  const wrap = document.querySelector(".about-features");
+  wrap.innerHTML = features.map(f => `
+    <div class="about-feature">
+      <div class="about-feature-icon"><i class="${f.icon || 'fas fa-star'}"></i></div>
+      <div><h4>${f.title || ''}</h4><p>${f.text || ''}</p></div>
+    </div>
+  `).join("");
+}
+
+function renderValues(values){
+  if(!Array.isArray(values) || !values.length) return;
+  const wrap = document.querySelector(".values-grid");
+  wrap.innerHTML = values.map(v => `
+    <div class="value-card">
+      <div class="vc-icon"><i class="${v.icon || 'fas fa-star'}"></i></div>
+      <h4>${v.title || ''}</h4>
+      <p>${v.text || ''}</p>
+    </div>
+  `).join("");
+}
+
+function renderPartners(partners){
+  if(!Array.isArray(partners) || !partners.length) return;
+  const wrap = document.querySelector(".partners-inner");
+  const label = wrap.querySelector(".partners-label");
+  wrap.innerHTML = "";
+  wrap.appendChild(label);
+  partners.forEach(p=>{
+    const span = document.createElement("span");
+    span.className = "partner-logo";
+    span.textContent = p.name || "";
+    wrap.appendChild(span);
+  });
+}
+
+function renderTestimonials(testimonials){
+  if(!Array.isArray(testimonials) || !testimonials.length) return;
+  const wrap = document.querySelector(".testi-grid");
+  wrap.innerHTML = testimonials.map(t => `
+    <div class="testi-card">
+      <div class="testi-stars">${t.stars || ''}</div>
+      <p class="testi-text">"${t.text || ''}"</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="${t.avatar_color ? `background:${t.avatar_color};` : ''}">${t.avatar_letter || ''}</div>
+        <div>
+          <div class="testi-name">${t.name || ''}</div>
+          <div class="testi-role">${t.role || ''}</div>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderServices(services){
+  if(!Array.isArray(services) || !services.length) return;
+  const wrap = document.querySelector(".footer-services-col ul");
+  wrap.innerHTML = services.map(s => `<li><a href="${s.link || '#'}">${s.label || ''}</a></li>`).join("");
+}
+
+function renderNews(news){
+  if(!Array.isArray(news) || !news.length) return;
+  const wrap = document.querySelector(".footer-news-col");
+  const heading = wrap.querySelector("h4");
+  wrap.innerHTML = "";
+  wrap.appendChild(heading);
+  news.forEach(n=>{
+    const item = document.createElement("div");
+    item.className = "footer-news-item";
+    item.innerHTML = `
+      <div class="footer-news-img">${n.icon || ''}</div>
+      <div class="footer-news-text">
+        <a href="${n.link || '#'}">${n.title || ''}</a>
+        <div class="footer-news-date">${n.date || ''}</div>
+      </div>`;
+    wrap.appendChild(item);
+  });
+}
+
+async function loadAboutPage() {
+  try {
+    const res = await fetch(ABOUT_API);
+    if (!res.ok) throw new Error("About data not found");
+    const page = await res.json();
+
+    // HERO
+    setText(".about-hero h1", page.hero_title);
+
+    // INTRO
+    setText(".section-tag", page.intro_tag);
+    setText(".about-right h2", page.intro_heading);
+    setText(".about-p1", page.intro_paragraph1);
+    setText(".about-p2", page.intro_paragraph2);
+    setText(".about-badge", page.intro_badge_text);
+    setAttr(".about-img-main-real", "src", page.intro_image);
+    renderFeatures(page.features);
+
+    // CORE VALUES
+    setText(".section-eyebrow", page.why_eyebrow);
+    setText(".why-us-grid h2", page.why_heading);
+    setText(".why-us-grid .intro", page.why_intro);
+    setAttr(".wi-main-real", "src", page.why_image_main);
+    setAttr(".wi-accent-real", "src", page.why_image_accent);
+    setText(".wi-stat strong", page.why_stat_number);
+    setText(".wi-stat span", page.why_stat_label);
+    renderValues(page.values);
+
+    // PARTNERS
+    setText(".partners-label", page.partners_label);
+    renderPartners(page.partners);
+
+    // CTA
+    setText(".cta-banner h2", page.cta_heading);
+    setText(".cta-banner > .container > p", page.cta_text);
+    if (page.cta_btn1_text) document.querySelector(".btn-primary").textContent = page.cta_btn1_text;
+    setAttr(".btn-primary", "href", page.cta_btn1_link);
+    if (page.cta_btn2_text) document.querySelector(".btn-outline").textContent = page.cta_btn2_text;
+    setAttr(".btn-outline", "href", page.cta_btn2_link);
+
+    // TESTIMONIALS
+    setText(".testimonials .eyebrow", page.testi_eyebrow);
+    setText(".testimonials .section-header h2", page.testi_heading);
+    setText(".testimonials .section-header > p", page.testi_intro);
+    renderTestimonials(page.testimonials);
+
+    // FOOTER
+    setText(".footer-desc", page.footer_description);
+    setText(".footer-addr-text", page.footer_address);
+    if (page.footer_phone) {
+      const phoneEl = document.querySelector(".footer-phone");
+      phoneEl.textContent = page.footer_phone;
+      phoneEl.href = "tel:" + page.footer_phone.replace(/[^\d+]/g, "");
+    }
+    if (page.footer_email) {
+      const emailEl = document.querySelector(".footer-email");
+      emailEl.textContent = page.footer_email;
+      emailEl.href = "mailto:" + page.footer_email;
+    }
+    renderServices(page.footer_services);
+    renderNews(page.footer_news);
+
+  } catch (error) {
+    console.log("Error loading About page data:", error);
+  }
+}
+
+window.onload = loadAboutPage;
+</script>
+</body>
+</html>

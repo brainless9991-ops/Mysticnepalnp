@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="/frontend/logo/pic.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizon Travel — About Page Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="adminabout.css">
+</head>
+<body>
+
+<!-- Sidebar overlay (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <span class="logo-icon">✈️</span>
+    <span class="logo-text">Horizon<span>Admin</span></span>
+  </div>
+  <div class="sidebar-nav">
+    <div class="sidebar-section-label">Overview</div>
+    <div class="nav-item active" data-route="dashboard" onclick="Router.navigate('dashboard')"><span class="nav-icon">📊</span> Dashboard</div>
+    <div class="sidebar-section-label">About Page Sections</div>
+    <div class="nav-item" data-route="hero" onclick="Router.navigate('hero')"><span class="nav-icon">🚀</span> Hero</div>
+    <div class="nav-item" data-route="intro" onclick="Router.navigate('intro')"><span class="nav-icon">📖</span> Intro &amp; Features</div>
+    <div class="nav-item" data-route="values" onclick="Router.navigate('values')"><span class="nav-icon">💎</span> Core Values</div>
+    <div class="nav-item" data-route="partners" onclick="Router.navigate('partners')"><span class="nav-icon">🤝</span> Partners</div>
+    <div class="nav-item" data-route="cta" onclick="Router.navigate('cta')"><span class="nav-icon">📣</span> CTA Banner</div>
+    <div class="nav-item" data-route="testimonials" onclick="Router.navigate('testimonials')"><span class="nav-icon">💬</span> Testimonials</div>
+    <div class="nav-item" data-route="footer" onclick="Router.navigate('footer')"><span class="nav-icon">🦶</span> Footer</div>
+  </div>
+  <div class="sidebar-footer">
+    <div class="sidebar-footer-btn" onclick="previewSite()">🔗 Preview About Page</div>
+    <div class="sidebar-footer-btn danger" onclick="resetAllData()">🔄 Reset All Data</div>
+  </div>
+</aside>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<div class="main-wrapper">
+  <header class="admin-topbar">
+    <div class="topbar-left">
+      <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+      <div class="breadcrumb">About Admin / <span id="breadcrumb-section">Dashboard</span></div>
+    </div>
+    <div class="topbar-right">
+      <span class="topbar-badge">✅ Live</span>
+      <button class="btn-preview" onclick="previewSite()">🔗 View Page</button>
+    </div>
+  </header>
+  <main id="main-content"></main>
+</div>
+
+<script>
+  // ──────────────────────────────────────────────────────────────
+  //  API BASE
+  // ──────────────────────────────────────────────────────────────
+  const API_BASE = '/api/about';
+  const PREVIEW_URL = '/frontend/about/about.html';
+
+  // ──────────────────────────────────────────────────────────────
+  //  DEFAULT DATA (nested for editing; flattened before it hits the API)
+  // ──────────────────────────────────────────────────────────────
+  const DEFAULT_MODEL = {
+    hero: {
+      title: 'ABOUT US',
+      breadcrumb: 'HOME | ABOUT US'
+    },
+    intro: {
+      tag: 'WHO WE ARE',
+      heading: 'HOW WE ARE BEST FOR TRAVEL!',
+      paragraph1: 'Dictumst voluptas qui placeat omnis repellendus, est assumenda dolores facilisis, nostra, inceptos. Ullam laudantium deserunt duis platea. Fermentum diam, perspiciatis cupidatat justo quam voluptate, feugiat, quaerat.',
+      paragraph2: 'Delectus aute scelerisque blanditiis venenatis molestias aperiam rem. Tempore porttitor orci eligendi velit vel scelerisque minus scelerisque? Dis! Aenean? Deleniti esse aperiam adipiscing, sapiente?',
+      image: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=700&q=80',
+      badgeText: 'WE ARE BEST FOR TOURS & TRAVEL SINCE 1982 !',
+      features: [
+        { icon: 'fas fa-plane', title: 'Affordable Tours', text: 'Iure doloremque saepe? Ultrices mi aliquam dis tempore incididunt sint, cumque dis temp!' },
+        { icon: 'fas fa-user-tie', title: 'Best Tour Guides', text: 'Iure doloremque saepe? Ultrices mi aliquam dis tempore incididunt sint, cumque dis temp!' },
+        { icon: 'fas fa-sync-alt', title: 'Flexible Packages', text: 'Iure doloremque saepe? Ultrices mi aliquam dis tempore incididunt sint, cumque dis temp!' }
+      ]
+    },
+    values: {
+      eyebrow: 'OUR PHILOSOPHY',
+      heading: 'Our Core Values',
+      intro: 'How all this mistaken idea denouncing pleasure praising pain was born and will give you a complete account of the system. Explores the pursuits of human happiness.',
+      imageMain: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80',
+      imageAccent: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
+      statNumber: '40+',
+      statLabel: 'Years of Experience',
+      items: [
+        { icon: 'fas fa-thumbs-up', title: 'Positive & Optimistic', text: 'How all this mistaken idea denouncing seds pleasureprasing pain was born and will give you a complete account of the system.' },
+        { icon: 'fas fa-star', title: 'Wow Customer Service', text: 'Some great pleasure take trivial example, whichof ever undertakes laborious physical except to obtain some advantage.' },
+        { icon: 'fas fa-heart', title: 'Love Customer', text: 'The master-builder of human happiness no one rejects, dislikes, avoids pleasure itself, because it is pleasure extremely.' },
+        { icon: 'fas fa-balance-scale', title: 'Have Integrity', text: 'Chooses to enjoy a pleasure that annoying consequences, avoids a pain that no resultant pleasure works.' }
+      ]
+    },
+    partners: {
+      label: 'Trusted By:',
+      items: [
+        { name: 'Lorem Porta' }, { name: 'Ipsum Semper' }, { name: 'Dolor Travels' },
+        { name: 'Amet Tours' }, { name: 'Vokalia Co.' }
+      ]
+    },
+    cta: {
+      heading: 'ARE YOU READY TO TRAVEL? REMEMBER US!!',
+      text: 'Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia tenetur, aptent.',
+      btn1Text: 'VIEW PACKAGES', btn1Link: '#',
+      btn2Text: 'LEARN MORE', btn2Link: '#'
+    },
+    testimonials: {
+      eyebrow: "CLIENT'S REVIEWS",
+      heading: "TRAVELLER'S TESTIMONIAL",
+      intro: 'Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia tenetur, aptent.',
+      items: [
+        { stars: '★★★★☆', text: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.', name: 'Eget Nulla', role: 'Travellers', avatarLetter: 'E', avatarColor: '' },
+        { stars: '★★★★½', text: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.', name: 'Lorem Porta', role: 'Travellers', avatarLetter: 'L', avatarColor: 'var(--gold)' },
+        { stars: '★★★★★', text: 'Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.', name: 'Dolor Amet', role: 'Travellers', avatarLetter: 'D', avatarColor: 'var(--accent-red)' }
+      ]
+    },
+    footer: {
+      description: "We are a passionate team of travel designers dedicated to crafting beautiful, meaningful journeys that connect people with the world's most extraordinary places.",
+      address: '1420 Park Ave Road, Flatbush, Bronx, New York 10457, USA',
+      phone: '+1 (800) 345 678 89',
+      email: 'info@horizontravel.com',
+      services: [
+        { label: 'Concept Design', link: '#' }, { label: 'Project Designs', link: '#' },
+        { label: 'Make Overs', link: '#' }, { label: 'About Company', link: '#' }, { label: 'Space Planning', link: '#' }
+      ],
+      news: [
+        { icon: '✈', title: 'Creating charm and feeling what I know now', date: 'June 1, 2025', link: '#' },
+        { icon: '🏔', title: 'Enjoy maximum comfort on every journey', date: 'June 8, 2025', link: '#' },
+        { icon: '🌅', title: 'Wandering exterior design is growing', date: 'June 16, 2025', link: '#' }
+      ]
+    }
+  };
+
+  // ──────────────────────────────────────────────────────────────
+  //  FLAT <-> NESTED MAPPING (nested shape above <-> flat about_page columns)
+  // ──────────────────────────────────────────────────────────────
+  function fromRow(row) {
+    return {
+      hero: { title: row.hero_title, breadcrumb: row.hero_breadcrumb },
+      intro: {
+        tag: row.intro_tag, heading: row.intro_heading,
+        paragraph1: row.intro_paragraph1, paragraph2: row.intro_paragraph2,
+        image: row.intro_image, badgeText: row.intro_badge_text,
+        features: row.features || []
+      },
+      values: {
+        eyebrow: row.why_eyebrow, heading: row.why_heading, intro: row.why_intro,
+        imageMain: row.why_image_main, imageAccent: row.why_image_accent,
+        statNumber: row.why_stat_number, statLabel: row.why_stat_label,
+        items: row.values || []
+      },
+      partners: { label: row.partners_label, items: row.partners || [] },
+      cta: {
+        heading: row.cta_heading, text: row.cta_text,
+        btn1Text: row.cta_btn1_text, btn1Link: row.cta_btn1_link,
+        btn2Text: row.cta_btn2_text, btn2Link: row.cta_btn2_link
+      },
+      testimonials: {
+        eyebrow: row.testi_eyebrow, heading: row.testi_heading, intro: row.testi_intro,
+        items: (row.testimonials || []).map(t => ({
+          stars: t.stars, text: t.text, name: t.name, role: t.role,
+          avatarLetter: t.avatar_letter, avatarColor: t.avatar_color
+        }))
+      },
+      footer: {
+        description: row.footer_description, address: row.footer_address,
+        phone: row.footer_phone, email: row.footer_email,
+        services: (row.footer_services || []).map(s => ({ label: s.label, link: s.link })),
+        news: (row.footer_news || []).map(n => ({ icon: n.icon, title: n.title, date: n.date, link: n.link }))
+      }
+    };
+  }
+
+  function toFlat(d) {
+    return {
+      hero_title: d.hero.title, hero_breadcrumb: d.hero.breadcrumb,
+      intro_tag: d.intro.tag, intro_heading: d.intro.heading,
+      intro_paragraph1: d.intro.paragraph1, intro_paragraph2: d.intro.paragraph2,
+      intro_image: d.intro.image, intro_badge_text: d.intro.badgeText,
+      features: d.intro.features || [],
+      why_eyebrow: d.values.eyebrow, why_heading: d.values.heading, why_intro: d.values.intro,
+      why_image_main: d.values.imageMain, why_image_accent: d.values.imageAccent,
+      why_stat_number: d.values.statNumber, why_stat_label: d.values.statLabel,
+      values: d.values.items || [],
+      partners_label: d.partners.label, partners: d.partners.items || [],
+      cta_heading: d.cta.heading, cta_text: d.cta.text,
+      cta_btn1_text: d.cta.btn1Text, cta_btn1_link: d.cta.btn1Link,
+      cta_btn2_text: d.cta.btn2Text, cta_btn2_link: d.cta.btn2Link,
+      testi_eyebrow: d.testimonials.eyebrow, testi_heading: d.testimonials.heading, testi_intro: d.testimonials.intro,
+      testimonials: (d.testimonials.items || []).map(t => ({
+        stars: t.stars, text: t.text, name: t.name, role: t.role,
+        avatar_letter: t.avatarLetter, avatar_color: t.avatarColor
+      })),
+      footer_description: d.footer.description, footer_address: d.footer.address,
+      footer_phone: d.footer.phone, footer_email: d.footer.email,
+      footer_services: (d.footer.services || []).map(s => ({ label: s.label, link: s.link })),
+      footer_news: (d.footer.news || []).map(n => ({ icon: n.icon, title: n.title, date: n.date, link: n.link }))
+    };
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  MODEL – API INTEGRATION
+  // ──────────────────────────────────────────────────────────────
+  const Model = {
+    _data: null,
+    _id: null,
+
+    async load() {
+      try {
+        const res = await fetch(API_BASE);
+        if (!res.ok) throw new Error('Failed to fetch data');
+        const data = await res.json();
+        if (!data.length) {
+          this._data = JSON.parse(JSON.stringify(DEFAULT_MODEL));
+          this._id = null;
+        } else {
+          const row = data[0];
+          this._id = row.id;
+          this._data = fromRow(row);
+        }
+        return this._data;
+      } catch (err) {
+        console.error('Load error:', err);
+        showToast('Failed to load data. Using defaults.', 'error');
+        this._data = JSON.parse(JSON.stringify(DEFAULT_MODEL));
+        this._id = null;
+        return this._data;
+      }
+    },
+
+    async save(data) {
+      const payload = toFlat(data);
+      let url = API_BASE;
+      let method = 'POST';
+      if (this._id) {
+        url += '/' + this._id;
+        method = 'PUT';
+      }
+      const res = await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Save failed');
+      const result = await res.json();
+      if (result.id) this._id = result.id;
+      this._data = data;
+      return result;
+    },
+
+    get(section) { return this._data ? this._data[section] : null; },
+    set(section, value) {
+      if (!this._data) this._data = JSON.parse(JSON.stringify(DEFAULT_MODEL));
+      this._data[section] = value;
+    },
+    all() { return this._data; },
+
+    async reset() {
+      try {
+        await fetch(API_BASE + '/seed', { method: 'POST' });
+      } catch (e) { /* fall through to reload below */ }
+      await this.load();
+      return this._data;
+    }
+  };
+
+  // ──────────────────────────────────────────────────────────────
+  //  HELPERS
+  // ──────────────────────────────────────────────────────────────
+  function showToast(msg, type = '') {
+    document.querySelectorAll('.toast').forEach(t => t.remove());
+    const t = document.createElement('div');
+    t.className = 'toast ' + type;
+    t.innerHTML = (type === 'error' ? '❌ ' : type === 'warning' ? '⚠️ ' : '✅ ') + msg;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 3200);
+  }
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('open');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+  }
+  function previewSite() { window.open(PREVIEW_URL, '_blank'); }
+  async function resetAllData() {
+    if (!confirm('Reset the About page to its default content? This cannot be undone.')) return;
+    try {
+      await Model.reset();
+      showToast('Content reset to defaults!', 'warning');
+      Router.navigate(Router.current, false);
+    } catch (err) {
+      showToast('Reset failed: ' + err.message, 'error');
+    }
+  }
+  function escHtml(s) { return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function val(id) { const el = document.getElementById(id); return el ? el.value : ''; }
+  function setVal(id, v) { const el = document.getElementById(id); if (el) el.value = v; }
+
+  function field(label, id, value, type='text', extra='') {
+    if (type === 'textarea') {
+      return `<div class="field"><label>${label}</label><textarea id="${id}" ${extra}>${escHtml(value)}</textarea></div>`;
+    }
+    return `<div class="field"><label>${label}</label><input type="${type}" id="${id}" value="${escHtml(value)}" ${extra}></div>`;
+  }
+  function sectionHeader(icon, title, desc) {
+    return `<div class="page-header"><div class="page-header-text"><h1>${icon} ${title}</h1><p>${desc}</p></div></div>`;
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  RENDER: DASHBOARD
+  // ──────────────────────────────────────────────────────────────
+  function renderDashboard(el) {
+    const d = Model.all();
+    const sections = [
+      { route:'hero', icon:'🚀', name:'Hero', desc:'Title & breadcrumb' },
+      { route:'intro', icon:'📖', name:'Intro & Features', desc:'Story + 3 feature icons' },
+      { route:'values', icon:'💎', name:'Core Values', desc:'Philosophy + value cards' },
+      { route:'partners', icon:'🤝', name:'Partners', desc:'"Trusted by" logos bar' },
+      { route:'cta', icon:'📣', name:'CTA Banner', desc:'Call-to-action strip' },
+      { route:'testimonials', icon:'💬', name:'Testimonials', desc:'Customer review cards' },
+      { route:'footer', icon:'🦶', name:'Footer', desc:'Company info, services, news' }
+    ];
+    const featCount = d.intro?.features?.length || 0;
+    const valCount = d.values?.items?.length || 0;
+    const partnerCount = d.partners?.items?.length || 0;
+    const testiCount = d.testimonials?.items?.length || 0;
+
+    el.innerHTML = `
+      ${sectionHeader('📊','Dashboard','Welcome back! Choose a section below to edit the About page content.')}
+      <div class="dash-grid">
+        <div class="dash-card"><div class="dash-card-icon">🧩</div><div class="dash-card-label">Features</div><div class="dash-card-value">${featCount}</div><div class="dash-card-sub">Intro feature items</div></div>
+        <div class="dash-card"><div class="dash-card-icon">💎</div><div class="dash-card-label">Core Values</div><div class="dash-card-value">${valCount}</div><div class="dash-card-sub">Value cards</div></div>
+        <div class="dash-card"><div class="dash-card-icon">🤝</div><div class="dash-card-label">Partners</div><div class="dash-card-value">${partnerCount}</div><div class="dash-card-sub">Trusted-by logos</div></div>
+        <div class="dash-card"><div class="dash-card-icon">💬</div><div class="dash-card-label">Testimonials</div><div class="dash-card-value">${testiCount}</div><div class="dash-card-sub">Customer reviews</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🗂️ All Sections — Click to Edit</div></div>
+        <div class="dash-sections-grid">
+          ${sections.map(s => `<div class="dash-section-card" onclick="Router.navigate('${s.route}')">
+            <div class="dsc-icon">${s.icon}</div>
+            <div class="dsc-text"><div class="dsc-name">${s.name}</div><div class="dsc-desc">${s.desc}</div></div>
+            <div class="dsc-arrow">→</div>
+          </div>`).join('')}
+        </div>
+      </div>`;
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  RENDER: HERO
+  // ──────────────────────────────────────────────────────────────
+  function renderHero(el) {
+    const d = Model.get('hero') || {};
+    el.innerHTML = `
+      ${sectionHeader('🚀','Hero Section','The banner at the top of the About page.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Hero Content</div></div>
+        <div class="form-grid cols-2">
+          ${field('Title','hero_title', d.title)}
+          ${field('Breadcrumb','hero_breadcrumb', d.breadcrumb)}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveHero()">💾 Save Hero</button>
+      </div>`;
+  }
+  async function saveHero() {
+    const d = Model.all();
+    d.hero = { title: val('hero_title'), breadcrumb: val('hero_breadcrumb') };
+    try { await Model.save(d); showToast('Hero saved!'); }
+    catch (err) { showToast('Error: ' + err.message, 'error'); }
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  RENDER: INTRO & FEATURES
+  // ──────────────────────────────────────────────────────────────
+  function renderIntro(el) {
+    const d = Model.get('intro') || {};
+    el.innerHTML = `
+      ${sectionHeader('📖','Intro & Features','The "Who We Are" story block and its 3 feature icons.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Story Content</div></div>
+        <div class="form-grid cols-2">
+          ${field('Section Tag','intro_tag', d.tag)}
+          ${field('Heading','intro_heading', d.heading)}
+        </div>
+        <div class="form-grid">
+          ${field('Paragraph 1','intro_p1', d.paragraph1,'textarea')}
+          ${field('Paragraph 2','intro_p2', d.paragraph2,'textarea')}
+          ${field('Image URL','intro_image', d.image,'text')}
+          ${field('Badge Text','intro_badge', d.badgeText,'textarea')}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveIntro()">💾 Save Intro</button>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🧩 Feature Items</div><button class="btn btn-ghost btn-sm" onclick="addFeature()">+ Add Feature</button></div>
+        <div id="features-list">
+          ${(d.features || []).map((f,i) => featureRow(f,i)).join('')}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveFeatures()">💾 Save Features</button>
+      </div>`;
+  }
+  function featureRow(f,i) {
+    return `<div class="array-item" id="feature-${i}">
+      <div class="array-item-header">
+        <span class="array-item-label">🧩 Feature ${i+1}</span>
+        <button class="btn btn-danger btn-xs" onclick="removeFeature(${i})">🗑 Remove</button>
+      </div>
+      <div class="form-grid cols-2">
+        ${field('Icon (Font Awesome class)','feat_icon_'+i, f.icon)}
+        ${field('Title','feat_title_'+i, f.title)}
+      </div>
+      ${field('Text','feat_text_'+i, f.text,'textarea')}
+    </div>`;
+  }
+  function addFeature() {
+    const d = Model.all();
+    d.intro.features = d.intro.features || [];
+    d.intro.features.push({ icon:'fas fa-star', title:'New Feature', text:'Feature description here.' });
+    renderIntro(document.getElementById('main-content'));
+  }
+  function removeFeature(i) {
+    const d = Model.all();
+    d.intro.features.splice(i,1);
+    renderIntro(document.getElementById('main-content'));
+  }
+  async function saveIntro() {
+    const d = Model.all();
+    d.intro.tag = val('intro_tag');
+    d.intro.heading = val('intro_heading');
+    d.intro.paragraph1 = val('intro_p1');
+    d.intro.paragraph2 = val('intro_p2');
+    d.intro.image = val('intro_image');
+    d.intro.badgeText = val('intro_badge');
+    try { await Model.save(d); showToast('Intro saved!'); }
+    catch (err) { showToast('Error: ' + err.message, 'error'); }
+  }
+  async function saveFeatures() {
+    const d = Model.all();
+    d.intro.features = (d.intro.features || []).map((_,i) => ({
+      icon: val('feat_icon_'+i), title: val('feat_title_'+i), text: val('feat_text_'+i)
+    }));
+    try { await Model.save(d); showToast('Features saved!'); }
+    catch (err) { showToast('Error: ' + err.message, 'error'); }
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  RENDER: CORE VALUES
+  // ──────────────────────────────────────────────────────────────
+  function renderValues(el) {
+    const d = Model.get('values') || {};
+    el.innerHTML = `
+      ${sectionHeader('💎','Core Values','The philosophy block and its 4 value cards.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Section Header</div></div>
+        <div class="form-grid cols-2">
+          ${field('Eyebrow','why_eyebrow', d.eyebrow)}
+          ${field('Heading','why_heading', d.heading)}
+        </div>
+        ${field('Intro Text','why_intro', d.intro,'textarea')}
+        <div class="divider"></div>
+        <div class="form-grid cols-2">
+          ${field('Main Image URL','why_img_main', d.imageMain)}
+          ${field('Accent Image URL','why_img_accent', d.imageAccent)}
+        </div>
+        <div class="form-grid cols-2">
+          ${field('Stat Number','why_stat_num', d.statNumber)}
+          ${field('Stat Label','why_stat_label', d.statLabel)}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveValuesSection()">💾 Save Section</button>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">💎 Value Cards</div><button class="btn btn-ghost btn-sm" onclick="addValue()">+ Add Value</button></div>
+        <div id="values-list">
+          ${(d.items || []).map((v,i) => valueRow(v,i)).join('')}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveValueItems()">💾 Save Value Cards</button>
+      </div>`;
+  }
+  function valueRow(v,i) {
+    return `<div class="array-item" id="value-${i}">
+      <div class="array-item-header">
+        <span class="array-item-label">💎 Value ${i+1}</span>
+        <button class="btn btn-danger btn-xs" onclick="removeValue(${i})">🗑 Remove</button>
+      </div>
+      <div class="form-grid cols-2">
+        ${field('Icon (Font Awesome class)','val_icon_'+i, v.icon)}
+        ${field('Title','val_title_'+i, v.title)}
+      </div>
+      ${field('Text','val_text_'+i, v.text,'textarea')}
+    </div>`;
+  }
+  function addValue() {
+    const d = Model.all();
+    d.values.items = d.values.items || [];
+    d.values.items.push({ icon:'fas fa-star', title:'New Value', text:'Value description here.' });
+    renderValues(document.getElementById('main-content'));
+  }
+  function removeValue(i) {
+    const d = Model.all();
+    d.values.items.splice(i,1);
+    renderValues(document.getElementById('main-content'));
+  }
+  async function saveValuesSection() {
+    const d = Model.all();
+    d.values.eyebrow = val('why_eyebrow');
+    d.values.heading = val('why_heading');
+    d.values.intro = val('why_intro');
+    d.values.imageMain = val('why_img_main');
+    d.values.imageAccent = val('why_img_accent');
+    d.values.statNumber = val('why_stat_num');
+    d.values.statLabel = val('why_stat_label');
+    try { await Model.save(d); showToast('Core Values section saved!'); }
+    catch (err) { showToast('Error: ' + err.message, 'error'); }
+  }
+  async function saveValueItems() {
+    const d = Model.all();
+    d.values.items = (d.values.items || []).map((_,i) => ({
+      icon: val('val_icon_'+i), title: val('val_title_'+i), text: val('val_text_'+i)
+    }));
+    try { await Model.save(d); showToast('Value cards saved!'); }
+    catch (err) { showToast('Error: ' + err.message, 'error'); }
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  RENDER: PARTNERS
+  // ──────────────────────────────────────────────────────────────
+  function renderPartners(el) {
+    const d = Model.get('partners') || {};
+    el.innerHTML = `
+      ${sectionHeader('🤝','Partners','The "Trusted By" logo strip.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">🏷️ Label</div></div>
+        ${field('Label','partners_label', d.label)}
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🤝 Partner Logos</div><button class="btn btn-ghost btn-sm" onclick="addPartner()">+ Add Partner</button></div>
+        <div id="partners-list">
+          ${(d.items || []).map((p,i) => `<div class="array-item" id="partner-${i}">
+            <div class="array-item-header">
+              <span class="array-item-label">🤝 Partner ${i+1}</span>
+              <button class="btn btn-danger btn-xs" onclick="removePartner(${i})">🗑 Remove</button>
+            </div>
+            ${field('Name','partner_name_'+i, p.name)}
+          </div>`).join('')}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="savePartners()">💾 Save Partners</button>
+      </div>`;
+  }
+  function addPartner() {
+    const d = Model.all();
+    d.partners.items = d.partners.items || [];
+    d.partners.items.push({ name: 'New Partner' });
+    renderPartners(document.getElementById('main-content'));
+  }
+  function removePartner(i) {
+    const d = Model.all();
+    d.partners.items.splice(i,1);
+    renderPartners(document.getElementById('main-content'));
+  }
+  async function savePartners() {
+    const d = Model.all();
+    d.partners.label = val('partners_label');
+    d.partners.items = (d.partners.items || []).map((_,i) => ({ name: val('partner_name_'+i) }));
+    try { await Model.save(d); showToast('Partners saved!'); }
+    catch (err) { showToast('Error: ' + err.message, 'error'); }
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  RENDER: CTA BANNER
+  // ──────────────────────────────────────────────────────────────
+  function renderCta(el) {
+    const d = Model.get('cta') || {};
+    el.innerHTML = `
+      ${sectionHeader('📣','CTA Banner','The "Are you ready to travel?" call-to-action strip.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Banner Content</div></div>
+        ${field('Heading','cta_heading', d.heading)}
+        ${field('Text','cta_text', d.text,'textarea')}
+        <div class="divider"></div>
+        <div class="form-grid cols-2">
+          ${field('Button 1 Text','cta_btn1_text', d.btn1Text)}
+          ${field('Button 1 Link','cta_btn1_link', d.btn1Link)}
+          ${field('Button 2 Text','cta_btn2_text', d.btn2Text)}
+          ${field('Button 2 Link','cta_btn2_link', d.btn2Link)}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveCta()">💾 Save CTA</button>
+      </div>`;
+  }
+  async function saveCta() {
+    const d = Model.all();
+    d.cta = {
+      heading: val('cta_heading'), text: val('cta_text'),
+      btn1Text: val('cta_btn1_text'), btn1Link: val('cta_btn1_link'),
+      btn2Text: val('cta_btn2_text'), btn2Link: val('cta_btn2_link')
+    };
+    try { await Model.save(d); showToast('CTA banner saved!'); }
+    catch (err) { showToast('Error: ' + err.message, 'error'); }
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  RENDER: TESTIMONIALS
+  // ──────────────────────────────────────────────────────────────
+  function renderTestimonials(el) {
+    const d = Model.get('testimonials') || {};
+    el.innerHTML = `
+      ${sectionHeader('💬','Testimonials','The customer review section.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Section Header</div></div>
+        <div class="form-grid cols-2">
+          ${field('Eyebrow','testi_eyebrow', d.eyebrow)}
+          ${field('Heading','testi_heading', d.heading)}
+        </div>
+        ${field('Intro Text','testi_intro', d.intro,'textarea')}
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveTestiSection()">💾 Save Section</button>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">💬 Review Cards</div><button class="btn btn-ghost btn-sm" onclick="addTesti()">+ Add Review</button></div>
+        <div id="testi-list">
+          ${(d.items || []).map((t,i) => testiRow(t,i)).join('')}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveTestiItems()">💾 Save Reviews</button>
+      </div>`;
+  }
+  function testiRow(t,i) {
+    return `<div class="array-item" id="testi-${i}">
+      <div class="array-item-header">
+        <span class="array-item-label">💬 Review ${i+1}</span>
+        <button class="btn btn-danger btn-xs" onclick="removeTesti(${i})">🗑 Remove</button>
+      </div>
+      <div class="form-grid cols-3">
+        ${field('Stars (e.g. ★★★★★)','testi_stars_'+i, t.stars)}
+        ${field('Name','testi_name_'+i, t.name)}
+        ${field('Role','testi_role_'+i, t.role)}
+      </div>
+      ${field('Quote','testi_text_'+i, t.text,'textarea')}
+      <div class="form-grid cols-2">
+        ${field('Avatar Letter','testi_avletter_'+i, t.avatarLetter)}
+        ${field('Avatar Color (CSS, optional)','testi_avcolor_'+i, t.avatarColor)}
+      </div>
+    </div>`;
+  }
+  function addTesti() {
+    const d = Model.all();
+    d.testimonials.items = d.testimonials.items || [];
+    d.testimonials.items.push({ stars:'★★★★★', text:'New review text.', name:'New Customer', role:'Travellers', avatarLetter:'N', avatarColor:'' });
+    renderTestimonials(document.getElementById('main-content'));
+  }
+  function removeTesti(i) {
+    const d = Model.all();
+    d.testimonials.items.splice(i,1);
+    renderTestimonials(document.getElementById('main-content'));
+  }
+  async function saveTestiSection() {
+    const d = Model.all();
+    d.testimonials.eyebrow = val('testi_eyebrow');
+    d.testimonials.heading = val('testi_heading');
+    d.testimonials.intro = val('testi_intro');
+    try { await Model.save(d); showToast('Testimonials section saved!'); }
+    catch (err) { showToast('Error: ' + err.message, 'error'); }
+  }
+  async function saveTestiItems() {
+    const d = Model.all();
+    d.testimonials.items = (d.testimonials.items || []).map((_,i) => ({
+      stars: val('testi_stars_'+i), text: val('testi_text_'+i),
+      name: val('testi_name_'+i), role: val('testi_role_'+i),
+      avatarLetter: val('testi_avletter_'+i), avatarColor: val('testi_avcolor_'+i)
+    }));
+    try { await Model.save(d); showToast('Reviews saved!'); }
+    catch (err) { showToast('Error: ' + err.message, 'error'); }
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  RENDER: FOOTER
+  // ──────────────────────────────────────────────────────────────
+  function renderFooter(el) {
+    const d = Model.get('footer') || {};
+    el.innerHTML = `
+      ${sectionHeader('🦶','Footer','Company info, service links, and recent-news items.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">🏢 Company Info</div></div>
+        ${field('Description','ft_desc', d.description,'textarea')}
+        ${field('Address','ft_address', d.address)}
+        <div class="form-grid cols-2">
+          ${field('Phone','ft_phone', d.phone)}
+          ${field('Email','ft_email', d.email,'email')}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveFooterInfo()">💾 Save Company Info</button>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🔗 Services</div><button class="btn btn-ghost btn-sm" onclick="addFooterService()">+ Add Service</button></div>
+        <div id="ft-services-list">
+          ${(d.services || []).map((s,i) => `<div class="array-item" id="ftservice-${i}">
+            <div class="array-item-header"><span class="array-item-label">🔗 Service ${i+1}</span><button class="btn btn-danger btn-xs" onclick="removeFooterService(${i})">🗑 Remove</button></div>
+            <div class="form-grid cols-2">
+              ${field('Label','ftsvc_label_'+i, s.label)}
+              ${field('Link','ftsvc_link_'+i, s.link)}
+            </div>
+          </div>`).join('')}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveFooterServices()">💾 Save Services</button>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">📰 Recent News</div><button class="btn btn-ghost btn-sm" onclick="addFooterNews()">+ Add News Item</button></div>
+        <div id="ft-news-list">
+          ${(d.news || []).map((n,i) => `<div class="array-item" id="ftnews-${i}">
+            <div class="array-item-header"><span class="array-item-label">📰 News ${i+1}</span><button class="btn btn-danger btn-xs" onclick="removeFooterNews(${i})">🗑 Remove</button></div>
+            <div class="form-grid cols-3">
+              ${field('Icon/Emoji','ftnews_icon_'+i, n.icon)}
+              ${field('Date','ftnews_date_'+i, n.date)}
+              ${field('Link','ftnews_link_'+i, n.link)}
+            </div>
+            ${field('Title','ftnews_title_'+i, n.title)}
+          </div>`).join('')}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveFooterNews()">💾 Save News</button>
+      </div>`;
+  }
+  function addFooterService() {
+    const d = Model.all();
+    d.footer.services = d.footer.services || [];
+    d.footer.services.push({ label:'New Service', link:'#' });
+    renderFooter(document.getElementById('main-content'));
+  }
+  function removeFooterService(i) {
+    const d = Model.all();
+    d.footer.services.splice(i,1);
+    renderFooter(document.getElementById('main-content'));
+  }
+  function addFooterNews() {
+    const d = Model.all();
+    d.footer.news = d.footer.news || [];
+    d.footer.news.push({ icon:'📰', title:'New News Item', date:'Jan 1, 2026', link:'#' });
+    renderFooter(document.getElementById('main-content'));
+  }
+  function removeFooterNews(i) {
+    const d = Model.all();
+    d.footer.news.splice(i,1);
+    renderFooter(document.getElementById('main-content'));
+  }
+  async function saveFooterInfo() {
+    const d = Model.all();
+    d.footer.description = val('ft_desc');
+    d.footer.address = val('ft_address');
+    d.footer.phone = val('ft_phone');
+    d.footer.email = val('ft_email');
+    try { await Model.save(d); showToast('Company info saved!'); }
+    catch (err) { showToast('Error: ' + err.message, 'error'); }
+  }
+  async function saveFooterServices() {
+    const d = Model.all();
+    d.footer.services = (d.footer.services || []).map((_,i) => ({ label: val('ftsvc_label_'+i), link: val('ftsvc_link_'+i) }));
+    try { await Model.save(d); showToast('Services saved!'); }
+    catch (err) { showToast('Error: ' + err.message, 'error'); }
+  }
+  async function saveFooterNews() {
+    const d = Model.all();
+    d.footer.news = (d.footer.news || []).map((_,i) => ({
+      icon: val('ftnews_icon_'+i), title: val('ftnews_title_'+i),
+      date: val('ftnews_date_'+i), link: val('ftnews_link_'+i)
+    }));
+    try { await Model.save(d); showToast('News saved!'); }
+    catch (err) { showToast('Error: ' + err.message, 'error'); }
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  ROUTER
+  // ──────────────────────────────────────────────────────────────
+  const ROUTES = {
+    dashboard:    { label: 'Dashboard',          render: renderDashboard },
+    hero:         { label: 'Hero',               render: renderHero },
+    intro:        { label: 'Intro & Features',   render: renderIntro },
+    values:       { label: 'Core Values',        render: renderValues },
+    partners:     { label: 'Partners',           render: renderPartners },
+    cta:          { label: 'CTA Banner',         render: renderCta },
+    testimonials: { label: 'Testimonials',       render: renderTestimonials },
+    footer:       { label: 'Footer',             render: renderFooter }
+  };
+
+  const Router = {
+    current: 'dashboard',
+    navigate(section, push = true) {
+      if (!ROUTES[section]) section = 'dashboard';
+      this.current = section;
+      if (push) location.hash = '#' + section;
+      document.querySelectorAll('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.route === section));
+      const route = ROUTES[section];
+      document.getElementById('breadcrumb-section').textContent = route ? route.label : section;
+      const main = document.getElementById('main-content');
+      main.innerHTML = '';
+      if (route && route.render) route.render(main);
+      main.scrollTop = 0;
+      closeSidebar();
+    },
+    init() {
+      const h = location.hash.replace('#','') || 'dashboard';
+      this.navigate(h, false);
+      window.addEventListener('hashchange', () => this.navigate(location.hash.replace('#','') || 'dashboard', false));
+    }
+  };
+
+  // ──────────────────────────────────────────────────────────────
+  //  BOOT
+  // ──────────────────────────────────────────────────────────────
+  (async function boot() {
+    await Model.load();
+    Router.init();
+  })();
+</script>
+
+</body>
+</html>

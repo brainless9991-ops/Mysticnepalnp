@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../logo/pic.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horizon Travel – Fly Beyond Borders</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Oswald:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-info">
+      <span>📍 New York, USA</span>
+      <span>📞 +977 345 678</span>
+      <span>✉️ info@hori.com</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <span class="logo-icon"> <img src="/frontend/logo/pic.png"></span>
+      <span class="logo-text">Horizon<span>Travel</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="/frontend/about/about.html">About</a></li>
+      <li><a href="/frontend/blog/blog.html">Blog</a></li>
+      <li><a href="/frontend/destinations/destinations.html">Destinations</a></li>
+      <li><a href="/frontend/pack/pack.html">Packages</a></li>
+      <li><a href="/frontend/contact/contact.html">Contact</a></li>
+      <li><a href="/frontend/pack/pack.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+     <li><a href="/frontend/about/about.html">About</a></li>
+      <li><a href="/frontend/blog/blog.html">Blog</a></li>
+      <li><a href="/frontend/destinations/destinations.html">Destinations</a></li>
+      <li><a href="/frontend/pack/pack.html">Packages</a></li>
+      <li><a href="/frontend/contact/contact.html">Contact</a></li>
+    <a href="#contact" style="color:var(--accent-red);font-weight:700;">Book Now →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="sky-canvas"></div>
+  <div class="stars" id="stars"></div>
+  <!-- Animated clouds -->
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+  <div class="cloud cloud-4"></div>
+  <!-- Contrail -->
+  <div class="contrail">
+    <div class="contrail-line"></div>
+    <div class="contrail-line"></div>
+  </div>
+  <!-- Flying plane SVG animation -->
+  <div class="plane-wrap" id="planeSvg">
+    <svg viewBox="0 0 200 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Fuselage -->
+      <path d="M10 38 C10 38 120 28 170 35 C185 37 195 40 190 42 C180 45 10 48 10 48 Z" fill="white" opacity="0.97"/>
+      <!-- Nose -->
+      <path d="M170 35 L195 40 L170 45 Z" fill="#e0e0e0"/>
+      <!-- Main wing -->
+      <path d="M80 38 L120 10 L130 12 L95 38 Z" fill="white" opacity="0.92"/>
+      <path d="M80 42 L120 68 L130 66 L95 42 Z" fill="#d0d0d0" opacity="0.85"/>
+      <!-- Tail wing -->
+      <path d="M25 38 L10 20 L18 20 L32 38 Z" fill="white" opacity="0.88"/>
+      <path d="M25 42 L10 56 L18 56 L32 42 Z" fill="#c8c8c8" opacity="0.8"/>
+      <!-- Tail fin -->
+      <path d="M15 38 L8 16 L20 22 L20 38 Z" fill="white" opacity="0.92"/>
+      <!-- Engine -->
+      <ellipse cx="105" cy="24" rx="10" ry="4" fill="#b0b0b0" opacity="0.85"/>
+      <ellipse cx="105" cy="24" rx="8" ry="2.5" fill="#808080" opacity="0.7"/>
+      <!-- Windows -->
+      <rect x="130" y="35" width="8" height="5" rx="2" fill="#B3D4F0" opacity="0.8"/>
+      <rect x="145" y="35" width="8" height="5" rx="2" fill="#B3D4F0" opacity="0.8"/>
+      <rect x="160" y="35.5" width="6" height="4.5" rx="2" fill="#B3D4F0" opacity="0.7"/>
+      <!-- Stripe -->
+      <rect x="10" y="39" width="160" height="1.5" rx="1" fill="#C9972B" opacity="0.7"/>
+      <!-- Engine glow -->
+      <ellipse cx="105" cy="24" rx="12" ry="6" fill="#90CAF9" opacity="0.15"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Explore the World</div>
+      <h1 class="hero-h1">Fly Beyond <em>Borders,</em><br>Discover New Horizons</h1>
+      <p class="hero-sub">We craft unforgettable journeys to destinations across all 7 continents. Expert guides, curated itineraries, and memories that last a lifetime — this is travel, reimagined.</p>
+      <div class="hero-btns">
+        <a href="/frontend/pack/pack.html" class="btn-primary">✈ Explore Packages</a>
+        <a href="/frontend/about/about.html" class="btn-outline">▶ Our Story</a>
+      </div>
+    </div>
+
+    <div class="hero-search-card">
+      <div class="search-card-title">🔍 Find Your Perfect Trip</div>
+      <div class="search-tabs">
+        <div class="search-tab active">Flights</div>
+        <div class="search-tab">Hotels</div>
+        <div class="search-tab">Tours</div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label>From</label>
+          <input type="text" placeholder="New York, USA">
+        </div>
+        <div class="field">
+          <label>To</label>
+          <input type="text" placeholder="Where to?">
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label>Departure</label>
+          <input type="date">
+        </div>
+        <div class="field">
+          <label>Return</label>
+          <input type="date">
+        </div>
+      </div>
+      <div class="field-single">
+        <div class="field">
+          <label>Travelers</label>
+          <select>
+            <option>1 Adult</option>
+            <option>2 Adults</option>
+            <option>2 Adults, 1 Child</option>
+            <option>2 Adults, 2 Children</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-search">🔍 Search Flights</button>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-number">15K+</div><div class="stat-label">Happy Travelers</div></div>
+    <div class="stat"><div class="stat-number">120+</div><div class="stat-label">Destinations</div></div>
+    <div class="stat"><div class="stat-number">18</div><div class="stat-label">Years Experience</div></div>
+    <div class="stat"><div class="stat-number">98%</div><div class="stat-label">Satisfaction Rate</div></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header-flex">
+      <div>
+        <div class="section-eyebrow">What We Offer</div>
+        <h2 class="section-title">Our Travel <em>Services</em></h2>
+        <p class="section-desc">From dream-planning to touchdown, we handle every detail so you can focus on the experience.</p>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">✈️</div>
+        <h3>Flight Bookings</h3>
+        <p>We search hundreds of airlines to find the best fares and most convenient routes for your journey, with 24/7 support from our flight specialists.</p>
+        <a href="/frontend/booking/booking.html" class="read-more">Read More →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏨</div>
+        <h3>Hotel & Stays</h3>
+        <p>Handpicked accommodations from budget-friendly guesthouses to 5-star resorts, all vetted by our travel experts for quality and location.</p>
+        <a href="/frontend/booking/booking.html" class="read-more">Read More →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🗺️</div>
+        <h3>Guided Tours</h3>
+        <p>Immersive cultural experiences led by knowledgeable local guides who bring each destination's history and hidden gems to life.</p>
+        <a href="/frontend/booking/booking.html" class="read-more">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <div class="about-img-stack">
+          <div class="about-img-main">🌍</div>
+          <div class="about-img-accent">🗼</div>
+          <div class="years-badge">
+            <div class="num">18</div>
+            <div class="lbl">Years of Travel Excellence</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-eyebrow">About Our Company</div>
+        <h2 class="section-title">A Small but <em>Passionate</em> Team of Travel Experts</h2>
+        <p class="section-desc" style="margin-bottom:20px;">We believe travel is the best education you can give yourself. Since 2006, Horizon Travel has been connecting adventurers with transformative journeys — whether it's a family beach holiday, a solo backpacking epic, or a bespoke luxury escape.</p>
+        <p class="section-desc" style="margin-bottom:28px;">Our team of 40+ destination specialists has collectively visited over 160 countries. We don't just sell tickets; we craft experiences rooted in genuine local knowledge and a deep love for exploration.</p>
+        <p style="font-style:italic;color:var(--text-mid);font-size:0.88rem;margin-bottom:4px;font-family:'Playfair Display',serif;">
+          "Travel far enough and you meet yourself."
+        </p>
+        <p style="font-size:0.82rem;color:var(--gold);font-weight:600;">— Marcus Chen, CEO & Founder</p>
+        <div class="about-mission">
+          <div class="m-icon">🎯</div>
+          <div>
+            <h4>Our Mission</h4>
+            <p>To make the world more connected by making meaningful travel accessible, sustainable, and deeply personal for every traveler we serve.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section class="destinations" id="destinations">
+  <div class="container">
+    <div class="section-header-flex">
+      <div>
+        <div class="section-eyebrow">Working Areas</div>
+        <h2 class="section-title">Covered <em>Destinations</em></h2>
+        <p class="section-desc">We operate across every continent, bringing you closer to the world's most remarkable places.</p>
+      </div>
+      <a href="/frontend/destinations/destinations.html" class="more-link">All Destinations →</a>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <div class="dest-bg dest-bg-1">🗽</div>
+        <div class="dest-overlay">
+          <div class="dest-plus">+</div>
+          <div class="dest-label">🏙️ North America</div>
+          <div class="dest-name lg">New York<br>& Beyond</div>
+          <div class="dest-info">12 curated itineraries · From $899</div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-bg dest-bg-2">🌿</div>
+        <div class="dest-overlay">
+          <div class="dest-plus">+</div>
+          <div class="dest-label">🌳 Africa</div>
+          <div class="dest-name">Safari Kenya</div>
+          <div class="dest-info">8 tours · From $2,400</div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-bg dest-bg-3">🏯</div>
+        <div class="dest-overlay">
+          <div class="dest-plus">+</div>
+          <div class="dest-label">⛩️ Asia</div>
+          <div class="dest-name">Japan & Korea</div>
+          <div class="dest-info">15 tours · From $1,650</div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-bg dest-bg-4">🏟️</div>
+        <div class="dest-overlay">
+          <div class="dest-plus">+</div>
+          <div class="dest-label">🏛️ Europe</div>
+          <div class="dest-name">Mediterranean</div>
+          <div class="dest-info">20 tours · From $1,200</div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-bg dest-bg-5">🌊</div>
+        <div class="dest-overlay">
+          <div class="dest-plus">+</div>
+          <div class="dest-label">🌴 Pacific</div>
+          <div class="dest-name">Maldives</div>
+          <div class="dest-info">6 tours · From $3,100</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="container">
+    <div class="section-header-flex">
+      <div>
+        <div class="section-eyebrow">Recently Completed Works</div>
+        <h2 class="section-title">Popular Travel <em>Packages</em></h2>
+      </div>
+      <a href="/frontend/pack/pack.html" class="more-link">More Packages →</a>
+    </div>
+    <div class="packages-grid">
+      <div class="pkg-card">
+        <div class="pkg-img pkg-bg-1">
+          🌏
+          <div class="pkg-badge">Best Seller</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-meta">
+            <span>🕐 10 Days</span>
+            <span>👥 Group Tour</span>
+            <span>⭐ 4.9</span>
+          </div>
+          <h3>Southeast Asia Explorer — Thailand, Vietnam & Cambodia</h3>
+          <p>Ancient temples, floating markets, and pristine beaches across three iconic Southeast Asian nations. An immersive cultural journey.</p>
+          <div class="pkg-footer">
+            <div class="pkg-price">
+              <span class="from">Starting from</span>
+              <span class="amount">$1,840 <span>/ person</span></span>
+            </div>
+            <a href="/frontend/pack/pack.html" class="btn-sm">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-img pkg-bg-2">
+          🏔️
+          <div class="pkg-badge">Adventure</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-meta">
+            <span>🕐 14 Days</span>
+            <span>👥 Private Tour</span>
+            <span>⭐ 4.8</span>
+          </div>
+          <h3>Himalayan Trek — Nepal Base Camp Expedition</h3>
+          <p>Guided trekking to Everest Base Camp with experienced Sherpa guides, stunning mountain lodges, and life-changing views.</p>
+          <div class="pkg-footer">
+            <div class="pkg-price">
+              <span class="from">Starting from</span>
+              <span class="amount">$2,990 <span>/ person</span></span>
+            </div>
+            <a href="#" class="btn-sm">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-img pkg-bg-3">
+          🌅
+          <div class="pkg-badge">Luxury</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-meta">
+            <span>🕐 7 Days</span>
+            <span>👥 Couples</span>
+            <span>⭐ 5.0</span>
+          </div>
+          <h3>Maldives Luxury Retreat — Overwater Villa Escape</h3>
+          <p>Crystal lagoons, private overwater villas with glass floors, sunset cruises, and world-class diving in paradise.</p>
+          <div class="pkg-footer">
+            <div class="pkg-price">
+              <span class="from">Starting from</span>
+              <span class="amount">$4,600 <span>/ person</span></span>
+            </div>
+            <a href="/frontend/pack/pack.html" class="btn-sm">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="section-eyebrow" style="justify-content:center;">To Do Good Design</div>
+      <h2 class="section-title" style="text-align:center;">Our Working <em>Process</em></h2>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-icon">💡</div>
+        <h3>Idea & Design</h3>
+        <p>Share your travel dreams with our specialists. We listen, explore possibilities, and begin crafting a journey that fits your vision and budget.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-icon">📋</div>
+        <h3>Specification</h3>
+        <p>We build your full itinerary with flights, accommodations, guides, and activities — every detail confirmed and tailored to your preferences.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-icon">🌍</div>
+        <h3>Execution</h3>
+        <p>You travel. We handle everything behind the scenes — with 24/7 support, real-time assistance, and local contacts at every destination.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT BANNER -->
+<div class="appt-banner">
+  <div class="appt-inner">
+    <div class="appt-text">
+      <h3>✈ Want to Work With Our Professional Team?</h3>
+      <p>Make an appointment today — our travel consultants are available 7 days a week.</p>
+    </div>
+    <a href="/frontend/about/about.html" class="btn-white">Make An Appointment →</a>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-header-flex">
+      <div>
+        <div class="section-eyebrow">Testimonials</div>
+        <h2 class="section-title">Our Customer <em>Words</em></h2>
+      </div>
+      <a href="#" class="more-link">More Reviews →</a>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">The Southeast Asia trip was everything we hoped for and more. Our guide was brilliant, the hotels were perfect, and the routing was seamlessly organized. Felt truly looked after the whole time.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">L</div>
+          <div>
+            <div class="testi-name">Lauren Porter</div>
+            <div class="testi-loc">California</div>
+            <div class="stars-rating">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Horizon planned our honeymoon in the Maldives, and it was absolute perfection. Every tiny detail was attended to — the sunset dhow cruise was the highlight of our lives so far.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">N</div>
+          <div>
+            <div class="testi-name">Nadia & James Amet</div>
+            <div class="testi-loc">Los Angeles</div>
+            <div class="stars-rating">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">The Nepal trekking expedition was challenging and absolutely worth every step. The Sherpa guides were exceptional and the team's support when I needed medical advice at altitude was reassuring.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">D</div>
+          <div>
+            <div class="testi-name">Dalor Ipsum</div>
+            <div class="testi-loc">Denver & City</div>
+            <div class="stars-rating">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT & MAP -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px;">
+      <div class="section-eyebrow" style="justify-content:center;">Contact Lines</div>
+      <h2 class="section-title" style="text-align:center;">How Can We <em>Help You?</em></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-map">
+        <div class="map-placeholder">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.25" viewBox="0 0 400 300">
+            <defs>
+              <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+                <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#1565C0" stroke-width="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="400" height="300" fill="url(#grid)"/>
+            <circle cx="200" cy="150" r="60" fill="none" stroke="#1565C0" stroke-width="1"/>
+            <circle cx="200" cy="150" r="30" fill="none" stroke="#1565C0" stroke-width="0.5"/>
+            <line x1="0" y1="150" x2="400" y2="150" stroke="#1565C0" stroke-width="0.5"/>
+            <line x1="200" y1="0" x2="200" y2="300" stroke="#1565C0" stroke-width="0.5"/>
+          </svg>
+          <div class="map-pin">📍</div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Make Appointment</h3>
+        <p>Fill in the form below and we'll get back to you within 24 hours. Don't hesitate to ask!</p>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Your Name</label>
+            <input type="text" placeholder="John Doe">
+          </div>
+          <div class="form-field">
+            <label>Email Address</label>
+            <input type="email" placeholder="john@email.com">
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Interested In</label>
+          <select>
+            <option>Select Service</option>
+            <option>Flight Booking</option>
+            <option>Hotel & Stays</option>
+            <option>Guided Tour</option>
+            <option>Custom Package</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your dream trip..."></textarea>
+        </div>
+        <button class="btn-search" style="margin-top:4px;">Submit Now →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section>
+  <div class="container">
+    <div class="section-header-flex">
+      <div>
+        <div class="section-eyebrow">News & Updates</div>
+        <h2 class="section-title">Latest From <em>Blog</em></h2>
+      </div>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-img blog-bg-1">
+          🏖️
+          <div class="blog-date"><span>25</span> May</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">By Admin · No Comments</div>
+          <h3>Low Cost Interior Designing Ideas for Your Next Hotel Stay</h3>
+          <p>Discover how to pick accommodations that feel luxurious without breaking the bank — insider tips from our hotel specialists.</p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img blog-bg-2">
+          🌆
+          <div class="blog-date"><span>28</span> May</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">By Admin · No Comments</div>
+          <h3>Commercial Design for Project — Sustainable Travel Spaces</h3>
+          <p>How eco-conscious architecture is reshaping travel hubs and airports around the world in 2025 and beyond.</p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img blog-bg-3">
+          🌸
+          <div class="blog-date"><span>27</span> May</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-meta">By Admin · No Comments</div>
+          <h3>Our Interior Design Prediction 2018 — Japan Off-Season Guide</h3>
+          <p>The best time to visit Japan without the crowds: cherry blossom season alternatives and autumn foliage hotspots.</p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <div class="newsletter-inner">
+    <div class="newsletter-text">
+      <h3>✈ Subscribe for Newsletter</h3>
+      <p>Manage your business with our travel insights — deals, destination guides, and more.</p>
+    </div>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Enter your email address...">
+      <button class="btn-subscribe">Subscribe Now</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo" style="margin-bottom:14px;">
+        <span style="font-size:1.4rem;">✈️</span>
+        <span class="logo-text">Horizon<span style="color:var(--gold);">Travel</span></span>
+      </div>
+      <p>We are a passionate team of travel designers dedicated to crafting beautiful, meaningful journeys that connect people with the world's most extraordinary places.</p>
+      <div class="footer-address">
+        <span>Address</span>
+        <p>1420 Park Ave Road, Flatbush, Bronx, New York 10457, USA</p>
+        <span>Phone</span>
+        <a href="tel:+18003456789">+1 (800) 345 678 89</a>
+        <span>Email</span>
+        <a href="mailto:info@horizontravel.com">info@horizontravel.com</a>
+      </div>
+      <div class="footer-social">
+        <a href="#">f</a><a href="#">t</a><a href="#">in</a><a href="#">yt</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Concept Design</a></li>
+        <li><a href="#">Project Designs</a></li>
+        <li><a href="#">Make Overs</a></li>
+        <li><a href="#">About Company</a></li>
+        <li><a href="#">Space Planning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Recent News</h4>
+      <div class="footer-news-item">
+        <div class="footer-news-img blog-bg-1">✈</div>
+        <div class="footer-news-text">
+          <a href="#">Creating charm and feeling what I know now</a>
+          <div class="footer-news-date">June 1, 2018</div>
+        </div>
+      </div>
+      <div class="footer-news-item">
+        <div class="footer-news-img blog-bg-2">🏔</div>
+        <div class="footer-news-text">
+          <a href="#">Enjoy maximum comfort of furniture now</a>
+          <div class="footer-news-date">June 8, 2018</div>
+        </div>
+      </div>
+      <div class="footer-news-item">
+        <div class="footer-news-img blog-bg-3">🌅</div>
+        <div class="footer-news-text">
+          <a href="#">Wandering exterior design is growing</a>
+          <div class="footer-news-date">June 16, 2018</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Our Newsletter</h4>
+      <p style="font-size:0.82rem;line-height:1.6;color:rgba(255,255,255,0.6);margin-bottom:16px;">Get in your inbox the latest News and Offers from Horizon Travel.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <input type="email" placeholder="Email address" style="padding:10px 12px;border:1px solid rgba(255,255,255,0.15);border-radius:4px;background:rgba(255,255,255,0.05);color:white;font-size:0.82rem;font-family:'Inter',sans-serif;outline:none;">
+        <button class="btn-subscribe" style="border-radius:4px;">Subscribe →</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Horizon Travel. All Rights Reserved. Design by HorizonInteractive</span>
+    <div style="display:flex;gap:16px;">
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">Follow Us:</a>
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">fb</a>
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">tw</a>
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">ig</a>
+    </div>
+  </div>
+</footer>
+<!--script>
+  // Load data from API
+  async function loadHomePage() {
+    try {
+      const res = await fetch('/api/index');
+      if (!res.ok) throw new Error('Network response was not ok');
+      const data = await res.json();
+      if (data.length === 0) {
+        console.warn('No homepage data found, using fallback');
+        return null;
+      }
+      return data[0]; // assume only one record
+    } catch (err) {
+      console.error('Failed to load homepage:', err);
+      return null;
+    }
+  }
+
+  // Render the page with the loaded data
+  async function renderHomePage() {
+    const row = await loadHomePage();
+    if (!row) {
+      // Optionally show a message or use static fallback
+      return;
+    }
+
+    // Parse all JSON fields
+    const topbar = row.topbar || {};
+    const navbar = row.navbar || {};
+    const hero = row.hero || {};
+    const search = row.search || {};
+    const stats = row.stats || [];
+    const services = row.services || {};
+    const about = row.about || {};
+    const destinations = row.destinations || {};
+    const packages = row.packages || {};
+   const process = row.process || {};
+   const appointment = row.appointment || {};
+   const testimonials = row.testimonials || {};
+   const contact = row.contact || {};
+   const blogs = row.blogs || {};
+   const newsletter = row.newsletter || {};
+   const footer = row.footer || {};
+
+    // Now update the DOM elements with these values
+    // Example: topbar
+    const topbarInfo = document.querySelector('.topbar-info');
+    if (topbarInfo) {
+      topbarInfo.innerHTML = `
+        <span>📍 ${topbar.location}</span>
+        <span>📞 ${topbar.phone}</span>
+        <span>✉️ ${topbar.email}</span>
+      `;
+    }
+    // Social links (topbar)
+    const socialContainer = document.querySelector('.topbar-social');
+    if (socialContainer) {
+      socialContainer.innerHTML = `
+        <a href="${topbar.socials.facebook}">fb</a>
+        <a href="${topbar.socials.twitter}">tw</a>
+        <a href="${topbar.socials.instagram}">ig</a>
+        <a href="${topbar.socials.youtube}">yt</a>
+      `;
+    }
+
+    // Navbar
+    const logoText = document.querySelector('.logo .logo-text');
+    if (logoText) {
+      logoText.innerHTML = `${navbar.logoText}<span>${navbar.logoAccent}</span>`;
+    }
+    const navLinks = document.querySelector('.nav-links');
+    if (navLinks) {
+      navLinks.innerHTML = navbar.links.map(link =>
+        `<li><a href="${link.href}">${link.label}</a></li>`
+      ).join('') + `<li><a href="${navbar.ctaHref}" class="nav-cta">${navbar.ctaLabel}</a></li>`;
+    }
+    // Also update mobile menu
+
+    // Hero
+    const heroEyebrow = document.querySelector('.hero-eyebrow');
+    if (heroEyebrow) heroEyebrow.textContent = hero.eyebrow;
+    const heroH1 = document.querySelector('.hero-h1');
+    if (heroH1) {
+      heroH1.innerHTML = `${hero.heading} <em>${hero.headingAccent}</em><br>${hero.subtext.split(' ').slice(0,3).join(' ')}`; // adjust as needed
+    }
+    // Actually hero.subtext is a full sentence – better to keep it in the p.hero-sub
+    const heroSub = document.querySelector('.hero-sub');
+    if (heroSub) heroSub.textContent = hero.subtext;
+    const heroBtns = document.querySelector('.hero-btns');
+    if (heroBtns) {
+      heroBtns.innerHTML = `
+        <a href="${hero.btn1Href}" class="btn-primary">${hero.btn1Label}</a>
+        <a href="${hero.btn2Href}" class="btn-outline">${hero.btn2Label}</a>
+      `;
+    }
+    // Search card
+    const searchTitle = document.querySelector('.search-card-title');
+    if (searchTitle) searchTitle.textContent = search.searchCardTitle;
+    const searchTabs = document.querySelector('.search-tabs');
+    if (searchTabs) {
+      searchTabs.innerHTML = search.searchTabs.map(tab =>
+        `<div class="search-tab ${tab === search.searchTabs[0] ? 'active' : ''}">${tab}</div>`
+      ).join('');
+    }
+
+    // Stats
+    const statsBar = document.querySelector('.stats-inner');
+    if (statsBar) {
+      statsBar.innerHTML = stats.map(stat =>
+        `<div class="stat"><div class="stat-number">${stat.number}</div><div class="stat-label">${stat.label}</div></div>`
+      ).join('');
+    }
+
+    // Services
+    const servicesGrid = document.querySelector('.services-grid');
+    if (servicesGrid) {
+      servicesGrid.innerHTML = services.items.map(svc =>
+        `<div class="service-card">
+          <div class="service-icon">${svc.icon}</div>
+          <h3>${svc.title}</h3>
+          <p>${svc.description}</p>
+          <a href="/frontend/booking/booking.html" class="read-more">Read More →</a>
+        </div>`
+      ).join('');
+    }
+
+    // Continue similarly for all other sections: About, Destinations, Packages, Process, Appointment Banner, Testimonials, Contact, Blog, Newsletter, Footer.
+
+    // Remember to update image URLs, links, etc.
+
+    // After updating all, optionally set the page title
+    document.title = row.page_title || 'Horizon Travel';
+  }
+
+  // Call render function when DOM is ready
+  document.addEventListener('DOMContentLoaded', renderHomePage);
+</script-->
+
+<script src ="style.js"></script>
+</body>
+</html>

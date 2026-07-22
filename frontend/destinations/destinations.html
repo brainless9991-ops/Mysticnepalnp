@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horizon Travel – Fly Beyond Borders</title>
+<link rel="icon" href="/frontend/logo/pic.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Oswald:wght@300;500&display=swap" rel="stylesheet">
+<link rel ="stylesheet" href="destinations.css">
+<link rel ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-info">
+      <span>📍 New York, USA</span>
+      <span>📞 +1 (800) 345 678</span>
+      <span>✉️ info@horizontravel.com</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#">fb</a><a href="#">tw</a><a href="#">ig</a><a href="#">yt</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+       <span class="logo-icon"> <img src="/frontend/logo/pic.png"></span>
+      <span class="logo-text">Horizon<span>Travel</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/frontend/index/index.html">Home</a></li>
+      <li><a href="/frontend/about/about.html">About</a></li>
+      <li><a href="/frontend/blog/blog.html">Blog</a></li>
+      <li><a href="#" class ="active">Destinations</a></li>
+      <li><a href="/frontend/pack/pack.html">Packages</a></li>
+      <li><a href="/frontend/contact/contact.html">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Book Now</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Destinations</a>
+    <a href="#">Packages</a>
+    <a href="#">Contact</a>
+    <a href="#" style="color:var(--accent-red);font-weight:700;">Book Now →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1><em>Beautiful Place</em><br>To Visit</h1>
+      <p>Nam duis ligula augue fusce blandit quos periculis! Justo culpa veniam viverra eleifend maecenas reprehenderit malesuada lacinia commodo condimentum molestie.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-red">Learn More</a>
+        <a href="#" class="btn-ghost">Book Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH BAR -->
+<div class="search-bar-wrap">
+  <div class="search-bar">
+    <div class="sb-field">
+      <label>Search Destination</label>
+      <input type="text" placeholder="Where to go?">
+    </div>
+    <div class="sb-field">
+      <label>Pay Number</label>
+      <input type="text" placeholder="No. of People">
+    </div>
+    <div class="sb-field">
+      <label>Check-in Date</label>
+      <input type="date">
+    </div>
+    <div class="sb-field">
+      <label>Check-out Date</label>
+      <input type="date">
+    </div>
+    <button class="sb-btn">Inquire Now</button>
+  </div>
+</div>
+
+<!-- POPULAR DESTINATIONS -->
+<section class="sec">
+  <div class="container">
+    <div class="sec-header">
+      <p class="eyebrow">TOP PICKS</p>
+      <h2>Popular <em>Destination</em></h2>
+      <p>Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia tenetur, aptent.</p>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <div class="dest-card-img">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=500&q=80" alt="Lorem Porta" onerror="this.parentNode.innerHTML='🏖️'">
+        </div>
+        <div class="dest-card-body">
+          <div class="dest-stars">★★★★☆</div>
+          <h3>Lorem Porta</h3>
+          <p>Iure doloremque saepe? Ultrices mi aliquam dis tempore incididunt sint cumque.</p>
+          <div class="dest-meta">
+            <span><i class="fas fa-map-marker-alt"></i> Maldives</span>
+            <span><i class="fas fa-clock"></i> 7 Days</span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-card-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80" alt="Dolor Amet" onerror="this.parentNode.innerHTML='🗼'">
+        </div>
+        <div class="dest-card-body">
+          <div class="dest-stars">★★★★★</div>
+          <h3>Dolor Amet</h3>
+          <p>Iure doloremque saepe? Ultrices mi aliquam dis tempore incididunt sint cumque.</p>
+          <div class="dest-meta">
+            <span><i class="fas fa-map-marker-alt"></i> Paris</span>
+            <span><i class="fas fa-clock"></i> 5 Days</span>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-card-img">
+          <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=500&q=80" alt="Eget Quis" onerror="this.parentNode.innerHTML='🏔️'">
+        </div>
+        <div class="dest-card-body">
+          <div class="dest-stars">★★★★☆</div>
+          <h3>Eget Quis</h3>
+          <p>Iure doloremque saepe? Ultrices mi aliquam dis tempore incididunt sint cumque.</p>
+          <div class="dest-meta">
+            <span><i class="fas fa-map-marker-alt"></i> Switzerland</span>
+            <span><i class="fas fa-clock"></i> 10 Days</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-center">
+      <a href="#" class="btn-outline-sky">More Destinations</a>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKOUT OUR PACKAGES -->
+<section class="sec sec-alt">
+  <div class="container">
+    <div class="sec-header">
+      <p class="eyebrow">FIND & BOOK</p>
+      <h2>Checkout Our <em>Packages</em></h2>
+      <p>Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia tenetur.</p>
+    </div>
+    <div class="pkg-list">
+      <!-- Package 1 -->
+      <div class="pkg-card">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=560&q=80" alt="Beach Holiday" onerror="this.parentNode.style.background='linear-gradient(135deg,#1a5276,#0a2e52)'">
+        </div>
+        <div class="pkg-body">
+          <p class="pkg-tag">Beach Getaway</p>
+          <h3>Experience the Great Holiday on Beach</h3>
+          <p>Lorem, incididunt – dolor sint consectetur ad. Lorem dolo incididunt sit elit tellus luctus nec dolor. Malesuada enim dignissim dictum potenti velit lorem lacinia.</p>
+          <div class="pkg-meta">
+            <span><i class="fas fa-users"></i> 2 Pax</span>
+            <span><i class="fas fa-clock"></i> 6 Days</span>
+            <span><i class="fas fa-star" style="color:var(--gold)"></i> 5 Reviews</span>
+          </div>
+        </div>
+        <div class="pkg-price-box">
+          <div class="pkg-label">Reviews</div>
+          <div class="pkg-stars">★★★★☆</div>
+          <div class="pkg-label">From</div>
+          <div class="pkg-price">$710</div>
+          <div class="pkg-per">/ per person</div>
+          <button class="btn-book">Book Now</button>
+        </div>
+      </div>
+      <!-- Package 2 -->
+      <div class="pkg-card">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=560&q=80" alt="Mountain Holiday" onerror="this.parentNode.style.background='linear-gradient(135deg,#1a5276,#0a2e52)'">
+        </div>
+        <div class="pkg-body">
+          <p class="pkg-tag">Mountain Trek</p>
+          <h3>Summer Holiday to the Bolivian Rockies</h3>
+          <p>Lorem, incididunt – dolor sint consectetur ad. Lorem dolo incididunt sit elit tellus luctus nec dolor. Malesuada enim dignissim dictum potenti velit lorem lacinia.</p>
+          <div class="pkg-meta">
+            <span><i class="fas fa-users"></i> 4 Pax</span>
+            <span><i class="fas fa-clock"></i> 9 Days</span>
+            <span><i class="fas fa-star" style="color:var(--gold)"></i> 9 Reviews</span>
+          </div>
+        </div>
+        <div class="pkg-price-box">
+          <div class="pkg-label">Reviews</div>
+          <div class="pkg-stars">★★★★★</div>
+          <div class="pkg-label">From</div>
+          <div class="pkg-price">$710</div>
+          <div class="pkg-per">/ per person</div>
+          <button class="btn-book">Book Now</button>
+        </div>
+      </div>
+      <!-- Package 3 -->
+      <div class="pkg-card">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?w=560&q=80" alt="Santorini" onerror="this.parentNode.style.background='linear-gradient(135deg,#1a5276,#0a2e52)'">
+        </div>
+        <div class="pkg-body">
+          <p class="pkg-tag">Island Escape</p>
+          <h3>Santorini Island's Weekend Vacation</h3>
+          <p>Lorem, incididunt – dolor sint consectetur ad. Lorem dolo incididunt sit elit tellus luctus nec dolor. Malesuada enim dignissim dictum potenti velit lorem lacinia.</p>
+          <div class="pkg-meta">
+            <span><i class="fas fa-users"></i> 3 Pax</span>
+            <span><i class="fas fa-clock"></i> 5 Days</span>
+            <span><i class="fas fa-star" style="color:var(--gold)"></i> 7 Reviews</span>
+          </div>
+        </div>
+        <div class="pkg-price-box">
+          <div class="pkg-label">Reviews</div>
+          <div class="pkg-stars">★★★★☆</div>
+          <div class="pkg-label">From</div>
+          <div class="pkg-price">$710</div>
+          <div class="pkg-per">/ per person</div>
+          <button class="btn-book">Book Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="btn-center">
+      <a href="#" class="btn-outline-sky">View All Packages</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="play-btn"><i class="fas fa-play"></i></div>
+  <h2>Are You Ready to Travel?<br>Remember Us!!</h2>
+  <p>Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia tenetur, aptent.</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-primary">View Packages</a>
+    <a href="#" class="btn-wht">Learn More</a>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-inner">
+      <div>
+        <div class="stat-num">55K<span>+</span></div>
+        <div class="stat-label">Satisfied Customers</div>
+      </div>
+      <div>
+        <div class="stat-num">22<span>+</span></div>
+        <div class="stat-label">Active Members</div>
+      </div>
+      <div>
+        <div class="stat-num">125<span>+</span></div>
+        <div class="stat-label">Tour Destinations</div>
+      </div>
+      <div>
+        <div class="stat-num">39<span>+</span></div>
+        <div class="stat-label">Travel Guides</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SPECIAL PACKAGES -->
+<section class="sec sec-alt">
+  <div class="container">
+    <div class="sec-header">
+      <p class="eyebrow">OFFER & DISCOUNTS</p>
+      <h2>Our <em>Special</em> Packages</h2>
+      <p>Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia tenetur, aptent.</p>
+    </div>
+    <div class="special-grid">
+      <div class="sp-card">
+        <img class="sp-card-img" src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=700&q=80" alt="Santorini" onerror="this.style.display='none'">
+        <div class="sp-badge">UPTO 30% OFF</div>
+        <div class="sp-body">
+          <p class="eyebrow">6 DAYS · 5 NIGHTS</p>
+          <h3>Tour to Santorini</h3>
+          <p>Fusce hic augue velit wisi quibusdam pariatur. Iusto primis aperiam fames dis.</p>
+          <div class="sp-footer">
+            <div class="sp-price">
+              <div class="was">price: $1480 $1205</div>
+              <div class="now">$1005</div>
+            </div>
+            <a href="#" class="btn-sp">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="sp-card">
+        <img class="sp-card-img" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=700&q=80" alt="Paris" onerror="this.style.display='none'">
+        <div class="sp-badge">UPTO 15% OFF</div>
+        <div class="sp-body">
+          <p class="eyebrow">4 DAYS · 3 NIGHTS</p>
+          <h3>Weekend to Paris</h3>
+          <p>Fusce hic augue velit wisi quibusdam pariatur. Iusto primis aperiam fames dis.</p>
+          <div class="sp-footer">
+            <div class="sp-price">
+              <div class="was">price: $3108 $3300</div>
+              <div class="now">$2800</div>
+            </div>
+            <a href="#" class="btn-sp">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-center">
+      <a href="#" class="btn-outline-sky">View All Packages</a>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTOS FROM TRAVELLERS -->
+<section class="sec">
+  <div class="container">
+    <div class="sec-header">
+      <p class="eyebrow">COMMUNITY</p>
+      <h2>Photos from <em>Travellers</em></h2>
+      <p>Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia tenetur, aptent.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item tall">
+        <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400&q=80" alt="Paris" onerror="this.parentNode.innerHTML='<div class=g-placeholder>🗼</div>'">
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Mountains" onerror="this.parentNode.innerHTML='<div class=g-placeholder>🏔️</div>'">
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1541417904950-b855846fe074?w=400&q=80" alt="Beach" onerror="this.parentNode.innerHTML='<div class=g-placeholder>🏖️</div>'">
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1538485399081-7191377e8241?w=400&q=80" alt="Desert" onerror="this.parentNode.innerHTML='<div class=g-placeholder>🌅</div>'">
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1473645209136-67e0c38ea10e?w=400&q=80" alt="City" onerror="this.parentNode.innerHTML='<div class=g-placeholder>🏙️</div>'">
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1451440063999-77a8b2960d2b?w=400&q=80" alt="Pyramids" onerror="this.parentNode.innerHTML='<div class=g-placeholder>🏛️</div>'">
+      </div>
+      <div class="g-item">
+        <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&q=80" alt="Asia" onerror="this.parentNode.innerHTML='<div class=g-placeholder>🌏</div>'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISCOUNT SIGN UP BANNER -->
+<section class="discount-banner">
+  <div class="eyebrow">DISCOUNT OFFER</div>
+  <h2>Get Special Discount<br>on Sign Up!</h2>
+  <p>Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia tenetur, aptent.</p>
+  <a href="#" class="btn-primary" style="border-radius:4px;">Sign Up Now</a>
+</section>
+
+<!-- RECENT POSTS -->
+<section class="sec">
+  <div class="container">
+    <div class="blog-header-row">
+      <div>
+        <p class="eyebrow">BLOG & NEWS</p>
+        <h2>Our Recent Posts</h2>
+      </div>
+      <a href="#" class="view-all">View All Blog →</a>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-img">
+          <img src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?w=700&q=80" alt="Blog 1" onerror="this.parentNode.style.background='linear-gradient(135deg,#1a5276,#0a2e52)'">
+        </div>
+        <div class="blog-body">
+          <p class="blog-meta">Blog · <span>May 8, 2019</span></p>
+          <h3>Best Journey to Peaceful Places</h3>
+          <p>Lorem has been standard dummy text ever since, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img">
+          <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=700&q=80" alt="Blog 2" onerror="this.parentNode.style.background='linear-gradient(135deg,#1a5276,#0a2e52)'">
+        </div>
+        <div class="blog-body">
+          <p class="blog-meta">Blog · <span>May 8, 2019</span></p>
+          <h3>Travel with Friends is Best</h3>
+          <p>Lorem has been standard dummy text ever since, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <a href="#" class="read-more">Read More →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec sec-alt">
+  <div class="container">
+    <div class="sec-header">
+      <p class="eyebrow">CLIENT'S REVIEWS</p>
+      <h2>Traveller's <em>Testimonial</em></h2>
+      <p>Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia tenetur, aptent.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★☆</div>
+        <p class="testi-text">"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">E</div>
+          <div><div class="testi-name">Eget Nulla</div><div class="testi-role">Travellers</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★½</div>
+        <p class="testi-text">"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--gold);">L</div>
+          <div><div class="testi-name">Lorem Porta</div><div class="testi-role">Travellers</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--accent-red);">D</div>
+          <div><div class="testi-name">Dolor Amet</div><div class="testi-role">Travellers</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+  <div class="eyebrow">READY FOR YOU</div>
+  <h2>Ready for Unforgettable<br>Travel Remember Us!</h2>
+  <p>Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia tenetur, aptent.</p>
+  <a href="#" class="btn-wht-solid">Contact Us</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo" style="margin-bottom:14px;">
+        <span style="font-size:1.4rem;">✈️</span>
+        <span class="logo-text">Horizon<span style="color:var(--gold);">Travel</span></span>
+      </div>
+      <p>We are a passionate team of travel designers dedicated to crafting beautiful, meaningful journeys that connect people with the world's most extraordinary places.</p>
+      <div class="footer-address">
+        <span>Address</span>
+        <p>1420 Park Ave Road, Flatbush, Bronx, New York 10457, USA</p>
+        <span>Phone</span>
+        <a href="tel:+18003456789">+1 (800) 345 678 89</a>
+        <span>Email</span>
+        <a href="mailto:info@horizontravel.com">info@horizontravel.com</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Recent Post</h4>
+      <div class="footer-news-item">
+        <div class="footer-news-img">✈</div>
+        <div class="footer-news-text">
+          <a href="#">Best Journey to Peaceful Places</a>
+          <div class="footer-news-date">May 8, 2019</div>
+        </div>
+      </div>
+      <div class="footer-news-item">
+        <div class="footer-news-img">👫</div>
+        <div class="footer-news-text">
+          <a href="#">Travel with Friends is Best</a>
+          <div class="footer-news-date">May 8, 2019</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.6);margin-bottom:16px;line-height:1.7;">Feel free to contact and reach us!!</p>
+      <div class="footer-address">
+        <span>Office</span>
+        <a href="tel:+123 4567 890">+123 4567 890</a>
+        <span>Email</span>
+        <a href="mailto:info@gmail.com">info@gmail.com</a>
+        <span>Location</span>
+        <p>36 Nora Creek, India</p>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Gallery</h4>
+      <div class="footer-gallery">
+        <div class="footer-gal-item"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=120&q=70" alt="" onerror="this.parentNode.innerHTML='🗼'"></div>
+        <div class="footer-gal-item"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=120&q=70" alt="" onerror="this.parentNode.innerHTML='🏔️'"></div>
+        <div class="footer-gal-item"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=120&q=70" alt="" onerror="this.parentNode.innerHTML='🏖️'"></div>
+        <div class="footer-gal-item"><img src="https://images.unsplash.com/photo-1538485399081-7191377e8241?w=120&q=70" alt="" onerror="this.parentNode.innerHTML='🌅'"></div>
+        <div class="footer-gal-item"><img src="https://images.unsplash.com/photo-1451440063999-77a8b2960d2b?w=120&q=70" alt="" onerror="this.parentNode.innerHTML='🏛️'"></div>
+        <div class="footer-gal-item"><img src="https://images.unsplash.com/photo-1473645209136-67e0c38ea10e?w=120&q=70" alt="" onerror="this.parentNode.innerHTML='🏙️'"></div>
+      </div>
+      <p style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:14px;">Subscribe our newsletter for more updates &amp; news!!</p>
+      <div style="margin-top:8px;">
+        <input class="footer-newsletter-input" type="email" placeholder="Enter Your Email">
+        <button class="btn-subscribe">Subscribe</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2013 Your Website Name. All Rights Reserved | Design by <a href="#" style="color:var(--gold);">HorizonInteractive</a></span>
+    <div style="display:flex;gap:14px;">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Term &amp; Condition</a>
+      <a href="#">FAQ</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

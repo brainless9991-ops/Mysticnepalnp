@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horizon Travel – Fly Beyond Borders</title>
+<link rel="stylesheet" href="pack.css"
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-info">
+      <span>📍 New York, USA</span>
+      <span>📞 +1 (800) 345 678</span>
+      <span>✉️ info@horizontravel.com</span>
+    </div>
+    <div class="topbar-social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+       <span class="logo-icon"> <img src="/frontend/logo/pic.png"></span>
+      <span class="logo-text">Horizon<span>Travel</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/frontend/index/index.html">Home</a></li>
+      <li><a href="/frontend/index/index.html">About</a></li>
+      <li><a href="/frontend/blog/blog.html">Blog</a></li>
+      <li><a href="/frontend/destinations/destinations.html">Destinations</a></li>
+      <li><a href="#" class="active">Packages</a></li>
+      <li><a href="/frontend/contact/contact.html">Contact</a></li>
+      <li><a href="#" class="nav-cta">Book Now</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/frontend/index/index.html">Home</a>
+    <a href="#">About</a>
+    <a href="#destinations">Destinations</a>
+    <a href="#packages" class="active">Packages</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="#" style="color:var(--accent-red);font-weight:700;">Book Now →</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-content">
+    <h1><em>Beautiful</em> Place<br>To Visit</h1>
+    <p>Nam duis mollis, ligentuer habitasse quis, penatibus quisque vitae perspere lorem risus magna vulputate maecenas donec commodo placerat. Ut ornare molestie tenetur, aptent.</p>
+    <div class="hero-btns">
+      <a href="#packages" class="btn-primary">Learn More</a>
+      <a href="#destinations" class="btn-outline">Book Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH BAR -->
+<div class="search-bar-wrap">
+  <div class="search-bar">
+    <div class="search-field">
+      <label>Search Destination</label>
+      <input type="text" placeholder="Where to go?">
+    </div>
+    <div class="search-field">
+      <label>Tour Number</label>
+      <input type="text" placeholder="Package type">
+    </div>
+    <div class="search-field">
+      <label>Check-In Date</label>
+      <input type="date">
+    </div>
+    <div class="search-field">
+      <label>Check-Out Date</label>
+      <input type="date">
+    </div>
+    <button class="search-btn">Inquire Now</button>
+  </div>
+</div>
+
+<!-- ══ POPULAR DESTINATIONS ══ -->
+<section class="dest-section" id="destinations">
+  <div class="container">
+    <span class="section-eyebrow">Popular Nearby</span>
+    <h2 class="section-title">Popular <span>Destination</span></h2>
+    <p class="section-sub">Fusce hac augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Torquent suscipit. Sit ornare molestia dolor, eapsum.</p>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <img class="dest-img" src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80" alt="Santorini">
+        <div class="dest-body">
+          <div class="dest-stars">★★★★★</div>
+          <div class="dest-name">Lorem Porta</div>
+          <p class="dest-desc">Fusce hac augue wisi quibusdam pariatur, rutrum nunc porttitor netus est.</p>
+        </div>
+      </div>
+      <div class="dest-card">
+        <img class="dest-img" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80" alt="Mountains">
+        <div class="dest-body">
+          <div class="dest-stars">★★★★★</div>
+          <div class="dest-name">Dolor Amet</div>
+          <p class="dest-desc">Fusce hac augue wisi quibusdam pariatur, rutrum nunc porttitor netus est.</p>
+        </div>
+      </div>
+      <div class="dest-card">
+        <img class="dest-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Alpine">
+        <div class="dest-body">
+          <div class="dest-stars">★★★★☆</div>
+          <div class="dest-name">Eget Quis</div>
+          <p class="dest-desc">Fusce hac augue wisi quibusdam pariatur, rutrum nunc porttitor netus est.</p>
+        </div>
+      </div>
+    </div>
+    <div class="btn-center">
+      <a href="#" class="btn-sky">More Destinations</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PACKAGES ══ -->
+<section class="packages-section" id="packages">
+  <div class="container">
+    <span class="section-eyebrow">Affordable Plans</span>
+    <h2 class="section-title">Checkout Our <span>Packages</span></h2>
+    <p class="section-sub">Fusce hac augue velit wisi quibusdam pariatur, cas primis, nec nemo. Torquent lorem. Sit ornare molestia dolor..</p>
+    <div class="pkg-list">
+
+      <div class="pkg-card">
+        <img class="pkg-img" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Beach">
+        <div class="pkg-body">
+          <div class="pkg-tag">Tour</div>
+          <div class="pkg-title">Experience the Great Holiday on Beach</div>
+          <p class="pkg-desc">Lorem, vulputate dolor erat dolor labore maecenas malesuada magna, rutrum. Sem dictum enim, aliquet ipsum lorem facilisi eros. Lorem, vulputate dolor erat dolor labore maecenas malesuada magna.</p>
+          <div class="pkg-meta">
+            <span><i class="fas fa-users"></i> 3 Person</span>
+            <span><i class="fas fa-clock"></i> 5 Day</span>
+            <span><i class="fas fa-map-marker-alt"></i> 3 Places</span>
+          </div>
+        </div>
+        <div class="pkg-price-box">
+          <div class="pkg-reviews">02 reviews</div>
+          <div class="pkg-stars-sm">★★★★★</div>
+          <div class="pkg-price">$710</div>
+          <div class="pkg-price-label">/ per person</div>
+          <button class="btn-book">Book Now</button>
+        </div>
+      </div>
+
+      <div class="pkg-card">
+        <img class="pkg-img" src="https://images.unsplash.com/photo-1601918774946-25832a4be0d6?w=600&q=80" alt="Dolomites">
+        <div class="pkg-body">
+          <div class="pkg-tag">Travel</div>
+          <div class="pkg-title">Summer Holiday to the Dolomitan Rockies</div>
+          <p class="pkg-desc">Lorem, vulputate dolor erat dolor labore maecenas malesuada magna, rutrum. Sem dictum enim, aliquet ipsum lorem facilisi eros. Lorem, vulputate dolor erat dolor labore maecenas malesuada magna.</p>
+          <div class="pkg-meta">
+            <span><i class="fas fa-users"></i> 4 Person</span>
+            <span><i class="fas fa-clock"></i> 7 Day</span>
+            <span><i class="fas fa-map-marker-alt"></i> 5 Places</span>
+          </div>
+        </div>
+        <div class="pkg-price-box">
+          <div class="pkg-reviews">04 reviews</div>
+          <div class="pkg-stars-sm">★★★★★</div>
+          <div class="pkg-price">$710</div>
+          <div class="pkg-price-label">/ per person</div>
+          <button class="btn-book">Book Now</button>
+        </div>
+      </div>
+
+      <div class="pkg-card">
+        <img class="pkg-img" src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80" alt="Santorini">
+        <div class="pkg-body">
+          <div class="pkg-tag">Tour</div>
+          <div class="pkg-title">Santorini Island's Weekend Vacation</div>
+          <p class="pkg-desc">Lorem, vulputate dolor erat dolor labore maecenas malesuada magna, rutrum. Sem dictum enim, aliquet ipsum lorem facilisi eros. Lorem, vulputate dolor erat dolor labore maecenas malesuada magna.</p>
+          <div class="pkg-meta">
+            <span><i class="fas fa-users"></i> 2 Person</span>
+            <span><i class="fas fa-clock"></i> 4 Day</span>
+            <span><i class="fas fa-map-marker-alt"></i> 2 Places</span>
+          </div>
+        </div>
+        <div class="pkg-price-box">
+          <div class="pkg-reviews">06 reviews</div>
+          <div class="pkg-stars-sm">★★★★☆</div>
+          <div class="pkg-price">$710</div>
+          <div class="pkg-price-label">/ per person</div>
+          <button class="btn-book">Book Now</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="btn-center">
+      <a href="#" class="btn-sky">View All Packages</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VIDEO / CTA BANNER ══ -->
+<div class="cta-banner">
+  <a href="#" class="play-btn"><i class="fas fa-play"></i></a>
+  <h2>Are You Ready to Travel?<br>Remember Us!!</h2>
+  <p>Fusce hac augue velit wisi quibusdam pariatur, nec nemo, rutrum. Lorem ipsum dolor sit maecenas malesuada torquent suscipit. Sit ornare molestie tenetur, aptent. Eget feugiat error necessit.</p>
+  <div class="cta-btns">
+    <a href="#packages" class="btn-primary">New Packages</a>
+    <a href="#" class="btn-outline">Learn More</a>
+  </div>
+</div>
+
+<!-- ══ STATS ══ -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">55K<span>+</span></div>
+        <div class="stat-label">Satisfied Customers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">22<span>+</span></div>
+        <div class="stat-label">Active Members</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">125<span>+</span></div>
+        <div class="stat-label">Tour Destinations</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">39<span>+</span></div>
+        <div class="stat-label">Travel Guides</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SPECIAL PACKAGES ══ -->
+<section class="special-section">
+  <div class="container">
+    <span class="section-eyebrow">Offer &amp; Discount</span>
+    <h2 class="section-title">Our <span>Special</span> Packages</h2>
+    <p class="section-sub">Fusce hac augue velit wisi quibusdam pariatur, nec nemo, rutrum. Torquent suscipit. Sit ornare molestia.</p>
+    <div class="special-grid">
+
+      <div class="special-card">
+        <img class="special-img" src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=800&q=80" alt="Turkey">
+        <div class="special-overlay"></div>
+        <div class="special-badge">Upto 30%</div>
+        <div class="special-content">
+          <div class="special-tag">5 Days / 4 Nights</div>
+          <div class="special-title">Tour to Satorini</div>
+          <p class="special-desc">Fusce hac augue wisi qui el portaits quibusdam. Rutrum per the lorem risus aptiunt.</p>
+          <div class="special-footer">
+            <div class="special-price">Price: <strong>$1095</strong><s>$3200</s></div>
+            <button class="btn-special">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="special-card">
+        <img class="special-img" src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80" alt="Paris">
+        <div class="special-overlay"></div>
+        <div class="special-badge">Upto 50%</div>
+        <div class="special-content">
+          <div class="special-tag">6 Days / 5 Nights</div>
+          <div class="special-title">Weekend to Paris</div>
+          <p class="special-desc">Fusce hac augue wisi qui el portaits quibusdam. Rutrum per the lorem risus aptiunt.</p>
+          <div class="special-footer">
+            <div class="special-price">Price: <strong>$1588</strong><s>$3300</s></div>
+            <button class="btn-special">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="btn-center">
+      <a href="#" class="btn-sky">View All Packages</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY ══ -->
+<section class="gallery-section">
+  <div class="container">
+    <span class="section-eyebrow">Photos From</span>
+    <h2 class="section-title">Photos from <span>Travellers</span></h2>
+    <p class="section-sub">Fusce hac augue velit wisi quibusdam pariatur, nec nemo, rutrum. Sit lorem risus porta suscipit, aptiunt.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80" alt="Paris"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Alpine"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80" alt="City"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?w=600&q=80" alt="Egypt"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80" alt="Mountain Lake"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80" alt="Santorini"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=600&q=80" alt="Turkey"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DISCOUNT CTA ══ -->
+<div class="discount-section">
+  <span class="discount-eyebrow">Discount Offer</span>
+  <h2>Get Special Discount<br>on Sign Up!</h2>
+  <p>Fusce hac augue velit wisi quibusdam pariatur, nec nemo, rutrum. Lorem ipsum dolor sit maecenas torquent suscipit. Sit ornare molestia tenetur aptent eget feugiat.</p>
+  <a href="#" class="btn-primary">Sign Up Now</a>
+</div>
+
+<!-- ══ RECENT POSTS ══ -->
+<section class="posts-section">
+  <div class="container">
+    <div class="posts-head">
+      <div class="posts-head-left">
+        <h2 class="section-title">Our <span>Recent Posts</span></h2>
+        <p class="section-sub">Fusce hac augue wisi nec nemo, rutrum. Dolor lorem risus, aptent.</p>
+      </div>
+      <a href="blog.html" class="btn-sky" style="align-self:flex-end;white-space:nowrap;">View All Blog</a>
+    </div>
+    <div class="posts-grid">
+      <div class="post-card">
+        <img class="post-img" src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80" alt="Post">
+        <div class="post-body">
+          <div class="post-date">Blog · June 1</div>
+          <div class="post-title">Best Journey to Peaceful Place</div>
+          <p class="post-excerpt">Laboris hac erat dolor, posuere volutpat fringilla gravida metus nonummy, blandit mi aperiam...</p>
+          <a href="blog.html" class="btn-read">Read More</a>
+        </div>
+      </div>
+      <div class="post-card">
+        <img class="post-img" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80" alt="Post">
+        <div class="post-body">
+          <div class="post-date">Blog · June 8</div>
+          <div class="post-title">Travel with Friends is Best</div>
+          <p class="post-excerpt">Laboris hac erat dolor, posuere volutpat fringilla gravida metus nonummy, blandit mi aperiam...</p>
+          <a href="blog.html" class="btn-read">Read More</a>
+        </div>
+      </div>
+      <div class="post-card">
+        <img class="post-img" src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?w=600&q=80" alt="Post">
+        <div class="post-body">
+          <div class="post-date">Blog · June 16</div>
+          <div class="post-title">Santorini Island's Weekend Vacation</div>
+          <p class="post-excerpt">Laboris hac erat dolor, posuere volutpat fringilla gravida metus nonummy, blandit mi aperiam...</p>
+          <a href="blog.html" class="btn-read">Read More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="testi-section">
+  <div class="container">
+    <span class="section-eyebrow">What They Say</span>
+    <h2 class="section-title">Traveller's <span>Testimonial</span></h2>
+    <p class="section-sub">Fusce hac augue velit wisi quibusdam pariatur, nec nemo, rutrum. Torquent suscipit. Sit ornare molestia dolor, eapsum.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Far far, laeetur the lorem dictatas felcitas, her from the dictatas blsanas hes from this praesent. Dis far, laeetur the lorem dictatas..."</p>
+        <div class="testi-author">
+          <div class="testi-avatar-ph"><i class="fas fa-user"></i></div>
+          <div>
+            <div class="testi-name">Eget Nulla</div>
+            <div class="testi-role">Travel Enthusiast</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Far far, laeetur the lorem dictatas felcitas, her from the dictatas blsanas hes from this praesent. Dis far, laeetur the lorem dictatas..."</p>
+        <div class="testi-author">
+          <div class="testi-avatar-ph"><i class="fas fa-user"></i></div>
+          <div>
+            <div class="testi-name">Lorem Porta</div>
+            <div class="testi-role">Adventure Traveller</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Far far, laeetur the lorem dictatas felcitas, her from the dictatas blsanas hes from this praesent. Dis far, laeetur the lorem dictatas..."</p>
+        <div class="testi-author">
+          <div class="testi-avatar-ph"><i class="fas fa-user"></i></div>
+          <div>
+            <div class="testi-name">Dolor Amet</div>
+            <div class="testi-role">Honeymoon Traveller</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BOTTOM CTA STRIP ══ -->
+<div class="strip-cta">
+  <span class="eyebrow">Call To Action</span>
+  <h2>Ready for Unforgettable<br>Travel. Remember Us!</h2>
+  <p>Fusce hac augue wisi quibusdam pariatur, cas primis, nec nemo, rutrum. Torquent suscipit lorem. Sit ornare molestia dolor, aptent elementum.</p>
+  <a href="contact.html" class="btn-white">Contact Us</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo" style="margin-bottom:14px;">
+        <span style="font-size:1.4rem;">✈️</span>
+        <span class="logo-text">Horizon<span style="color:var(--gold);">Travel</span></span>
+      </div>
+      <p>We are a passionate team of travel designers dedicated to crafting beautiful, meaningful journeys that connect people with the world's most extraordinary places.</p>
+      <div class="footer-address">
+        <span>Address</span>
+        <p>1420 Park Ave Road, Flatbush, Bronx, New York 10457, USA</p>
+        <span>Phone</span>
+        <a href="tel:+18003456789">+1 (800) 345 678 89</a>
+        <span>Email</span>
+        <a href="mailto:info@horizontravel.com">info@horizontravel.com</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#packages">Tour Packages</a></li>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Recent News</h4>
+      <div class="footer-news-item">
+        <div class="footer-news-img">✈</div>
+        <div class="footer-news-text">
+          <a href="blog.html">Best Journey to Peaceful Places</a>
+          <div class="footer-news-date">June 1, 2025</div>
+        </div>
+      </div>
+      <div class="footer-news-item">
+        <div class="footer-news-img">🏔</div>
+        <div class="footer-news-text">
+          <a href="blog.html">Travel with Friends is Best</a>
+          <div class="footer-news-date">June 8, 2025</div>
+        </div>
+      </div>
+      <div class="footer-news-item">
+        <div class="footer-news-img">🌅</div>
+        <div class="footer-news-text">
+          <a href="blog.html">Santorini Island's Weekend Escape</a>
+          <div class="footer-news-date">June 16, 2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Our Newsletter</h4>
+      <p style="font-size:0.82rem;line-height:1.6;color:rgba(255,255,255,0.6);margin-bottom:16px;">Get in your inbox the latest News and Offers from Horizon Travel.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <input type="email" placeholder="Email address" style="padding:10px 12px;border:1px solid rgba(255,255,255,0.15);border-radius:4px;background:rgba(255,255,255,0.05);color:white;font-size:0.82rem;font-family:'Inter',sans-serif;outline:none;">
+        <button class="btn-subscribe" style="border-radius:4px;">Subscribe →</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Horizon Travel. All Rights Reserved. Design by HorizonInteractive</span>
+    <div style="display:flex;gap:16px;">
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">Follow Us:</a>
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">fb</a>
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">tw</a>
+      <a href="#" style="color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;">ig</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

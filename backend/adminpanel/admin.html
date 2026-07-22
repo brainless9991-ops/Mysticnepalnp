@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="/frontend/logo/pic.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizon Travel — Admin Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel ="stylesheet" href="admin.css">
+</head>
+<body>
+
+<!-- Sidebar overlay (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <span class="logo-icon">✈️</span>
+    <span class="logo-text">Horizon<span>Admin</span></span>
+  </div>
+  <div class="sidebar-nav">
+    <div class="sidebar-section-label">Overview</div>
+    <div class="nav-item active" data-route="dashboard" onclick="Router.navigate('dashboard')"><span class="nav-icon">📊</span> Dashboard</div>
+    <div class="sidebar-section-label">Page Sections</div>
+    <div class="nav-item" data-route="meta" onclick="Router.navigate('meta')"><span class="nav-icon">⚙️</span> Site Meta</div>
+    <div class="nav-item" data-route="topbar" onclick="Router.navigate('topbar')"><span class="nav-icon">📢</span> Topbar</div>
+    <div class="nav-item" data-route="navbar" onclick="Router.navigate('navbar')"><span class="nav-icon">🧭</span> Navigation</div>
+    <div class="nav-item" data-route="hero" onclick="Router.navigate('hero')"><span class="nav-icon">🚀</span> Hero</div>
+    <div class="nav-item" data-route="search" onclick="Router.navigate('search')"><span class="nav-icon">🔍</span> Search Card</div>
+    <div class="nav-item" data-route="stats" onclick="Router.navigate('stats')"><span class="nav-icon">📈</span> Stats Bar</div>
+    <div class="nav-item" data-route="services" onclick="Router.navigate('services')"><span class="nav-icon">🛎️</span> Services</div>
+    <div class="nav-item" data-route="about" onclick="Router.navigate('about')"><span class="nav-icon">ℹ️</span> About</div>
+    <div class="nav-item" data-route="destinations" onclick="Router.navigate('destinations')"><span class="nav-icon">🗺️</span> Destinations</div>
+    <div class="nav-item" data-route="packages" onclick="Router.navigate('packages')"><span class="nav-icon">📦</span> Packages</div>
+    <div class="nav-item" data-route="process" onclick="Router.navigate('process')"><span class="nav-icon">🔄</span> Process</div>
+    <div class="nav-item" data-route="appointment" onclick="Router.navigate('appointment')"><span class="nav-icon">📣</span> Appointment Banner</div>
+    <div class="nav-item" data-route="testimonials" onclick="Router.navigate('testimonials')"><span class="nav-icon">💬</span> Testimonials</div>
+    <div class="nav-item" data-route="contact" onclick="Router.navigate('contact')"><span class="nav-icon">📞</span> Contact</div>
+    <div class="nav-item" data-route="blogs" onclick="Router.navigate('blogs')"><span class="nav-icon">📝</span> Blog</div>
+    <div class="nav-item" data-route="newsletter" onclick="Router.navigate('newsletter')"><span class="nav-icon">📧</span> Newsletter</div>
+    <div class="nav-item" data-route="footer" onclick="Router.navigate('footer')"><span class="nav-icon">🦶</span> Footer</div>
+  </div>
+  <div class="sidebar-footer">
+    <div class="sidebar-footer-btn" onclick="previewSite()">🔗 Preview Website</div>
+    <div class="sidebar-footer-btn danger" onclick="resetAllData()">🔄 Reset All Data</div>
+  </div>
+</aside>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<div class="main-wrapper">
+  <header class="admin-topbar">
+    <div class="topbar-left">
+      <button class="hamburger-btn" onclick="toggleSidebar()">☰</button>
+      <div class="breadcrumb">Admin Panel / <span id="breadcrumb-section">Dashboard</span></div>
+    </div>
+    <div class="topbar-right">
+      <span class="topbar-badge">✅ Live</span>
+      <button class="btn-preview" onclick="previewSite()">🔗 View Site</button>
+    </div>
+  </header>
+  <main id="main-content"></main>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════════════════ -->
+
+<script>
+  // ──────────────────────────────────────────────────────────────
+  //  API BASE
+  // ──────────────────────────────────────────────────────────────
+  const API_BASE = '/api/index';
+
+  // ──────────────────────────────────────────────────────────────
+  //  DEFAULT DATA (aligned with index_page columns)
+  // ──────────────────────────────────────────────────────────────
+  const DEFAULT_MODEL = {
+    page_title: 'Horizon Travel – Fly Beyond Borders',
+    topbar: {
+      location: 'New York, USA',
+      phone: '+1 (800) 345 678',
+      email: 'info@horizontravel.com',
+      socials: { facebook: '#', twitter: '#', instagram: '#', youtube: '#' }
+    },
+    navbar: {
+      logoText: 'Horizon',
+      logoAccent: 'Travel',
+      logoIcon: '✈️',
+      links: [
+        { label: 'Home', href: '#' },
+        { label: 'About', href: '/frontend/about/about.html' },
+        { label: 'Blog', href: '/frontend/blog/blog.html' },
+        { label: 'Destinations', href: '/frontend/destinations/destinations.html' },
+        { label: 'Packages', href: '/frontend/pack/pack.html' },
+        { label: 'Contact', href: '/frontend/contact/contact.html' }
+      ],
+      ctaLabel: 'Book Now',
+      ctaHref: '/frontend/pack/pack.html'
+    },
+    hero: {
+      eyebrow: 'Explore the World',
+      heading: 'Fly Beyond Borders,',
+      headingAccent: 'Discover New Horizons',
+      subtext: 'We craft unforgettable journeys to destinations across all 7 continents. Expert guides, curated itineraries, and memories that last a lifetime — this is travel, reimagined.',
+      btn1Label: '✈ Explore Packages',
+      btn1Href: '/frontend/pack/pack.html',
+      btn2Label: '▶ Our Story',
+      btn2Href: '/frontend/about/about.html'
+    },
+    search: {
+      searchCardTitle: '🔍 Find Your Perfect Trip',
+      searchTabs: ['Flights', 'Hotels', 'Tours']
+    },
+    stats: [
+      { number: '15K+', label: 'Happy Travelers' },
+      { number: '120+', label: 'Destinations' },
+      { number: '18', label: 'Years Experience' },
+      { number: '98%', label: 'Satisfaction Rate' }
+    ],
+    services: {
+      eyebrow: 'What We Offer',
+      heading: 'Our Travel',
+      headingAccent: 'Services',
+      description: 'From dream-planning to touchdown, we handle every detail so you can focus on the experience.',
+      items: [
+        { icon: '✈️', title: 'Flight Bookings', description: 'We search hundreds of airlines to find the best fares and most convenient routes for your journey, with 24/7 support from our flight specialists.' },
+        { icon: '🏨', title: 'Hotel & Stays', description: 'Handpicked accommodations from budget-friendly guesthouses to 5-star resorts, all vetted by our travel experts for quality and location.' },
+        { icon: '🗺️', title: 'Guided Tours', description: 'Immersive cultural experiences led by knowledgeable local guides who bring each destination\'s history and hidden gems to life.' }
+      ]
+    },
+    about: {
+      eyebrow: 'About Our Company',
+      heading: 'A Small but',
+      headingAccent: 'Passionate',
+      headingSuffix: 'Team of Travel Experts',
+      para1: 'We believe travel is the best education you can give yourself. Since 2006, Horizon Travel has been connecting adventurers with transformative journeys — whether it\'s a family beach holiday, a solo backpacking epic, or a bespoke luxury escape.',
+      para2: 'Our team of 40+ destination specialists has collectively visited over 160 countries. We don\'t just sell tickets; we craft experiences rooted in genuine local knowledge and a deep love for exploration.',
+      quote: '"Travel far enough and you meet yourself."',
+      quoteAuthor: 'Marcus Chen, CEO & Founder',
+      yearsNumber: '18',
+      yearsLabel: 'Years of Travel Excellence',
+      missionTitle: 'Our Mission',
+      missionText: 'To make the world more connected by making meaningful travel accessible, sustainable, and deeply personal for every traveler we serve.'
+    },
+    destinations: {
+      eyebrow: 'Working Areas',
+      heading: 'Covered',
+      headingAccent: 'Destinations',
+      description: 'We operate across every continent, bringing you closer to the world\'s most remarkable places.',
+      items: [
+        { icon: '🗽', region: '🏙️ North America', name: 'New York & Beyond', info: '12 curated itineraries · From $899', bg: 'linear-gradient(135deg, #1565C0, #0D47A1)' },
+        { icon: '🌿', region: '🌳 Africa', name: 'Safari Kenya', info: '8 tours · From $2,400', bg: 'linear-gradient(135deg, #2E7D32, #1B5E20)' },
+        { icon: '🏯', region: '⛩️ Asia', name: 'Japan & Korea', info: '15 tours · From $1,650', bg: 'linear-gradient(135deg, #E65100, #BF360C)' },
+        { icon: '🏟️', region: '🏛️ Europe', name: 'Mediterranean', info: '20 tours · From $1,200', bg: 'linear-gradient(135deg, #4A148C, #311B92)' },
+        { icon: '🌊', region: '🌴 Pacific', name: 'Maldives', info: '6 tours · From $3,100', bg: 'linear-gradient(135deg, #006064, #004D40)' }
+      ]
+    },
+    packages: {
+      eyebrow: 'Recently Completed Works',
+      heading: 'Popular Travel',
+      headingAccent: 'Packages',
+      items: [
+        { badge: 'Best Seller', icon: '🌏', bg: 'linear-gradient(135deg, #006064, #00838F)', duration: '10 Days', type: 'Group Tour', rating: '4.9', title: 'Southeast Asia Explorer — Thailand, Vietnam & Cambodia', description: 'Ancient temples, floating markets, and pristine beaches across three iconic Southeast Asian nations.', price: '$1,840', priceNote: '/ person' },
+        { badge: 'Adventure', icon: '🏔️', bg: 'linear-gradient(135deg, #1565C0, #1976D2)', duration: '14 Days', type: 'Private Tour', rating: '4.8', title: 'Himalayan Trek — Nepal Base Camp Expedition', description: 'Guided trekking to Everest Base Camp with experienced Sherpa guides, stunning mountain lodges, and life-changing views.', price: '$2,990', priceNote: '/ person' },
+        { badge: 'Luxury', icon: '🌅', bg: 'linear-gradient(135deg, #E65100, #F4511E)', duration: '7 Days', type: 'Couples', rating: '5.0', title: 'Maldives Luxury Retreat — Overwater Villa Escape', description: 'Crystal lagoons, private overwater villas with glass floors, sunset cruises, and world-class diving in paradise.', price: '$4,600', priceNote: '/ person' }
+      ]
+    },
+    process: {
+      eyebrow: 'To Do Good Design',
+      heading: 'Our Working',
+      headingAccent: 'Process',
+      steps: [
+        { num: '01', icon: '💡', title: 'Idea & Design', description: 'Share your travel dreams with our specialists. We listen, explore possibilities, and begin crafting a journey that fits your vision and budget.' },
+        { num: '02', icon: '📋', title: 'Specification', description: 'We build your full itinerary with flights, accommodations, guides, and activities — every detail confirmed and tailored to your preferences.' },
+        { num: '03', icon: '🌍', title: 'Execution', description: 'You travel. We handle everything behind the scenes — with 24/7 support, real-time assistance, and local contacts at every destination.' }
+      ]
+    },
+    appointment: {
+      heading: '✈ Want to Work With Our Professional Team?',
+      subtext: 'Make an appointment today — our travel consultants are available 7 days a week.',
+      btnLabel: 'Make An Appointment →',
+      btnHref: '/frontend/about/about.html'
+    },
+    testimonials: {
+      eyebrow: 'Testimonials',
+      heading: 'Our Customer',
+      headingAccent: 'Words',
+      items: [
+        { initial: 'L', name: 'Lauren Porter', location: 'California', rating: 5, text: 'The Southeast Asia trip was everything we hoped for and more. Our guide was brilliant, the hotels were perfect.' },
+        { initial: 'N', name: 'Nadia & James Amet', location: 'Los Angeles', rating: 5, text: 'Horizon planned our honeymoon in the Maldives, and it was absolute perfection. Every tiny detail was attended to.' },
+        { initial: 'D', name: 'Dalor Ipsum', location: 'Denver & City', rating: 5, text: 'The Nepal trekking expedition was challenging and absolutely worth every step. The Sherpa guides were exceptional.' }
+      ]
+    },
+    contact: {
+      eyebrow: 'Contact Lines',
+      heading: 'How Can We',
+      headingAccent: 'Help You?',
+      formTitle: 'Make Appointment',
+      formSubtext: 'Fill in the form below and we\'ll get back to you within 24 hours. Don\'t hesitate to ask!',
+      interests: ['Flight Booking', 'Hotel & Stays', 'Guided Tour', 'Custom Package']
+    },
+    blogs: {
+      eyebrow: 'News & Updates',
+      heading: 'Latest From',
+      headingAccent: 'Blog',
+      items: [
+        { day: '25', month: 'May', icon: '🏖️', bg: 'linear-gradient(135deg, #0277BD, #01579B)', title: 'Low Cost Interior Designing Ideas for Your Next Hotel Stay', description: 'Discover how to pick accommodations that feel luxurious without breaking the bank.' },
+        { day: '28', month: 'May', icon: '🌆', bg: 'linear-gradient(135deg, #2E7D32, #388E3C)', title: 'Commercial Design for Project — Sustainable Travel Spaces', description: 'How eco-conscious architecture is reshaping travel hubs and airports around the world.' },
+        { day: '27', month: 'May', icon: '🌸', bg: 'linear-gradient(135deg, #6A1B9A, #7B1FA2)', title: 'Our Interior Design Prediction 2018 — Japan Off-Season Guide', description: 'The best time to visit Japan without the crowds: cherry blossom season alternatives.' }
+      ]
+    },
+    newsletter: {
+      heading: '✈ Subscribe for Newsletter',
+      subtext: 'Manage your business with our travel insights — deals, destination guides, and more.',
+      btnLabel: 'Subscribe Now'
+    },
+    footer: {
+      logoText: 'Horizon',
+      logoAccent: 'Travel',
+      about: 'We are a passionate team of travel designers dedicated to crafting beautiful, meaningful journeys.',
+      address: '1420 Park Ave Road, Flatbush, Bronx, New York 10457, USA',
+      phone: '+1 (800) 345 678 89',
+      email: 'info@horizontravel.com',
+      copyright: '© 2025 Horizon Travel. All Rights Reserved.',
+      quickLinks: [
+        { label: 'Concept Design', href: '#' },
+        { label: 'Project Designs', href: '#' },
+        { label: 'Make Overs', href: '#' },
+        { label: 'About Company', href: '#' },
+        { label: 'Space Planning', href: '#' }
+      ],
+      recentNews: [
+        { icon: '✈', bg: 'linear-gradient(135deg, #0277BD, #01579B)', title: 'Creating charm and feeling what I know now', date: 'June 1, 2018' },
+        { icon: '🏔', bg: 'linear-gradient(135deg, #2E7D32, #388E3C)', title: 'Enjoy maximum comfort of furniture now', date: 'June 8, 2018' },
+        { icon: '🌅', bg: 'linear-gradient(135deg, #6A1B9A, #7B1FA2)', title: 'Wandering exterior design is growing', date: 'June 16, 2018' }
+      ],
+      newsletterText: 'Get in your inbox the latest News and Offers from Horizon Travel.'
+    }
+  };
+
+  // ──────────────────────────────────────────────────────────────
+  //  MODEL – API INTEGRATION
+  // ──────────────────────────────────────────────────────────────
+  const Model = {
+    _data: null,
+    _id: null,
+
+    async load() {
+      try {
+        const res = await fetch(API_BASE);
+        if (!res.ok) throw new Error('Failed to fetch data');
+        const data = await res.json();
+        if (data.length === 0) {
+          // No record: use defaults and create one
+          this._data = JSON.parse(JSON.stringify(DEFAULT_MODEL));
+          this._id = null;
+        } else {
+          const row = data[0];
+          this._id = row.id;
+          // Build the full data object from DB fields
+          this._data = {
+    page_title: row.page_title || "Horizon Travel",
+    topbar: row.topbar || {},
+    navbar: row.navbar || {},
+    hero: row.hero || {},
+    search: row.search || {},
+    stats: row.stats || [],
+    services: row.services || {},
+    about: row.about || {},
+    destinations: row.destinations || {},
+    packages: row.packages || {},
+    process: row.process || {},
+    appointment: row.appointment || {},
+    testimonials: row.testimonials || {},
+    contact: row.contact || {},
+    blogs: row.blogs || {},
+    newsletter: row.newsletter || {},
+    footer: row.footer || {}
+};
+        }
+        return this._data;
+      } catch (err) {
+        console.error('Load error:', err);
+        showToast('Failed to load data. Using defaults.', 'error');
+        this._data = JSON.parse(JSON.stringify(DEFAULT_MODEL));
+        this._id = null;
+        return this._data;
+      }
+    },
+
+    async save(data) {
+      // Ensure all sections exist
+      const payload = {
+        page_title: data.page_title || 'Horizon Travel',
+        topbar: data.topbar || DEFAULT_MODEL.topbar,
+        navbar: data.navbar || DEFAULT_MODEL.navbar,
+        hero: data.hero || DEFAULT_MODEL.hero,
+        search: data.search || DEFAULT_MODEL.search,
+        stats: data.stats || DEFAULT_MODEL.stats,
+        services: data.services || DEFAULT_MODEL.services,
+        about: data.about || DEFAULT_MODEL.about,
+        destinations: data.destinations || DEFAULT_MODEL.destinations,
+        packages: data.packages || DEFAULT_MODEL.packages,
+        process: data.process || DEFAULT_MODEL.process,
+        appointment: data.appointment || DEFAULT_MODEL.appointment,
+        testimonials: data.testimonials || DEFAULT_MODEL.testimonials,
+        contact: data.contact || DEFAULT_MODEL.contact,
+        blogs: data.blogs || DEFAULT_MODEL.blogs,
+        newsletter: data.newsletter || DEFAULT_MODEL.newsletter,
+        footer: data.footer || DEFAULT_MODEL.footer
+      };
+
+      let url = API_BASE;
+let method = 'POST';
+
+if (this._id) {
+  url += '/' + this._id;
+  method = 'PUT';
+}
+
+// Debug logs
+console.log("this._id =", this._id);
+console.log("url =", url);
+console.log("method =", method);
+console.log("payload =", payload);
+
+const res = await fetch(url, {
+   
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Save failed');
+      const result = await res.json();
+      if (result.id) this._id = result.id;
+      this._data = data;
+      return result;
+    },
+
+    get(section) {
+      return this._data ? this._data[section] : null;
+    },
+
+    set(section, value) {
+      if (!this._data) this._data = JSON.parse(JSON.stringify(DEFAULT_MODEL));
+      this._data[section] = value;
+    },
+
+    all() { return this._data; },
+
+    async reset() {
+      this._data = JSON.parse(JSON.stringify(DEFAULT_MODEL));
+      this._id = null;
+      await this.save(this._data);
+      return this._data;
+    }
+  };
+
+  // ──────────────────────────────────────────────────────────────
+  //  HELPERS
+  // ──────────────────────────────────────────────────────────────
+  function showToast(msg, type = '') {
+    document.querySelectorAll('.toast').forEach(t => t.remove());
+    const t = document.createElement('div');
+    t.className = 'toast ' + type;
+    t.innerHTML = (type === 'error' ? '❌ ' : type === 'warning' ? '⚠️ ' : '✅ ') + msg;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 3200);
+  }
+
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('open');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+  }
+  function previewSite() { window.open('/', '_blank'); }
+  async function resetAllData() {
+    if (!confirm('Reset ALL content to defaults? This cannot be undone.')) return;
+    try {
+      await Model.reset();
+      showToast('All content reset to defaults!', 'warning');
+      Router.navigate(Router.current, false);
+    } catch (err) {
+      showToast('Reset failed: ' + err.message, 'error');
+    }
+  }
+
+  function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function val(id) { const el = document.getElementById(id); return el ? el.value : ''; }
+  function setVal(id, v) { const el = document.getElementById(id); if(el) el.value = v; }
+
+  function field(label, id, value, type='text', extra='') {
+    if (type === 'textarea') {
+      return `<div class="field"><label>${label}</label><textarea id="${id}" ${extra}>${escHtml(value||'')}</textarea></div>`;
+    }
+    if (type === 'color') {
+      return `<div class="field"><label>${label}</label><input type="color" id="${id}" value="${value||'#000000'}" ${extra}></div>`;
+    }
+    return `<div class="field"><label>${label}</label><input type="${type}" id="${id}" value="${escHtml(value||'')}" ${extra}></div>`;
+  }
+
+  function sectionHeader(icon, title, desc) {
+    return `<div class="page-header">
+      <div class="page-header-text">
+        <h1>${icon} ${title}</h1>
+        <p>${desc}</p>
+      </div>
+    </div>`;
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  RENDER FUNCTIONS (each section)
+  // ──────────────────────────────────────────────────────────────
+
+  // ----- DASHBOARD -----
+  function renderDashboard(el) {
+    const d = Model.all();
+    const sections = [
+      { route:'meta', icon:'⚙️', name:'Site Meta', desc:'Title, page settings' },
+      { route:'topbar', icon:'📢', name:'Topbar', desc:'Location, phone, email' },
+      { route:'navbar', icon:'🧭', name:'Navigation', desc:'Logo, links, CTA' },
+      { route:'hero', icon:'🚀', name:'Hero', desc:'Headline, buttons' },
+      { route:'search', icon:'🔍', name:'Search Card', desc:'Search box settings' },
+      { route:'stats', icon:'📈', name:'Stats Bar', desc:'4 stat numbers' },
+      { route:'services', icon:'🛎️', name:'Services', desc:'3 service cards' },
+      { route:'about', icon:'ℹ️', name:'About', desc:'Company story' },
+      { route:'destinations', icon:'🗺️', name:'Destinations', desc:'Destination cards' },
+      { route:'packages', icon:'📦', name:'Packages', desc:'Tour packages' },
+      { route:'process', icon:'🔄', name:'Process', desc:'Working steps' },
+      { route:'appointment', icon:'📣', name:'Appointment Banner', desc:'CTA banner' },
+      { route:'testimonials', icon:'💬', name:'Testimonials', desc:'Customer reviews' },
+      { route:'contact', icon:'📞', name:'Contact', desc:'Form & map' },
+      { route:'blogs', icon:'📝', name:'Blog', desc:'Blog posts' },
+      { route:'newsletter', icon:'📧', name:'Newsletter', desc:'Subscribe section' },
+      { route:'footer', icon:'🦶', name:'Footer', desc:'Footer content' }
+    ];
+    const statsArray = d.stats || [];
+    const pkgCount = d.packages?.items?.length || 0;
+    const blogCount = d.blogs?.items?.length || 0;
+    const tstCount = d.testimonials?.items?.length || 0;
+    const destCount = d.destinations?.items?.length || 0;
+
+    el.innerHTML = `
+      ${sectionHeader('📊','Dashboard','Welcome back! Choose a section below to edit your website content.')}
+      <div class="dash-grid">
+        <div class="dash-card"><div class="dash-card-icon">🗺️</div><div class="dash-card-label">Destinations</div><div class="dash-card-value">${destCount}</div><div class="dash-card-sub">Active destinations</div></div>
+        <div class="dash-card"><div class="dash-card-icon">📦</div><div class="dash-card-label">Packages</div><div class="dash-card-value">${pkgCount}</div><div class="dash-card-sub">Travel packages</div></div>
+        <div class="dash-card"><div class="dash-card-icon">💬</div><div class="dash-card-label">Testimonials</div><div class="dash-card-value">${tstCount}</div><div class="dash-card-sub">Customer reviews</div></div>
+        <div class="dash-card"><div class="dash-card-icon">📝</div><div class="dash-card-label">Blog Posts</div><div class="dash-card-value">${blogCount}</div><div class="dash-card-sub">Published posts</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🗂️ All Sections — Click to Edit</div></div>
+        <div class="dash-sections-grid">
+          ${sections.map(s => `<div class="dash-section-card" onclick="Router.navigate('${s.route}')">
+            <div class="dsc-icon">${s.icon}</div>
+            <div class="dsc-text"><div class="dsc-name">${s.name}</div><div class="dsc-desc">${s.desc}</div></div>
+            <div class="dsc-arrow">→</div>
+          </div>`).join('')}
+        </div>
+      </div>`;
+  }
+
+  // ----- META -----
+  function renderMeta(el) {
+    const d = Model.all();
+    el.innerHTML = `
+      ${sectionHeader('⚙️','Site Meta','Global site settings — page title.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">🌐 Page Settings</div></div>
+        <div class="form-grid">
+          ${field('Page Title','meta_title', d.page_title)}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveMeta()">💾 Save Meta</button>
+      </div>`;
+  }
+  async function saveMeta() {
+    const d = Model.all();
+    d.page_title = val('meta_title');
+    try {
+      await Model.save(d);
+      showToast('Meta saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- TOPBAR -----
+  function renderTopbar(el) {
+    const d = Model.get('topbar') || {};
+    el.innerHTML = `
+      ${sectionHeader('📢','Topbar','Edit the top info bar — contact details and social links.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📍 Contact Info</div></div>
+        <div class="form-grid cols-3">
+          ${field('Location','tb_location', d.location)}
+          ${field('Phone','tb_phone', d.phone)}
+          ${field('Email','tb_email', d.email,'email')}
+        </div>
+        <div class="divider"></div>
+        <div class="card-title" style="margin-bottom:14px;">🔗 Social Links</div>
+        <div class="form-grid cols-2">
+          ${field('Facebook URL','tb_fb', d.socials?.facebook)}
+          ${field('Twitter URL','tb_tw', d.socials?.twitter)}
+          ${field('Instagram URL','tb_ig', d.socials?.instagram)}
+          ${field('YouTube URL','tb_yt', d.socials?.youtube)}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveTopbar()">💾 Save Topbar</button>
+      </div>`;
+  }
+  async function saveTopbar() {
+    const d = Model.all();
+    d.topbar = {
+      location: val('tb_location'),
+      phone: val('tb_phone'),
+      email: val('tb_email'),
+      socials: { facebook: val('tb_fb'), twitter: val('tb_tw'), instagram: val('tb_ig'), youtube: val('tb_yt') }
+    };
+    try {
+      await Model.save(d);
+      showToast('Topbar saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- NAVBAR -----
+  function renderNavbar(el) {
+    const d = Model.get('navbar') || {};
+    el.innerHTML = `
+      ${sectionHeader('🧭','Navigation','Edit logo, navigation links, and the CTA button.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">✈️ Logo</div></div>
+        <div class="form-grid cols-3">
+          ${field('Logo Icon (emoji)','nav_icon', d.logoIcon)}
+          ${field('Logo Text (main)','nav_logoText', d.logoText)}
+          ${field('Logo Accent (colored)','nav_logoAccent', d.logoAccent)}
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🔗 Navigation Links</div><button class="btn btn-ghost btn-sm" onclick="addNavLink()">+ Add Link</button></div>
+        <div id="nav-links-list">
+          ${(d.links || []).map((l,i) => navLinkRow(l,i)).join('')}
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🎯 CTA Button</div></div>
+        <div class="form-grid cols-2">
+          ${field('Button Label','nav_cta_label', d.ctaLabel)}
+          ${field('Button Link','nav_cta_href', d.ctaHref)}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveNavbar()">💾 Save Navigation</button>
+      </div>`;
+  }
+  function navLinkRow(l,i) {
+    return `<div class="array-item" id="navlink-${i}">
+      <div class="array-item-header">
+        <span class="array-item-label">🔗 Link ${i+1}</span>
+        <button class="btn btn-danger btn-xs" onclick="removeNavLink(${i})">🗑 Remove</button>
+      </div>
+      <div class="form-grid cols-2">
+        ${field('Label','nl_label_'+i, l.label)}
+        ${field('Href','nl_href_'+i, l.href)}
+      </div>
+    </div>`;
+  }
+  function addNavLink() {
+    const d = Model.all();
+    d.navbar.links = d.navbar.links || [];
+    d.navbar.links.push({ label: 'New Link', href: '#' });
+    renderNavbar(document.getElementById('main-content'));
+  }
+  function removeNavLink(i) {
+    const d = Model.all();
+    d.navbar.links.splice(i, 1);
+    renderNavbar(document.getElementById('main-content'));
+  }
+  async function saveNavbar() {
+    const d = Model.all();
+    const links = (d.navbar.links || []).map((_,i) => ({
+      label: val('nl_label_'+i),
+      href: val('nl_href_'+i)
+    }));
+    d.navbar = {
+      logoIcon: val('nav_icon'),
+      logoText: val('nav_logoText'),
+      logoAccent: val('nav_logoAccent'),
+      links,
+      ctaLabel: val('nav_cta_label'),
+      ctaHref: val('nav_cta_href')
+    };
+    try {
+      await Model.save(d);
+      showToast('Navigation saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- HERO -----
+  function renderHero(el) {
+    const d = Model.get('hero') || {};
+    el.innerHTML = `
+      ${sectionHeader('🚀','Hero Section','The main banner with headline, subtext, and buttons.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Hero Text</div></div>
+        <div class="form-grid">
+          ${field('Eyebrow Label','hero_eyebrow', d.eyebrow)}
+          ${field('Heading (main)','hero_heading', d.heading)}
+          ${field('Heading Accent (colored)','hero_headingAccent', d.headingAccent)}
+          ${field('Subtext','hero_subtext', d.subtext,'textarea')}
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🎯 Hero Buttons</div></div>
+        <div class="form-grid cols-2">
+          ${field('Button 1 Label','hero_btn1l', d.btn1Label)}
+          ${field('Button 1 Link','hero_btn1h', d.btn1Href)}
+          ${field('Button 2 Label','hero_btn2l', d.btn2Label)}
+          ${field('Button 2 Link','hero_btn2h', d.btn2Href)}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveHero()">💾 Save Hero</button>
+      </div>`;
+  }
+  async function saveHero() {
+    const d = Model.all();
+    d.hero = {
+      eyebrow: val('hero_eyebrow'),
+      heading: val('hero_heading'),
+      headingAccent: val('hero_headingAccent'),
+      subtext: val('hero_subtext'),
+      btn1Label: val('hero_btn1l'),
+      btn1Href: val('hero_btn1h'),
+      btn2Label: val('hero_btn2l'),
+      btn2Href: val('hero_btn2h')
+    };
+    try {
+      await Model.save(d);
+      showToast('Hero saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- SEARCH CARD -----
+  function renderSearch(el) {
+    const d = Model.get('search') || {};
+    el.innerHTML = `
+      ${sectionHeader('🔍','Search Card','Edit the search card settings.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">🔍 Search Card</div></div>
+        <div class="form-grid cols-2">
+          ${field('Search Card Title','sc_title', d.searchCardTitle)}
+          ${field('Search Tabs (comma-separated)','sc_tabs', (d.searchTabs || []).join(', '))}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveSearch()">💾 Save Search Card</button>
+      </div>`;
+  }
+  async function saveSearch() {
+    const d = Model.all();
+    d.search = {
+      searchCardTitle: val('sc_title'),
+      searchTabs: val('sc_tabs').split(',').map(s => s.trim()).filter(Boolean)
+    };
+    try {
+      await Model.save(d);
+      showToast('Search card saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- STATS -----
+  function renderStats(el) {
+    const d = Model.get('stats') || [];
+    el.innerHTML = `
+      ${sectionHeader('📈','Stats Bar','The 4 counter statistics.')}
+      <div id="stats-list">
+        ${d.map((s,i) => `<div class="card">
+          <div class="card-header"><div class="card-title">📊 Stat ${i+1}</div><button class="btn btn-danger btn-xs" onclick="removeStat(${i})">🗑 Remove</button></div>
+          <div class="form-grid cols-2">
+            ${field('Number / Value','stat_num_'+i, s.number)}
+            ${field('Label','stat_lbl_'+i, s.label)}
+          </div>
+        </div>`).join('')}
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-ghost" onclick="addStat()">+ Add Stat</button>
+        <button class="btn btn-primary" onclick="saveStats()">💾 Save Stats</button>
+      </div>`;
+  }
+  function addStat() {
+    const d = Model.all();
+    d.stats.push({ number: '0', label: 'New Stat' });
+    renderStats(document.getElementById('main-content'));
+  }
+  function removeStat(i) {
+    const d = Model.all();
+    d.stats.splice(i,1);
+    renderStats(document.getElementById('main-content'));
+  }
+  async function saveStats() {
+    const d = Model.all();
+    d.stats = d.stats.map((_,i) => ({ number: val('stat_num_'+i), label: val('stat_lbl_'+i) }));
+    try {
+      await Model.save(d);
+      showToast('Stats saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- SERVICES -----
+  function renderServices(el) {
+    const d = Model.get('services') || {};
+    el.innerHTML = `
+      ${sectionHeader('🛎️','Services','Edit the 3 service cards.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Section Header</div></div>
+        <div class="form-grid cols-2">
+          ${field('Eyebrow','svc_eyebrow', d.eyebrow)}
+          ${field('Heading','svc_heading', d.heading)}
+          ${field('Heading Accent','svc_headingAccent', d.headingAccent)}
+          ${field('Description','svc_desc', d.description,'textarea')}
+        </div>
+      </div>
+      <div id="services-list">
+        ${(d.items || []).map((s,i) => `<div class="card">
+          <div class="card-header"><div class="card-title">${s.icon} Service ${i+1}</div><button class="btn btn-danger btn-xs" onclick="removeSvc(${i})">🗑 Remove</button></div>
+          <div class="form-grid cols-2">
+            ${field('Icon (emoji)','svc_icon_'+i, s.icon)}
+            ${field('Title','svc_title_'+i, s.title)}
+          </div>
+          ${field('Description','svc_descr_'+i, s.description,'textarea')}
+        </div>`).join('')}
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-ghost" onclick="addSvc()">+ Add Service</button>
+        <button class="btn btn-primary" onclick="saveServices()">💾 Save Services</button>
+      </div>`;
+  }
+  function addSvc() {
+    const d = Model.all();
+    d.services.items = d.services.items || [];
+    d.services.items.push({icon:'🌟',title:'New Service',description:'Description here.'});
+    renderServices(document.getElementById('main-content'));
+  }
+  function removeSvc(i) {
+    const d = Model.all();
+    d.services.items.splice(i,1);
+    renderServices(document.getElementById('main-content'));
+  }
+  async function saveServices() {
+    const d = Model.all();
+    const items = (d.services.items || []).map((_,i) => ({
+      icon: val('svc_icon_'+i),
+      title: val('svc_title_'+i),
+      description: val('svc_descr_'+i)
+    }));
+    d.services = {
+      eyebrow: val('svc_eyebrow'),
+      heading: val('svc_heading'),
+      headingAccent: val('svc_headingAccent'),
+      description: val('svc_desc'),
+      items
+    };
+    try {
+      await Model.save(d);
+      showToast('Services saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- ABOUT -----
+  function renderAbout(el) {
+    const d = Model.get('about') || {};
+    el.innerHTML = `
+      ${sectionHeader('ℹ️','About Section','Edit the company introduction, quote, and mission.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Section Heading</div></div>
+        <div class="form-grid cols-2">
+          ${field('Eyebrow','ab_eyebrow', d.eyebrow)}
+          ${field('Heading (main)','ab_heading', d.heading)}
+          ${field('Heading Accent','ab_headingAccent', d.headingAccent)}
+          ${field('Heading Suffix','ab_headingSuffix', d.headingSuffix)}
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">📄 Body Content</div></div>
+        <div class="form-grid">
+          ${field('Paragraph 1','ab_para1', d.para1,'textarea')}
+          ${field('Paragraph 2','ab_para2', d.para2,'textarea')}
+        </div>
+        <div class="divider"></div>
+        <div class="form-grid cols-2">
+          ${field('Quote Text','ab_quote', d.quote,'textarea')}
+          ${field('Quote Author','ab_quoteAuthor', d.quoteAuthor)}
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🏆 Years Badge & Mission</div></div>
+        <div class="form-grid cols-2">
+          ${field('Years Number','ab_yearsNum', d.yearsNumber)}
+          ${field('Years Label','ab_yearsLabel', d.yearsLabel)}
+          ${field('Mission Title','ab_missionTitle', d.missionTitle)}
+          ${field('Mission Text','ab_missionText', d.missionText,'textarea')}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveAbout()">💾 Save About</button>
+      </div>`;
+  }
+  async function saveAbout() {
+    const d = Model.all();
+    d.about = {
+      eyebrow: val('ab_eyebrow'),
+      heading: val('ab_heading'),
+      headingAccent: val('ab_headingAccent'),
+      headingSuffix: val('ab_headingSuffix'),
+      para1: val('ab_para1'),
+      para2: val('ab_para2'),
+      quote: val('ab_quote'),
+      quoteAuthor: val('ab_quoteAuthor'),
+      yearsNumber: val('ab_yearsNum'),
+      yearsLabel: val('ab_yearsLabel'),
+      missionTitle: val('ab_missionTitle'),
+      missionText: val('ab_missionText')
+    };
+    try {
+      await Model.save(d);
+      showToast('About saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- DESTINATIONS -----
+  function renderDestinations(el) {
+    const d = Model.get('destinations') || {};
+    el.innerHTML = `
+      ${sectionHeader('🗺️','Destinations','Manage the destination cards.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Section Header</div></div>
+        <div class="form-grid cols-2">
+          ${field('Eyebrow','dest_eyebrow', d.eyebrow)}
+          ${field('Heading','dest_heading', d.heading)}
+          ${field('Heading Accent','dest_headingAccent', d.headingAccent)}
+          ${field('Description','dest_desc', d.description,'textarea')}
+        </div>
+      </div>
+      <div id="dest-list">
+        ${(d.items || []).map((item,i) => destCard(item,i)).join('')}
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-ghost" onclick="addDest()">+ Add Destination</button>
+        <button class="btn btn-primary" onclick="saveDestinations()">💾 Save Destinations</button>
+      </div>`;
+  }
+  function destCard(item,i) {
+    return `<div class="card">
+      <div class="card-header">
+        <div class="card-title"><span style="background:${item.bg};padding:4px 10px;border-radius:4px;font-size:1.1rem;">${item.icon}</span> Destination ${i+1}: ${item.name}</div>
+        <button class="btn btn-danger btn-xs" onclick="removeDest(${i})">🗑 Remove</button>
+      </div>
+      <div class="form-grid cols-3">
+        ${field('Icon (emoji)','dest_icon_'+i, item.icon)}
+        ${field('Region Label','dest_region_'+i, item.region)}
+        ${field('Destination Name','dest_name_'+i, item.name)}
+      </div>
+      <div class="form-grid cols-2">
+        ${field('Info Text','dest_info_'+i, item.info)}
+        ${field('Background CSS Gradient','dest_bg_'+i, item.bg)}
+      </div>
+    </div>`;
+  }
+  function addDest() {
+    const d = Model.all();
+    d.destinations.items = d.destinations.items || [];
+    d.destinations.items.push({icon:'🌍',region:'🌐 Region',name:'New Destination',info:'Tours available',bg:'linear-gradient(135deg, #455A64, #37474F)'});
+    renderDestinations(document.getElementById('main-content'));
+  }
+  function removeDest(i) {
+    const d = Model.all();
+    d.destinations.items.splice(i,1);
+    renderDestinations(document.getElementById('main-content'));
+  }
+  async function saveDestinations() {
+    const d = Model.all();
+    const items = (d.destinations.items || []).map((_,i) => ({
+      icon: val('dest_icon_'+i),
+      region: val('dest_region_'+i),
+      name: val('dest_name_'+i),
+      info: val('dest_info_'+i),
+      bg: val('dest_bg_'+i)
+    }));
+    d.destinations = {
+      eyebrow: val('dest_eyebrow'),
+      heading: val('dest_heading'),
+      headingAccent: val('dest_headingAccent'),
+      description: val('dest_desc'),
+      items
+    };
+    try {
+      await Model.save(d);
+      showToast('Destinations saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- PACKAGES -----
+  function renderPackages(el) {
+    const d = Model.get('packages') || {};
+    el.innerHTML = `
+      ${sectionHeader('📦','Packages','Edit tour packages.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Section Header</div></div>
+        <div class="form-grid cols-2">
+          ${field('Eyebrow','pkg_eyebrow', d.eyebrow)}
+          ${field('Heading','pkg_heading', d.heading)}
+          ${field('Heading Accent','pkg_headingAccent', d.headingAccent)}
+        </div>
+      </div>
+      <div id="pkg-list">
+        ${(d.items || []).map((p,i) => pkgCard(p,i)).join('')}
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-ghost" onclick="addPkg()">+ Add Package</button>
+        <button class="btn btn-primary" onclick="savePackages()">💾 Save Packages</button>
+      </div>`;
+  }
+  function pkgCard(p,i) {
+    return `<div class="card">
+      <div class="card-header">
+        <div class="card-title"><span class="tag tag-gold">${p.badge}</span> Package ${i+1}</div>
+        <button class="btn btn-danger btn-xs" onclick="removePkg(${i})">🗑 Remove</button>
+      </div>
+      <div class="form-grid cols-3">
+        ${field('Badge Text','pkg_badge_'+i, p.badge)}
+        ${field('Icon (emoji)','pkg_icon_'+i, p.icon)}
+        ${field('Duration','pkg_dur_'+i, p.duration)}
+      </div>
+      <div class="form-grid cols-3">
+        ${field('Tour Type','pkg_type_'+i, p.type)}
+        ${field('Rating','pkg_rating_'+i, p.rating)}
+        ${field('Price','pkg_price_'+i, p.price)}
+      </div>
+      <div class="form-grid">
+        ${field('Package Title','pkg_title_'+i, p.title)}
+        ${field('Description','pkg_desc_'+i, p.description,'textarea')}
+        ${field('Background CSS Gradient','pkg_bg_'+i, p.bg)}
+      </div>
+    </div>`;
+  }
+  function addPkg() {
+    const d = Model.all();
+    d.packages.items = d.packages.items || [];
+    d.packages.items.push({badge:'New',icon:'🌟',bg:'linear-gradient(135deg, #455A64, #37474F)',duration:'7 Days',type:'Group Tour',rating:'4.5',title:'New Package',description:'Package description.',price:'$999',priceNote:'/ person'});
+    renderPackages(document.getElementById('main-content'));
+  }
+  function removePkg(i) {
+    const d = Model.all();
+    d.packages.items.splice(i,1);
+    renderPackages(document.getElementById('main-content'));
+  }
+  async function savePackages() {
+    const d = Model.all();
+    const items = (d.packages.items || []).map((_,i) => ({
+      badge: val('pkg_badge_'+i),
+      icon: val('pkg_icon_'+i),
+      bg: val('pkg_bg_'+i),
+      duration: val('pkg_dur_'+i),
+      type: val('pkg_type_'+i),
+      rating: val('pkg_rating_'+i),
+      title: val('pkg_title_'+i),
+      description: val('pkg_desc_'+i),
+      price: val('pkg_price_'+i),
+      priceNote: '/ person'
+    }));
+    d.packages = {
+      eyebrow: val('pkg_eyebrow'),
+      heading: val('pkg_heading'),
+      headingAccent: val('pkg_headingAccent'),
+      items
+    };
+    try {
+      await Model.save(d);
+      showToast('Packages saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- PROCESS -----
+  function renderProcess(el) {
+    const d = Model.get('process') || {};
+    el.innerHTML = `
+      ${sectionHeader('🔄','Working Process','Edit the 3-step process.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Section Header</div></div>
+        <div class="form-grid cols-3">
+          ${field('Eyebrow','prc_eyebrow', d.eyebrow)}
+          ${field('Heading','prc_heading', d.heading)}
+          ${field('Heading Accent','prc_headingAccent', d.headingAccent)}
+        </div>
+      </div>
+      <div id="prc-list">
+        ${(d.steps || []).map((s,i) => `<div class="card">
+          <div class="card-header"><div class="card-title">${s.icon} Step ${s.num}</div><button class="btn btn-danger btn-xs" onclick="removePrc(${i})">🗑 Remove</button></div>
+          <div class="form-grid cols-3">
+            ${field('Step Number','prc_num_'+i, s.num)}
+            ${field('Icon (emoji)','prc_icon_'+i, s.icon)}
+            ${field('Title','prc_title_'+i, s.title)}
+          </div>
+          ${field('Description','prc_desc_'+i, s.description,'textarea')}
+        </div>`).join('')}
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-ghost" onclick="addPrc()">+ Add Step</button>
+        <button class="btn btn-primary" onclick="saveProcess()">💾 Save Process</button>
+      </div>`;
+  }
+  function addPrc() {
+    const d = Model.all();
+    d.process.steps = d.process.steps || [];
+    d.process.steps.push({num:'0'+(d.process.steps.length+1),icon:'⭐',title:'New Step',description:'Step description here.'});
+    renderProcess(document.getElementById('main-content'));
+  }
+  function removePrc(i) {
+    const d = Model.all();
+    d.process.steps.splice(i,1);
+    renderProcess(document.getElementById('main-content'));
+  }
+  async function saveProcess() {
+    const d = Model.all();
+    const steps = (d.process.steps || []).map((_,i) => ({
+      num: val('prc_num_'+i),
+      icon: val('prc_icon_'+i),
+      title: val('prc_title_'+i),
+      description: val('prc_desc_'+i)
+    }));
+    d.process = {
+      eyebrow: val('prc_eyebrow'),
+      heading: val('prc_heading'),
+      headingAccent: val('prc_headingAccent'),
+      steps
+    };
+    try {
+      await Model.save(d);
+      showToast('Process saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- APPOINTMENT BANNER -----
+  function renderAppointment(el) {
+    const d = Model.get('appointment') || {};
+    el.innerHTML = `
+      ${sectionHeader('📣','Appointment Banner','The CTA strip with heading and button.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Banner Content</div></div>
+        <div class="form-grid">
+          ${field('Heading','appt_heading', d.heading)}
+          ${field('Subtext','appt_subtext', d.subtext)}
+        </div>
+        <div class="divider"></div>
+        <div class="form-grid cols-2">
+          ${field('Button Label','appt_btnLabel', d.btnLabel)}
+          ${field('Button Link','appt_btnHref', d.btnHref)}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveAppointment()">💾 Save Banner</button>
+      </div>`;
+  }
+  async function saveAppointment() {
+    const d = Model.all();
+    d.appointment = {
+      heading: val('appt_heading'),
+      subtext: val('appt_subtext'),
+      btnLabel: val('appt_btnLabel'),
+      btnHref: val('appt_btnHref')
+    };
+    try {
+      await Model.save(d);
+      showToast('Appointment banner saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- TESTIMONIALS -----
+  function renderTestimonials(el) {
+    const d = Model.get('testimonials') || {};
+    el.innerHTML = `
+      ${sectionHeader('💬','Testimonials','Edit customer review cards.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Section Header</div></div>
+        <div class="form-grid cols-3">
+          ${field('Eyebrow','tst_eyebrow', d.eyebrow)}
+          ${field('Heading','tst_heading', d.heading)}
+          ${field('Heading Accent','tst_headingAccent', d.headingAccent)}
+        </div>
+      </div>
+      <div id="tst-list">
+        ${(d.items || []).map((t,i) => `<div class="card">
+          <div class="card-header"><div class="card-title">💬 Review ${i+1} — ${t.name}</div><button class="btn btn-danger btn-xs" onclick="removeTst(${i})">🗑 Remove</button></div>
+          <div class="form-grid cols-3">
+            ${field('Initial (avatar letter)','tst_init_'+i, t.initial)}
+            ${field('Reviewer Name','tst_name_'+i, t.name)}
+            ${field('Location','tst_loc_'+i, t.location)}
+          </div>
+          ${field('Review Text','tst_text_'+i, t.text,'textarea')}
+          ${field('Rating (1-5)','tst_rating_'+i, t.rating,'number')}
+        </div>`).join('')}
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-ghost" onclick="addTst()">+ Add Review</button>
+        <button class="btn btn-primary" onclick="saveTestimonials()">💾 Save Testimonials</button>
+      </div>`;
+  }
+  function addTst() {
+    const d = Model.all();
+    d.testimonials.items = d.testimonials.items || [];
+    d.testimonials.items.push({initial:'A',name:'New Customer',location:'City',rating:5,text:'Review text here.'});
+    renderTestimonials(document.getElementById('main-content'));
+  }
+  function removeTst(i) {
+    const d = Model.all();
+    d.testimonials.items.splice(i,1);
+    renderTestimonials(document.getElementById('main-content'));
+  }
+  async function saveTestimonials() {
+    const d = Model.all();
+    const items = (d.testimonials.items || []).map((_,i) => ({
+      initial: val('tst_init_'+i),
+      name: val('tst_name_'+i),
+      location: val('tst_loc_'+i),
+      rating: parseInt(val('tst_rating_'+i)) || 5,
+      text: val('tst_text_'+i)
+    }));
+    d.testimonials = {
+      eyebrow: val('tst_eyebrow'),
+      heading: val('tst_heading'),
+      headingAccent: val('tst_headingAccent'),
+      items
+    };
+    try {
+      await Model.save(d);
+      showToast('Testimonials saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- CONTACT -----
+  function renderContact(el) {
+    const d = Model.get('contact') || {};
+    el.innerHTML = `
+      ${sectionHeader('📞','Contact Section','Edit contact heading and form options.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Section Header</div></div>
+        <div class="form-grid cols-2">
+          ${field('Eyebrow','ct_eyebrow', d.eyebrow)}
+          ${field('Heading','ct_heading', d.heading)}
+          ${field('Heading Accent','ct_headingAccent', d.headingAccent)}
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">📋 Form Settings</div></div>
+        <div class="form-grid cols-2">
+          ${field('Form Title','ct_formTitle', d.formTitle)}
+          ${field('Form Subtext','ct_formSubtext', d.formSubtext,'textarea')}
+        </div>
+        <div class="divider"></div>
+        <div class="card-title" style="margin-bottom:12px;">📋 "Interested In" Options</div>
+        <div id="ct-interests">
+          ${(d.interests || []).map((x,i) => `<div style="display:flex;gap:8px;margin-bottom:8px;">
+            ${field('','ct_int_'+i, x)}
+            <button class="btn btn-danger btn-xs" style="align-self:flex-end;margin-bottom:0;" onclick="removeCTInterest(${i})">🗑</button>
+          </div>`).join('')}
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="addCTInterest()" style="margin-bottom:16px;">+ Add Option</button>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveContact()">💾 Save Contact</button>
+      </div>`;
+  }
+  function addCTInterest() {
+    const d = Model.all();
+    d.contact.interests = d.contact.interests || [];
+    d.contact.interests.push('New Option');
+    renderContact(document.getElementById('main-content'));
+  }
+  function removeCTInterest(i) {
+    const d = Model.all();
+    d.contact.interests.splice(i,1);
+    renderContact(document.getElementById('main-content'));
+  }
+  async function saveContact() {
+    const d = Model.all();
+    const interests = (d.contact.interests || []).map((_,i) => val('ct_int_'+i));
+    d.contact = {
+      eyebrow: val('ct_eyebrow'),
+      heading: val('ct_heading'),
+      headingAccent: val('ct_headingAccent'),
+      formTitle: val('ct_formTitle'),
+      formSubtext: val('ct_formSubtext'),
+      interests
+    };
+    try {
+      await Model.save(d);
+      showToast('Contact saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- BLOGS -----
+  function renderBlogs(el) {
+    const d = Model.get('blogs') || {};
+    el.innerHTML = `
+      ${sectionHeader('📝','Blog','Edit blog post cards.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📝 Section Header</div></div>
+        <div class="form-grid cols-3">
+          ${field('Eyebrow','blog_eyebrow', d.eyebrow)}
+          ${field('Heading','blog_heading', d.heading)}
+          ${field('Heading Accent','blog_headingAccent', d.headingAccent)}
+        </div>
+      </div>
+      <div id="blog-list">
+        ${(d.items || []).map((b,i) => `<div class="card">
+          <div class="card-header"><div class="card-title">📝 Post ${i+1}</div><button class="btn btn-danger btn-xs" onclick="removeBlog(${i})">🗑 Remove</button></div>
+          <div class="form-grid cols-3">
+            ${field('Day','blog_day_'+i, b.day)}
+            ${field('Month','blog_month_'+i, b.month)}
+            ${field('Icon (emoji)','blog_icon_'+i, b.icon)}
+          </div>
+          <div class="form-grid">
+            ${field('Post Title','blog_title_'+i, b.title)}
+            ${field('Description','blog_desc_'+i, b.description,'textarea')}
+            ${field('Background CSS Gradient','blog_bg_'+i, b.bg)}
+          </div>
+        </div>`).join('')}
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button class="btn btn-ghost" onclick="addBlog()">+ Add Post</button>
+        <button class="btn btn-primary" onclick="saveBlogs()">💾 Save Blog</button>
+      </div>`;
+  }
+  function addBlog() {
+    const d = Model.all();
+    d.blogs.items = d.blogs.items || [];
+    d.blogs.items.push({day:'01',month:'Jan',icon:'📸',bg:'linear-gradient(135deg, #455A64, #37474F)',title:'New Blog Post',description:'Post description here.'});
+    renderBlogs(document.getElementById('main-content'));
+  }
+  function removeBlog(i) {
+    const d = Model.all();
+    d.blogs.items.splice(i,1);
+    renderBlogs(document.getElementById('main-content'));
+  }
+  async function saveBlogs() {
+    const d = Model.all();
+    const items = (d.blogs.items || []).map((_,i) => ({
+      day: val('blog_day_'+i),
+      month: val('blog_month_'+i),
+      icon: val('blog_icon_'+i),
+      title: val('blog_title_'+i),
+      description: val('blog_desc_'+i),
+      bg: val('blog_bg_'+i)
+    }));
+    d.blogs = {
+      eyebrow: val('blog_eyebrow'),
+      heading: val('blog_heading'),
+      headingAccent: val('blog_headingAccent'),
+      items
+    };
+    try {
+      await Model.save(d);
+      showToast('Blog saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- NEWSLETTER -----
+  function renderNewsletter(el) {
+    const d = Model.get('newsletter') || {};
+    el.innerHTML = `
+      ${sectionHeader('📧','Newsletter Section','Edit the email subscription strip.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">📧 Newsletter Content</div></div>
+        <div class="form-grid">
+          ${field('Heading','nl_heading', d.heading)}
+          ${field('Subtext','nl_subtext', d.subtext,'textarea')}
+          ${field('Button Label','nl_btnLabel', d.btnLabel)}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveNewsletter()">💾 Save Newsletter</button>
+      </div>`;
+  }
+  async function saveNewsletter() {
+    const d = Model.all();
+    d.newsletter = {
+      heading: val('nl_heading'),
+      subtext: val('nl_subtext'),
+      btnLabel: val('nl_btnLabel')
+    };
+    try {
+      await Model.save(d);
+      showToast('Newsletter saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ----- FOOTER -----
+  function renderFooter(el) {
+    const d = Model.get('footer') || {};
+    el.innerHTML = `
+      ${sectionHeader('🦶','Footer','Edit footer content.')}
+      <div class="card">
+        <div class="card-header"><div class="card-title">✈️ Footer Brand</div></div>
+        <div class="form-grid cols-2">
+          ${field('Logo Text','ft_logoText', d.logoText)}
+          ${field('Logo Accent','ft_logoAccent', d.logoAccent)}
+        </div>
+        ${field('About Text','ft_about', d.about,'textarea')}
+        <div class="divider"></div>
+        <div class="form-grid cols-3">
+          ${field('Address','ft_address', d.address,'textarea')}
+          ${field('Phone','ft_phone', d.phone)}
+          ${field('Email','ft_email', d.email,'email')}
+        </div>
+        ${field('Copyright Text','ft_copyright', d.copyright)}
+        ${field('Newsletter Subtext','ft_nlText', d.newsletterText,'textarea')}
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">🔗 Quick Links</div><button class="btn btn-ghost btn-sm" onclick="addFtLink()">+ Add</button></div>
+        <div id="ft-links">
+          ${(d.quickLinks || []).map((l,i) => `<div style="display:flex;gap:8px;margin-bottom:8px;align-items:flex-end;">
+            <div class="field" style="flex:1;">${field('Label','ft_ql_label_'+i, l.label)}</div>
+            <div class="field" style="flex:1;">${field('Href','ft_ql_href_'+i, l.href)}</div>
+            <button class="btn btn-danger btn-xs" onclick="removeFtLink(${i})">🗑</button>
+          </div>`).join('')}
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">📰 Recent News Items</div><button class="btn btn-ghost btn-sm" onclick="addFtNews()">+ Add</button></div>
+        <div id="ft-news">
+          ${(d.recentNews || []).map((n,i) => `<div class="array-item">
+            <div class="array-item-header"><span class="array-item-label">📰 News ${i+1}</span><button class="btn btn-danger btn-xs" onclick="removeFtNews(${i})">🗑 Remove</button></div>
+            <div class="form-grid cols-3">
+              ${field('Icon','ft_ni_icon_'+i, n.icon)}
+              ${field('Date','ft_ni_date_'+i, n.date)}
+              ${field('Background','ft_ni_bg_'+i, n.bg)}
+            </div>
+            ${field('Title','ft_ni_title_'+i, n.title)}
+          </div>`).join('')}
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-primary" onclick="saveFooter()">💾 Save Footer</button>
+      </div>`;
+  }
+  function addFtLink() {
+    const d = Model.all();
+    d.footer.quickLinks = d.footer.quickLinks || [];
+    d.footer.quickLinks.push({label:'New Link',href:'#'});
+    renderFooter(document.getElementById('main-content'));
+  }
+  function removeFtLink(i) {
+    const d = Model.all();
+    d.footer.quickLinks.splice(i,1);
+    renderFooter(document.getElementById('main-content'));
+  }
+  function addFtNews() {
+    const d = Model.all();
+    d.footer.recentNews = d.footer.recentNews || [];
+    d.footer.recentNews.push({icon:'📰',bg:'linear-gradient(135deg,#455A64,#37474F)',title:'New News Item',date:'Jan 1, 2025'});
+    renderFooter(document.getElementById('main-content'));
+  }
+  function removeFtNews(i) {
+    const d = Model.all();
+    d.footer.recentNews.splice(i,1);
+    renderFooter(document.getElementById('main-content'));
+  }
+  async function saveFooter() {
+    const d = Model.all();
+    const quickLinks = (d.footer.quickLinks || []).map((_,i) => ({
+      label: val('ft_ql_label_'+i),
+      href: val('ft_ql_href_'+i)
+    }));
+    const recentNews = (d.footer.recentNews || []).map((_,i) => ({
+      icon: val('ft_ni_icon_'+i),
+      bg: val('ft_ni_bg_'+i),
+      title: val('ft_ni_title_'+i),
+      date: val('ft_ni_date_'+i)
+    }));
+    d.footer = {
+      logoText: val('ft_logoText'),
+      logoAccent: val('ft_logoAccent'),
+      about: val('ft_about'),
+      address: val('ft_address'),
+      phone: val('ft_phone'),
+      email: val('ft_email'),
+      copyright: val('ft_copyright'),
+      newsletterText: val('ft_nlText'),
+      quickLinks,
+      recentNews
+    };
+    try {
+      await Model.save(d);
+      showToast('Footer saved!');
+    } catch (err) {
+      showToast('Error: ' + err.message, 'error');
+    }
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  //  ROUTER
+  // ──────────────────────────────────────────────────────────────
+  const ROUTES = {
+    dashboard:    { label: 'Dashboard',          render: renderDashboard },
+    meta:         { label: 'Site Meta',          render: renderMeta },
+    topbar:       { label: 'Topbar',             render: renderTopbar },
+    navbar:       { label: 'Navigation',         render: renderNavbar },
+    hero:         { label: 'Hero Section',       render: renderHero },
+    search:       { label: 'Search Card',        render: renderSearch },
+    stats:        { label: 'Stats Bar',          render: renderStats },
+    services:     { label: 'Services',           render: renderServices },
+    about:        { label: 'About',              render: renderAbout },
+    destinations: { label: 'Destinations',       render: renderDestinations },
+    packages:     { label: 'Packages',           render: renderPackages },
+    process:      { label: 'Process',            render: renderProcess },
+    appointment:  { label: 'Appointment Banner', render: renderAppointment },
+    testimonials: { label: 'Testimonials',       render: renderTestimonials },
+    contact:      { label: 'Contact',            render: renderContact },
+    blogs:        { label: 'Blog',               render: renderBlogs },
+    newsletter:   { label: 'Newsletter',         render: renderNewsletter },
+    footer:       { label: 'Footer',             render: renderFooter }
+  };
+
+  const Router = {
+    current: 'dashboard',
+    navigate(section, push = true) {
+      if (!ROUTES[section]) section = 'dashboard';
+      this.current = section;
+      if (push) location.hash = '#' + section;
+      document.querySelectorAll('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.route === section));
+      const route = ROUTES[section];
+      document.getElementById('breadcrumb-section').textContent = route ? route.label : section;
+      const main = document.getElementById('main-content');
+      main.innerHTML = '';
+      if (route && route.render) route.render(main);
+      main.scrollTop = 0;
+      closeSidebar();
+    },
+    init() {
+      const h = location.hash.replace('#','') || 'dashboard';
+      this.navigate(h, false);
+      window.addEventListener('hashchange', () => this.navigate(location.hash.replace('#','') || 'dashboard', false));
+    }
+  };
+
+  // ──────────────────────────────────────────────────────────────
+  //  BOOT – load data then start router
+  // ──────────────────────────────────────────────────────────────
+  (async function boot() {
+    await Model.load();
+    Router.init();
+  })();
+
+</script>
+
+</body>
+</html>
