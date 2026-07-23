@@ -50,7 +50,7 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}/frontend/index/index.html`);
     console.log("========================================");
     console.log(`🏠 API Home        : http://localhost:${PORT}/frontend/index/index.html`);
     console.log(`🌐 Frontend        : http://localhost:${PORT}/frontend/index/index.html`);
