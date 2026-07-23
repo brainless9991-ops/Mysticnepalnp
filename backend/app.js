@@ -53,7 +53,7 @@ app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
     console.log("========================================");
     console.log(`🏠 API Home        : http://localhost:${PORT}/`);
-    console.log(`🌐 Frontend        : http://localhost:${PORT}/frontend`);
+    console.log(`🌐 Frontend        : http://localhost:${PORT}/frontend/index/index.html`);
     console.log(`🛠️ Admin Panel     : http://localhost:${PORT}/admin`);
     console.log(`🛠️ Admin Panel     : http://localhost:${PORT}/adminabout`);
     console.log("----------------------------------------");
