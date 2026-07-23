@@ -33,7 +33,7 @@ app.get("/adminabout", (req, res) => {
     res.sendFile(path.join(__dirname, "adminpanel", "adminabout.html"));
 });
 
-app.get("/frontend", (req, res) => {
+app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend/index/index.html"));
 });
 
@@ -43,7 +43,7 @@ app.get("/frontend", (req, res) => {
 
 // Root
 app.get("/", (req, res) => {
-    res.json({ success: true, message: "Travel API Running" });
+    res.sendFile(path.join(__dirname, "../frontend/index/index.html"));
 });
 
 // Server
@@ -57,7 +57,7 @@ app.listen(PORT, () => {
     console.log(`🛠️ Admin Panel     : http://localhost:${PORT}/admin`);
     console.log(`🛠️ Admin Panel     : http://localhost:${PORT}/adminabout`);
     console.log("----------------------------------------");
-    console.log(`📄 Home API        : http://localhost:${PORT}/api/home`);
+    console.log(`📄 Home API        : http://localhost:${PORT}/frontend/index/index.html`);
     console.log(`📄 About API       : http://localhost:${PORT}/api/about`);
     console.log(`📄 Blog API        : http://localhost:${PORT}/api/blog`);
     console.log(`📄 Index API       : http://localhost:${PORT}/api/index`);
