@@ -80,7 +80,7 @@ app.use((req, res) => {
 // ----- Start Server -----
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on http://localhost:${PORT}/index`);
     console.log("========================================");
     console.log(`🏠 Home       : http://localhost:${PORT}/index`);
     console.log(`📄 About      : http://localhost:${PORT}/about`);
