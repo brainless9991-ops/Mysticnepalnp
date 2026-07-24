@@ -23,6 +23,8 @@ app.use("/pack", express.static(path.join(__dirname, "../frontend/pack")));
 // Fallback for any other frontend assets (images, shared files)
 app.use("/frontend", express.static(path.join(__dirname, "../frontend")));
 
+app.use(express.static(path.join(__dirname, "../frontend/index")));
+
 // Admin panel
 app.use("/admin", express.static(path.join(__dirname, "adminpanel")));
 
@@ -80,9 +82,9 @@ app.use((req, res) => {
 // ----- Start Server -----
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}/index`);
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
     console.log("========================================");
-    console.log(`🏠 Home       : http://localhost:${PORT}/index`);
+    console.log(`🏠 Home       : http://localhost:${PORT}/`);
     console.log(`📄 About      : http://localhost:${PORT}/about`);
     console.log(`📄 Blog       : http://localhost:${PORT}/blog`);
     console.log(`📄 Booking    : http://localhost:${PORT}/booking`);
